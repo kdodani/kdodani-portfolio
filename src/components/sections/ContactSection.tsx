@@ -80,7 +80,9 @@ export function ContactSection() {
           </p>
         </motion.div>
 
-        <ul className="mt-10 grid min-w-0 grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-3 sm:items-stretch sm:gap-5">
+        <ul
+          className="mx-auto mt-10 grid w-full max-w-5xl grid-cols-1 gap-4 sm:mt-12 sm:max-w-6xl sm:grid-cols-[repeat(3,minmax(0,1fr))] sm:gap-5"
+        >
           {rows.map((row, index) => {
             const Icon = row.Icon;
             const body = (
@@ -91,7 +93,7 @@ export function ContactSection() {
                 <span className="mt-4 block text-[11px] font-medium uppercase tracking-[0.14em] text-stone-500 sm:mt-5">
                   {row.label}
                 </span>
-                <span className="mt-2 min-h-0 min-w-0 flex-1 text-[14px] leading-snug text-stone-700 transition-colors [overflow-wrap:anywhere] group-hover:text-stone-900 sm:text-[15px] sm:leading-snug">
+                <span className="mt-2 min-h-0 min-w-0 flex-1 break-words text-[14px] leading-snug text-stone-700 transition-colors [overflow-wrap:anywhere] group-hover:text-stone-900 sm:text-[15px] sm:leading-snug">
                   {row.value}
                 </span>
               </div>
@@ -100,7 +102,7 @@ export function ContactSection() {
             return (
               <motion.li
                 key={row.key}
-                className="flex min-h-0 min-w-0"
+                className="min-w-0"
                 initial={reduceMotion ? false : { opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
@@ -111,12 +113,12 @@ export function ContactSection() {
                     href={row.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cardBase}
+                    className={`${cardBase} h-full w-full min-w-0 max-w-full`}
                   >
                     {body}
                   </a>
                 ) : (
-                  <a href={row.href} className={cardBase}>
+                  <a href={row.href} className={`${cardBase} h-full w-full min-w-0 max-w-full`}>
                     {body}
                   </a>
                 )}
