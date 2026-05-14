@@ -12,27 +12,38 @@ export type ExperienceChapter = {
   /** Each string is one editorial row (middot-separated phrases) */
   capabilityRows: string[];
   launchSlugs: ProjectSlug[];
+  /** Optional intro above launch cards (e.g. WorkSafeBC editorial block) */
+  launchIntro?: string;
 };
 
 export const experienceChapters: ExperienceChapter[] = [
   {
-    period: "April 2024 – Present",
+    period: "Apr 2024 — Present",
     organization: "WorkSafeBC",
     role: "Product Manager — Provider Experience",
     scopeSummary:
-      "Healthcare provider journeys across referrals, invoicing, and claims—where policy, clinical nuance, and operations intersect, and where the product has to stay trustworthy under pressure.",
+      "Healthcare provider journeys across referrals, identity, invoicing, and claims — where policy, clinical nuance, and operational systems intersect.",
     focusAreas: [
-      "Digital adoption and operational friction across provider-facing workflows",
-      "Platform modernization spanning identity, APIs, and integration posture",
-      "AI-assisted decision support that respects compliance, explainability, and human oversight",
+      "Operational friction across provider workflows",
+      "Platform modernization & integrations",
+      "AI-assisted decision support systems",
+      "Workflow orchestration in regulated environments",
     ],
     thinkingEvolved:
-      "I stopped treating “AI features” as a layer on top of the roadmap. The work became designing systems that could absorb ambiguity—routing the right signal to the right actor, making handoffs legible, and keeping rollback and governance visible. Complexity moved from shipping screens to orchestrating workflows people stake their licenses on.",
+      "I stopped treating products as isolated features and started thinking in systems — how signals, people, policies, and decisions move across operational environments.\n\nThe work evolved from improving workflows to designing coordination layers that support trust, explainability, and scalable decision-making.",
     capabilityRows: [
-      "AI-assisted workflows · recommendation systems · workflow orchestration",
-      "operational UX · trust-critical systems · platform modernization",
+      "AI workflows · orchestration systems · platform PM",
+      "operational UX · API ecosystems · trust systems",
+      "human-in-the-loop AI · migration strategy",
     ],
-    launchSlugs: ["referral-radar"],
+    launchSlugs: [
+      "referral-radar",
+      "bceid-migration",
+      "provider-invoice-digitization",
+      "medical-api-integration",
+    ],
+    launchIntro:
+      "Proof of execution across the systems, workflows, and intelligence layers described above.",
   },
   {
     period: "October 2021 – April 2024",
@@ -51,11 +62,7 @@ export const experienceChapters: ExperienceChapter[] = [
       "behavioral design · retention analytics · product-led growth",
       "experimentation frameworks · segmentation strategy · customer engagement systems",
     ],
-    launchSlugs: [
-      "bceid-migration",
-      "medical-api-integration",
-      "provider-invoice-digitization",
-    ],
+    launchSlugs: [],
   },
   {
     period: "September 2020 – October 2021",

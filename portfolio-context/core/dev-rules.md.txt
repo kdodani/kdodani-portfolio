@@ -16,3 +16,19 @@ When making UI updates:
 
 If a change may affect architecture:
 - explain before modifying
+
+NEVER:
+- redesign unrelated sections
+- rewrite copy unless explicitly instructed
+- change spacing system globally
+- introduce new colors
+- replace typography system
+- create new animations unless requested
+- modify layout hierarchy outside requested section
+
+Always preserve:
+- existing design language
+- spacing rhythm
+- typography consistency
+- component architecture
+- narrative tone

@@ -4,37 +4,37 @@ export const projects: Project[] = [
   {
     slug: "referral-radar",
     title: "Referral Radar",
-    tagline: "AI multi-agent healthcare recommendations",
+    tagline: "AI-powered healthcare referral orchestration",
     summary:
-      "Orchestrated a multi-agent system to surface timely, compliant referral paths—balancing clinical nuance with operational constraints.",
-    tags: ["AI agents", "Healthcare", "Product strategy"],
+      "Built a multi-agent recommendation system that surfaces timely mental health referrals from complex claims data.",
+    tags: ["AI Agents", "LLMs", "LangGraph", "Healthcare AI"],
     year: "2024",
   },
   {
     slug: "bceid-migration",
-    title: "BCeID migration platform",
-    tagline: "Identity cutover without losing trust",
+    title: "BCEID Migration",
+    tagline: "Identity platform modernization for healthcare providers",
     summary:
-      "Led a phased migration with clear rollback posture, stakeholder comms, and instrumentation so teams could see auth health in real time.",
-    tags: ["Platform", "Identity", "Risk"],
-    year: "2023",
+      "Led migration of 5,600+ provider accounts to ForgeRock CIAM without disrupting operational workflows.",
+    tags: ["CIAM", "ForgeRock", "Migration Strategy", "Platform PM"],
+    year: "2024",
   },
   {
     slug: "medical-api-integration",
-    title: "Medical platform API integration",
-    tagline: "Reliable pipes between clinical systems",
+    title: "Direct Connect Platform",
+    tagline: "EMR-native API integration strategy",
     summary:
-      "Defined contracts, error budgets, and onboarding patterns so partner APIs shipped safely without slowing core product velocity.",
-    tags: ["API design", "Integrations", "Compliance"],
+      "Validated a zero-to-one API integration model for structured healthcare data exchange across EMRs.",
+    tags: ["APIs", "EMR Integrations", "FHIR", "Platform Strategy"],
     year: "2023",
   },
   {
     slug: "provider-invoice-digitization",
-    title: "Provider invoice digitization",
-    tagline: "From paper chaos to auditable flows",
+    title: "Provider Information System",
+    tagline: "Digital adoption across provider invoicing workflows",
     summary:
-      "Shipped an end-to-end digitization loop with human-in-the-loop QA, reducing cycle time while tightening finance controls.",
-    tags: ["Workflow", "Finance ops", "ML-assisted"],
+      "Redesigned high-volume invoice submission flows to reduce friction and accelerate digital adoption.",
+    tags: ["Operational UX", "Growth", "Behavior Change", "Segmentation"],
     year: "2022",
   },
 ];

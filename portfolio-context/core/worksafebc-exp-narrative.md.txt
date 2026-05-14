@@ -1,0 +1,69 @@
+# WorkSafeBC Experience Narrative
+
+This section should not read like a traditional resume.
+
+The goal is to show progression from:
+- workflow optimization
+- operational UX
+- platform modernization
+- ecosystem coordination
+- AI-native systems thinking
+
+The experience section itself should function as both:
+- experience
+- skills evolution
+
+The reader should feel increasing:
+- systems thinking
+- abstraction
+- platform depth
+- orchestration complexity
+- AI fluency
+
+The tone should feel:
+- thoughtful
+- editorial
+- systems-oriented
+- calm
+- strategic
+
+NOT:
+- corporate
+- buzzword-heavy
+- startup hype
+- feature-shipping focused
+
+Each experience block contains:
+1. Narrative intro
+2. Focus areas
+3. How my thinking evolved
+4. Capabilities developed
+5. Selected launches
+
+Launch cards should be:
+- concise
+- high-signal
+- curiosity-driven
+
+NOT mini case studies.
+
+Card structure:
+- title
+- 1-line positioning statement
+- 1 short supporting sentence
+- tags
+
+The WorkSafeBC section should position me as:
+“A PM who evolved into designing intelligent operational systems inside regulated environments.”
+
+Key themes:
+- workflow orchestration
+- operational systems
+- platform modernization
+- AI-assisted workflows
+- recommendation systems
+- API ecosystems
+- identity systems
+- trust-critical UX
+- ecosystem integrations
+- human-in-the-loop AI
