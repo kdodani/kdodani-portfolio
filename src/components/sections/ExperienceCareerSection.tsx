@@ -1,7 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { ProjectCard } from "@/components/projects/ProjectCard";
 import { experienceEntries } from "@/content/experience";
+import { projects } from "@/content/projects";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -12,7 +14,7 @@ export function ExperienceCareerSection() {
     <section
       id="experience"
       className="scroll-mt-section border-t border-stone-200/80"
-      aria-labelledby="experience-career-heading"
+      aria-labelledby="experience-heading experience-launches-heading"
     >
       <div className="mx-auto max-w-6xl px-6 py-section-pad sm:px-8 lg:px-10">
         <div className="min-w-0 max-w-2xl lg:max-w-xl xl:max-w-2xl">
@@ -26,7 +28,7 @@ export function ExperienceCareerSection() {
               Career
             </p>
             <h2
-              id="experience-career-heading"
+              id="experience-heading"
               className="font-display mt-3 text-3xl font-medium tracking-tight text-stone-900 sm:mt-4 sm:text-[2rem] lg:text-4xl"
             >
               Experience
@@ -38,47 +40,76 @@ export function ExperienceCareerSection() {
           </motion.div>
 
           <ol className="mt-10 list-none space-y-0 sm:mt-12">
-          {experienceEntries.map((entry, index) => (
-            <motion.li
-              key={`${entry.organization}-${entry.period}`}
-              className="group relative border-b border-stone-200/90 py-8 last:border-b-0 last:pb-0 sm:py-10"
-              initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-48px" }}
-              transition={{ duration: 0.5, delay: reduceMotion ? 0 : index * 0.05, ease }}
+            {experienceEntries.map((entry, index) => (
+              <motion.li
+                key={`${entry.organization}-${entry.period}`}
+                className="group relative border-b border-stone-200/90 py-8 last:border-b-0 last:pb-0 sm:py-10"
+                initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-48px" }}
+                transition={{ duration: 0.5, delay: reduceMotion ? 0 : index * 0.05, ease }}
+              >
+                <div className="-mx-3 rounded-2xl px-3 py-2 transition-colors duration-300 group-hover:bg-white/70 sm:-mx-4 sm:px-4">
+                  <p className="text-[13px] font-normal leading-relaxed text-stone-500 sm:text-sm">
+                    <span className="text-stone-600">{entry.period}</span>
+                    <span className="mx-2 text-stone-400" aria-hidden>
+                      ·
+                    </span>
+                    <span className="text-stone-700">{entry.organization}</span>
+                  </p>
+                  <h3 className="font-display mt-3 text-xl font-medium leading-snug tracking-tight text-stone-900 sm:mt-3.5 sm:text-2xl sm:leading-tight">
+                    {entry.role}
+                  </h3>
+                  <p className="mt-4 text-[15px] leading-[1.72] text-stone-600 sm:text-base sm:leading-[1.7]">
+                    {entry.summary}
+                  </p>
+                  <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.14em] text-stone-500">
+                    {entry.listLabel}:
+                  </p>
+                  <ul className="mt-3 space-y-2.5 pl-0.5 text-[15px] leading-relaxed text-stone-600 sm:text-[15px]">
+                    {entry.bullets.map((item) => (
+                      <li key={item} className="flex gap-3">
+                        <span
+                          className="mt-[0.55em] h-px w-3 shrink-0 bg-emerald-400/70"
+                          aria-hidden
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="mt-16 border-t border-stone-200/70 pt-14 sm:mt-20 sm:pt-16 lg:mt-20">
+          <motion.div
+            className="max-w-2xl"
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-56px" }}
+            transition={{ duration: 0.5, ease }}
+          >
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:text-xs">
+              Selected launches
+            </p>
+            <h2
+              id="experience-launches-heading"
+              className="font-display mt-3 text-2xl font-medium tracking-tight text-stone-900 sm:mt-4 sm:text-[1.75rem] lg:text-3xl"
             >
-              <div className="-mx-3 rounded-2xl px-3 py-2 transition-colors duration-300 group-hover:bg-white/70 sm:-mx-4 sm:px-4">
-                <p className="text-[13px] font-normal leading-relaxed text-stone-500 sm:text-sm">
-                  <span className="text-stone-600">{entry.period}</span>
-                  <span className="mx-2 text-stone-400" aria-hidden>
-                    ·
-                  </span>
-                  <span className="text-stone-700">{entry.organization}</span>
-                </p>
-                <h3 className="font-display mt-3 text-xl font-medium leading-snug tracking-tight text-stone-900 sm:mt-3.5 sm:text-2xl sm:leading-tight">
-                  {entry.role}
-                </h3>
-                <p className="mt-4 text-[15px] leading-[1.72] text-stone-600 sm:text-base sm:leading-[1.7]">
-                  {entry.summary}
-                </p>
-                <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.14em] text-stone-500">
-                  {entry.listLabel}:
-                </p>
-                <ul className="mt-3 space-y-2.5 pl-0.5 text-[15px] leading-relaxed text-stone-600 sm:text-[15px]">
-                  {entry.bullets.map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span
-                        className="mt-[0.55em] h-px w-3 shrink-0 bg-emerald-400/70"
-                        aria-hidden
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.li>
-          ))}
-        </ol>
+              Systems that had to be right the first time.
+            </h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-stone-600 sm:text-base sm:text-lg">
+              A few launches where scope, risk, and narrative had to line up—AI agents,
+              identity migrations, clinical integrations, and finance-grade digitization.
+            </p>
+          </motion.div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-12 lg:gap-6">
+            {projects.map((project, index) => (
+              <ProjectCard key={project.slug} project={project} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

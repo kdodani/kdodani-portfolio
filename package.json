@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true}); console.log('Cleaned .next')\"",
+    "clean": "node -e \"const fs=require('fs'),p=require('path');['.next',p.join('node_modules','.cache')].forEach(d=>{try{fs.rmSync(d,{recursive:true,force:true});console.log('Removed',d)}catch(e){}})\"",
     "dev": "next dev",
     "dev:clean": "npm run clean && next dev",
+    "reset": "npm run clean && npm run build",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

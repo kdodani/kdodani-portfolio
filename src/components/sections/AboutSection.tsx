@@ -19,7 +19,7 @@ export function AboutSection() {
           About
         </p>
 
-        <div className="mt-8 grid gap-10 lg:mt-10 lg:grid-cols-[1fr_auto] lg:items-start lg:gap-x-14 lg:gap-y-10 xl:gap-x-16">
+        <div className="mt-8 grid gap-10 lg:mt-10 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-x-14 lg:gap-y-10 xl:gap-x-16">
           <motion.div
             className="order-2 min-w-0 lg:order-1 lg:max-w-xl xl:max-w-2xl"
             initial={reduceMotion ? false : { opacity: 0, y: 16 }}
@@ -54,7 +54,7 @@ export function AboutSection() {
           </motion.div>
 
           <motion.div
-            className="order-1 flex justify-center px-4 sm:px-6 lg:order-2 lg:justify-end lg:px-0 lg:pt-1"
+            className="order-1 flex justify-center self-center px-4 sm:px-6 lg:order-2 lg:justify-end lg:px-0"
             initial={reduceMotion ? false : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-56px" }}
