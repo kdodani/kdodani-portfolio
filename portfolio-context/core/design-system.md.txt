@@ -1,0 +1,155 @@
+# Portfolio Design System
+
+## Goal
+
+The portfolio should maintain a premium, minimal, editorial product aesthetic across ALL pages and future iterations.
+
+This design language is now LOCKED and should be preserved unless explicitly instructed otherwise.
+
+---
+
+# Core Visual Identity
+
+## Overall Feel
+
+The website should feel:
+- calm
+- modern
+- editorial
+- minimal
+- intelligent
+- product-led
+- premium
+- spacious
+
+The aesthetic should resemble:
+- Linear
+- Notion
+- Stripe editorial pages
+- Vercel
+- Figma marketing pages
+- modern venture-backed product portfolios
+
+NOT:
+- dark hacker aesthetic
+- cyberpunk
+- generic AI startup
+- dashboard-heavy
+- glassmorphism-heavy
+- overly animated portfolios
+- loud gradients
+- dribbble-style experimentation
+
+---
+
+# Locked Styling Rules
+
+## Background
+
+- Primary background should remain LIGHT.
+- Use soft warm off-white tones.
+- Very subtle grid texture/background pattern is allowed.
+- Avoid dark mode unless explicitly requested.
+
+Preferred background feel:
+- soft white
+- warm neutral
+- low contrast
+- breathable
+
+---
+
+## Typography
+
+Typography is the primary visual element.
+
+Style:
+- elegant
+- editorial
+- highly readable
+- sophisticated
+- modern
+
+Use:
+- large serif headlines
+- clean sans-serif body text
+
+Typography hierarchy should feel premium and spacious.
+
+Avoid:
+- condensed fonts
+- futuristic fonts
+- monospaced-heavy layouts
+- overly playful typography
+
+---
+
+# Color System
+
+Primary colors:
+- black / charcoal text
+- soft neutral grays
+- restrained purple accent
+- subtle blue-purple gradients only where needed
+
+Accent usage should be minimal and intentional.
+
+Do NOT:
+- turn entire sections into gradients
+- use neon/glow-heavy palettes
+- introduce random colors
+
+---
+
+# Layout Principles
+
+- generous whitespace
+- asymmetric editorial spacing
+- calm visual rhythm
+- strong readability
+- left-aligned content blocks
+- avoid clutter
+
+The experience should feel:
+“high signal, low noise.”
+
+---
+
+# Motion
+
+Motion should be:
+- subtle
+- purposeful
+- slow
+- refined
+
+Allowed:
+- soft fade-ins
+- minimal hover transitions
+- subtle glow
+- slight parallax
+
+Avoid:
+- bouncing animations
+- flashy transitions
+- constant movement
+- exaggerated effects
+
+---
+
+# Important Constraint
+
+When updating sections:
+- preserve the existing visual identity
+- preserve spacing rhythm
+- preserve typography system
+- preserve color palette
+- preserve overall aesthetic consistency
+
+Future prompts should modify:
+- content
+- structure
+- responsiveness
+- UX improvements
+
+WITHOUT fundamentally redesigning the portfolio aesthetic.

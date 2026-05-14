@@ -71,7 +71,7 @@ export function ContactSection() {
           >
             Let&apos;s connect
           </h2>
-          <p className="mt-4 max-w-editorial text-base leading-relaxed text-stone-600 sm:text-lg">
+          <p className="mt-4 max-w-editorial text-[15px] leading-relaxed text-stone-600 sm:text-base">
             Email is best for a quick hello; GitHub and LinkedIn for context on how I build
             and collaborate.
           </p>

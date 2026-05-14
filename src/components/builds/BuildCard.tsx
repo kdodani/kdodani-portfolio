@@ -43,7 +43,7 @@ export function BuildCard({ build, index }: Props) {
           {build.tags.map((tag) => (
             <li
               key={tag}
-              className="rounded-md border border-accent/12 bg-accent/[0.05] px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wide text-accent-strong/85"
+              className="rounded-full border border-stone-200/80 bg-stone-50/90 px-2.5 py-1 text-[11px] font-medium text-stone-600"
             >
               {tag}
             </li>

@@ -30,7 +30,7 @@ export function ProjectCard({ project, index }: Props) {
         <div className="flex h-full flex-col rounded-[15px] bg-gradient-to-b from-white to-stone-50/80 p-6 sm:p-7">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-[11px] font-medium uppercase tracking-widest text-stone-500">
+              <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500">
                 {project.year}
               </p>
               <h3 className="font-display mt-2 text-xl font-medium tracking-tight text-stone-900 transition-colors group-hover:text-accent-strong sm:text-[1.35rem]">

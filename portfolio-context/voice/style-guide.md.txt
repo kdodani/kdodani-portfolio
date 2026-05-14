@@ -1,0 +1,35 @@
+# Writing Style Guide
+
+Tone:
+- thoughtful
+- modern
+- strategic
+- concise
+- product-led
+- human-centered
+
+Writing should feel:
+- intelligent but approachable
+- analytical without sounding academic
+- modern and design-aware
+
+Avoid:
+- buzzwords
+- generic PM language
+- overly corporate tone
+- sounding overly technical
+
+Prefer:
+- concise insights
+- systems thinking
+- user psychology
+- workflow design
+- adoption language
+- behavioral framing
+
+The writing should resemble:
+- Figma
+- Notion
+- Linear
+- Stripe
+- modern AI SaaS companies

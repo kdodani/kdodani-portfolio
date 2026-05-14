@@ -1,0 +1,117 @@
+# Portfolio Narrative System
+
+## Core Positioning
+
+Khushboo is a growth-oriented product manager with a background in marketing, UX research, analytics, and workflow design.
+
+Her work focuses on understanding why people do or do not adopt systems — then redesigning experiences, workflows, incentives, and communication to drive meaningful behavior change.
+
+She leverages AI capabilities, platform improvements, user research, and behavioral design principles to improve product adoption, reduce friction, and create intelligent user experiences.
+
+She is not positioning herself as a deeply technical infrastructure PM or traditional enterprise PM.
+
+---
+
+## Background & Perspective
+
+Khushboo’s product perspective has been shaped by working in highly regulated and operationally complex environments including healthcare, public safety, and education.
+
+These environments required balancing:
+- user needs
+- operational constraints
+- compliance requirements
+- organizational incentives
+- stakeholder coordination
+- long-term system stability
+
+Her background in marketing and business administration strengthened her understanding of:
+- behavioral psychology
+- power-law user patterns
+- business models
+- communication strategy
+- segmentation
+- what drives user and business outcomes
+
+Her Master’s in Business Analytics strengthened her:
+- experimentation mindset
+- analytical thinking
+- data-informed decision making
+- hypothesis-driven product development
+
+---
+
+## Narrative Themes
+
+### Theme 1 — Behavior Change Through Product Design
+
+The portfolio should consistently communicate:
+
+"Here is how I redesign user behavior within complex systems."
+
+Projects should emphasize:
+- reducing friction
+- improving adoption
+- workflow simplification
+- user trust
+- activation
+- reducing cognitive load
+
+---
+
+### Theme 2 — AI as a Product Enabler
+
+AI should be framed as:
+- improving decision-making
+- reducing cognitive burden
+- enabling intelligent workflows
+- surfacing insights
+- improving user experience
+
+The portfolio should NOT frame AI as:
+- deep ML engineering
+- infrastructure work
+- highly technical architecture work
+
+---
+
+### Theme 3 — Workflow-Native Product Thinking
+
+Projects should demonstrate:
+- understanding of user environments
+- reducing context switching
+- embedding products naturally into workflows
+- ecosystem-aware product design
+
+---
+
+## Desired Recruiter Impression
+
+After viewing the portfolio, recruiters should think:
+
+"This person understands how to drive adoption and behavior change inside complex systems."
+
+"This PM combines product thinking, UX instincts, analytics, and AI-enabled workflows."
+
+---
+
+## Design & Writing Direction
+
+The website should feel:
+- modern
+- thoughtful
+- product-led
+- human-centered
+- intelligent
+- systems-oriented
+
+Writing should be:
+- concise
+- strategic
+- insight-driven
+- clear
+- modern
+
+Avoid:
+- buzzwords
+- overly corporate language
+- excessive technical jargon

@@ -1,0 +1,79 @@
+# Portfolio Hero Section
+
+## Goal
+This hero section should position Khushboo Dodani as a modern product manager focused on:
+- growth
+- UX and behavioral design
+- platform/product systems
+- AI-native workflows
+- intelligent decision support systems
+
+The tone should feel:
+- concise
+- confident
+- thoughtful
+- modern
+- technically literate without sounding overly technical
+- credible for both startups and larger product-led tech companies
+
+Avoid:
+- buzzword-heavy AI language
+- sounding corporate or resume-like
+- generic “passionate product manager” phrasing
+- healthcare-only positioning
+
+The messaging should signal:
+- systems thinking
+- product intuition
+- adoption/growth mindset
+- AI-native product fluency
+- experience working in complex regulated environments
+
+---
+
+# Final Hero Copy
+
+## Headline
+
+Hi, my name is Khushboo Dodani.  
+**Product Manager — Building Growth Through UX, Platforms & AI-Native Workflows**
+
+## Description
+
+With a background in marketing, UX research, and analytics, my work spans building intelligent workflows that improve adoption, reduce friction, and support better decision-making across complex systems.
+
+Currently exploring opportunities in product-led companies where I can work on growth and intelligent systems at scale.
+
+---
+
+# Visual Direction
+
+The hero section should feel:
+- clean
+- modern
+- minimal
+- high signal
+- product-builder oriented
+
+Preferred vibe:
+- Stripe
+- Linear
+- Vercel
+- Notion
+- Figma
+
+Avoid:
+- excessive gradients
+- overly playful visuals
+- generic portfolio templates
+- corporate enterprise aesthetic
+
+Typography should prioritize readability and hierarchy.
+The headline should feel prominent and confident.
+Body text should remain concise and easy to scan.
+
+Potential subtle UI accents:
+- soft glow
+- understated motion
+- minimal grid/background texture
+- tasteful AI-native aesthetic without looking gimmicky

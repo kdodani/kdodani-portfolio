@@ -19,7 +19,7 @@ export function BuildsSection() {
         viewport={{ once: true, margin: "-56px" }}
         transition={{ duration: 0.5, ease }}
       >
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-accent/85 sm:text-xs">
+        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:text-xs">
           Builds
         </p>
         <h2
@@ -28,7 +28,7 @@ export function BuildsSection() {
         >
           Experiments outside the roadmap.
         </h2>
-        <p className="mt-4 text-base leading-relaxed text-stone-600 sm:mt-5 sm:text-lg">
+        <p className="mt-4 text-[15px] leading-relaxed text-stone-600 sm:mt-5 sm:text-base">
           Side projects, AI prototypes, and technical play—where I chase curiosity, try
           new stacks, and keep my hands dirty away from core PM delivery.
         </p>

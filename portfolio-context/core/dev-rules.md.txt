@@ -1,0 +1,18 @@
+# Development Rules
+
+Before making changes:
+- do not refactor unrelated files
+- do not rename files unless necessary
+- do not modify routing structure
+- do not modify package dependencies
+- do not change build configuration
+- do not rewrite global styles unless explicitly requested
+
+When making UI updates:
+- modify only the minimum necessary code
+- preserve component interfaces
+- preserve import structure
+- avoid touching unrelated sections
+
+If a change may affect architecture:
+- explain before modifying
