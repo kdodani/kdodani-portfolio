@@ -5,10 +5,13 @@
 @layer base {
   :root {
     color-scheme: light;
+    /* Sticky header (~3.25–3.5rem) + breathing room; used by sections + hash scroll */
+    --section-scroll-margin: max(5.5rem, calc(env(safe-area-inset-top, 0px) + 4.25rem));
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--section-scroll-margin);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -27,6 +30,10 @@
 }
 
 @layer utilities {
+  .scroll-mt-section {
+    scroll-margin-top: var(--section-scroll-margin);
+  }
+
   .text-balance {
     text-wrap: balance;
   }

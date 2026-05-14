@@ -11,20 +11,20 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="scroll-mt-24 border-t border-stone-200/80"
+      className="scroll-mt-section border-t border-stone-200/80"
       aria-labelledby="about-heading"
     >
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:px-8 sm:py-32 lg:px-10 lg:py-40">
+      <div className="mx-auto max-w-6xl px-6 py-section-pad sm:px-8 lg:px-10">
         <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:text-xs">
           About
         </p>
 
-        <div className="mt-10 grid gap-12 lg:mt-14 lg:grid-cols-[1fr_auto] lg:items-start lg:gap-x-16 xl:gap-x-20">
+        <div className="mt-8 grid gap-10 lg:mt-10 lg:grid-cols-[1fr_auto] lg:items-start lg:gap-x-14 lg:gap-y-10 xl:gap-x-16">
           <motion.div
             className="order-2 min-w-0 lg:order-1 lg:max-w-xl xl:max-w-2xl"
             initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-56px" }}
             transition={{ duration: 0.6, ease }}
           >
             <h2
@@ -34,7 +34,7 @@ export function AboutSection() {
               I care about how products feel, how teams decide, and how systems hold up
               when reality gets messy.
             </h2>
-            <div className="mt-8 space-y-5 text-[15px] leading-[1.75] text-stone-600 sm:text-base sm:leading-[1.72]">
+            <div className="mt-6 space-y-4 text-[15px] leading-[1.75] text-stone-600 sm:mt-7 sm:text-base sm:leading-[1.72]">
               <p>
                 My background blends product strategy with a respect for craft: clear
                 narratives, honest metrics, and interfaces that earn trust—especially when
@@ -57,7 +57,7 @@ export function AboutSection() {
             className="order-1 flex justify-center px-4 sm:px-6 lg:order-2 lg:justify-end lg:px-0 lg:pt-1"
             initial={reduceMotion ? false : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-56px" }}
             transition={{ duration: 0.6, delay: reduceMotion ? 0 : 0.08, ease }}
           >
             <div className="w-full max-w-[11.5rem] shrink-0 sm:max-w-[12.5rem] lg:max-w-[13rem]">

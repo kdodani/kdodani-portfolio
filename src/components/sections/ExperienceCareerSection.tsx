@@ -11,39 +11,40 @@ export function ExperienceCareerSection() {
   return (
     <section
       id="experience"
-      className="scroll-mt-24 border-t border-stone-200/80"
+      className="scroll-mt-section border-t border-stone-200/80"
       aria-labelledby="experience-career-heading"
     >
-      <div className="mx-auto max-w-3xl px-6 py-24 sm:px-8 sm:py-32 lg:px-10 lg:py-40">
-        <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease }}
-        >
-          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-stone-500 sm:text-xs">
-            Career
-          </p>
-          <h2
-            id="experience-career-heading"
-            className="font-display mt-3 text-3xl font-medium tracking-tight text-stone-900 sm:mt-4 sm:text-[2rem] lg:text-4xl"
+      <div className="mx-auto max-w-6xl px-6 py-section-pad sm:px-8 lg:px-10">
+        <div className="min-w-0 max-w-2xl lg:max-w-xl xl:max-w-2xl">
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-56px" }}
+            transition={{ duration: 0.5, ease }}
           >
-            Experience
-          </h2>
-          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-stone-600 sm:text-base">
-            A concise arc across regulated platforms, growth, and systems work—less
-            resume-style listing, more how I think about product.
-          </p>
-        </motion.div>
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:text-xs">
+              Career
+            </p>
+            <h2
+              id="experience-career-heading"
+              className="font-display mt-3 text-3xl font-medium tracking-tight text-stone-900 sm:mt-4 sm:text-[2rem] lg:text-4xl"
+            >
+              Experience
+            </h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-stone-600 sm:text-base">
+              A concise arc across regulated platforms, growth, and systems work—less
+              resume-style listing, more how I think about product.
+            </p>
+          </motion.div>
 
-        <ol className="mt-16 list-none space-y-0 sm:mt-20">
+          <ol className="mt-10 list-none space-y-0 sm:mt-12">
           {experienceEntries.map((entry, index) => (
             <motion.li
               key={`${entry.organization}-${entry.period}`}
-              className="group relative border-b border-stone-200/90 py-12 last:border-b-0 last:pb-0 sm:py-14"
+              className="group relative border-b border-stone-200/90 py-8 last:border-b-0 last:pb-0 sm:py-10"
               initial={reduceMotion ? false : { opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={{ once: true, margin: "-48px" }}
               transition={{ duration: 0.5, delay: reduceMotion ? 0 : index * 0.05, ease }}
             >
               <div className="-mx-3 rounded-2xl px-3 py-2 transition-colors duration-300 group-hover:bg-white/70 sm:-mx-4 sm:px-4">
@@ -78,6 +79,7 @@ export function ExperienceCareerSection() {
             </motion.li>
           ))}
         </ol>
+        </div>
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ import { site } from "@/content/site";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const cardBase =
-  "group flex h-full min-h-[12.5rem] flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white/80 p-5 shadow-sm transition-all duration-300 ease-out hover:border-violet-200/90 hover:bg-white hover:shadow-md motion-safe:hover:-translate-y-0.5 sm:min-h-[13.5rem] sm:p-6";
+  "group flex h-full min-h-[11.5rem] flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white/80 p-5 shadow-sm transition-all duration-300 ease-out hover:border-violet-200/90 hover:bg-white hover:shadow-md motion-safe:hover:-translate-y-0.5 sm:min-h-[12.5rem] sm:p-6";
 
 type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -54,15 +54,15 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="scroll-mt-24 border-t border-stone-200/80"
+      className="scroll-mt-section border-t border-stone-200/80"
       aria-labelledby="contact-heading"
     >
-      <div className="mx-auto min-w-0 max-w-6xl px-6 py-24 sm:px-8 sm:py-32 lg:px-10 lg:py-40">
+      <div className="mx-auto min-w-0 max-w-6xl px-6 py-section-pad sm:px-8 lg:px-10">
         <motion.div
           className="max-w-2xl"
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-56px" }}
           transition={{ duration: 0.55, ease }}
         >
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:text-xs">
@@ -70,7 +70,7 @@ export function ContactSection() {
           </p>
           <h2
             id="contact-heading"
-            className="font-display mt-4 text-3xl font-medium tracking-tight text-stone-900 sm:mt-5 sm:text-[2rem] lg:text-4xl"
+            className="font-display mt-3 text-3xl font-medium tracking-tight text-stone-900 sm:mt-4 sm:text-[2rem] lg:text-4xl"
           >
             Let&apos;s connect
           </h2>
@@ -80,7 +80,7 @@ export function ContactSection() {
           </p>
         </motion.div>
 
-        <ul className="mt-14 grid min-w-0 grid-cols-1 gap-4 sm:mt-16 sm:grid-cols-3 sm:items-stretch sm:gap-5">
+        <ul className="mt-10 grid min-w-0 grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-3 sm:items-stretch sm:gap-5">
           {rows.map((row, index) => {
             const Icon = row.Icon;
             const body = (

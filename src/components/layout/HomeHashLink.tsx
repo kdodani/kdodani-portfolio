@@ -1,8 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback } from "react";
+import {
+  scrollToSectionById,
+  setPendingSectionScroll,
+} from "@/lib/sectionScroll";
 
 type Props = {
   sectionId: string;
@@ -10,30 +13,26 @@ type Props = {
   children: React.ReactNode;
 };
 
-function scrollToSection(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return false;
-  const reduced =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
-  const next = `#${id}`;
-  if (typeof window !== "undefined" && window.location.hash !== next) {
-    window.history.replaceState(null, "", next);
-  }
-  return true;
-}
-
-/** Same-page `#id` on `/`, full `/#id` elsewhere so Next + browser scroll behave reliably. */
+/** In-page `#id` on `/`; other routes use sessionStorage + `router.push("/")` so the fragment is not lost. */
 export function HomeHashLink({ sectionId, className, children }: Props) {
   const pathname = usePathname();
+  const router = useRouter();
 
   const onHomeClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       if (pathname !== "/") return;
-      if (scrollToSection(sectionId)) e.preventDefault();
+      if (scrollToSectionById(sectionId)) e.preventDefault();
     },
     [pathname, sectionId],
+  );
+
+  const onAwayClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      setPendingSectionScroll(sectionId);
+      router.push("/");
+    },
+    [router, sectionId],
   );
 
   if (pathname === "/") {
@@ -43,9 +42,10 @@ export function HomeHashLink({ sectionId, className, children }: Props) {
       </a>
     );
   }
+
   return (
-    <Link href={`/#${sectionId}`} className={className} scroll={false}>
+    <a href={`/#${sectionId}`} className={className} onClick={onAwayClick}>
       {children}
-    </Link>
+    </a>
   );
 }

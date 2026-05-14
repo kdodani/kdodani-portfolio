@@ -2,32 +2,36 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import {
+  consumePendingSectionScroll,
+  queueScrollAfterPaint,
+  scrollToHashFromLocation,
+  scrollToSectionById,
+} from "@/lib/sectionScroll";
 
-function scrollToHashTarget() {
-  if (typeof window === "undefined") return;
-  const raw = window.location.hash;
-  if (!raw || raw === "#") return;
-  const id = decodeURIComponent(raw.slice(1));
-  if (!id) return;
-  const el = document.getElementById(id);
-  if (!el) return;
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+function scrollPendingOrHash(): void {
+  const pending = consumePendingSectionScroll();
+  if (pending) {
+    queueScrollAfterPaint(() => {
+      if (scrollToSectionById(pending)) return;
+      window.setTimeout(() => {
+        scrollToSectionById(pending);
+      }, 120);
+    });
+    return;
+  }
+  scrollToHashFromLocation();
 }
 
 /**
- * App Router client navigations to `/#section` often skip native hash scrolling.
- * Re-run after route changes (and on hashchange) once the new tree has painted.
+ * App Router often skips hash scrolling after client navigations.
+ * Handles `window.location.hash` and a sessionStorage fallback from {@link HomeHashLink}.
  */
 export function HashScrollOnRoute() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const run = () => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(scrollToHashTarget);
-      });
-    };
+    const run = () => queueScrollAfterPaint(scrollPendingOrHash);
     run();
     window.addEventListener("hashchange", run);
     return () => window.removeEventListener("hashchange", run);

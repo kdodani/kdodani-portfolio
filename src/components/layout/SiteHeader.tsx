@@ -65,7 +65,7 @@ export function SiteHeader() {
       setActiveId("");
       return;
     }
-    const marker = window.scrollY + Math.min(window.innerHeight * 0.16, 120);
+    const marker = window.scrollY + Math.min(window.innerHeight * 0.12, 96);
     let current = "";
     for (const id of SECTION_IDS) {
       const el = document.getElementById(id);
@@ -87,7 +87,7 @@ export function SiteHeader() {
   }, [pathname, updateActive]);
 
   return (
-    <header className="sticky top-0 z-50 isolate border-b border-stone-200/70 bg-[#faf9f6]/85 backdrop-blur-xl supports-[backdrop-filter]:bg-[#faf9f6]/75">
+    <header className="sticky top-0 z-50 isolate border-b border-stone-200/70 bg-[#faf9f6]/85 backdrop-blur-xl">
       <div className="mx-auto flex min-h-14 max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-6 py-2.5 sm:h-[3.25rem] sm:flex-nowrap sm:px-8 sm:py-0 lg:px-10">
         <Link
           href="/"

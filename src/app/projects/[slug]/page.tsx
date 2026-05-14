@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { HomeHashLink } from "@/components/layout/HomeHashLink";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/content/projects";
 
@@ -24,7 +24,7 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
 
   return (
-    <article className="mx-auto max-w-3xl px-6 pb-24 pt-10 sm:px-8 sm:pt-14 lg:px-10">
+    <article className="mx-auto max-w-3xl px-6 pb-16 pt-8 sm:px-8 sm:pt-10 lg:px-10 lg:pb-20">
       <p className="text-xs font-medium uppercase tracking-widest text-stone-500">
         Case study · {project.year}
       </p>
@@ -35,13 +35,12 @@ export default async function ProjectPage({ params }: Props) {
       <p className="mt-8 text-stone-600">{project.summary}</p>
       <p className="mt-10 text-sm text-stone-500">
         Full write-up coming soon.{" "}
-        <Link
-          href="/#experience"
-          scroll={false}
+        <HomeHashLink
+          sectionId="experience"
           className="font-medium text-violet-700 underline-offset-4 hover:text-violet-800 hover:underline"
         >
           Back to experience
-        </Link>
+        </HomeHashLink>
       </p>
     </article>
   );

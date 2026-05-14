@@ -1,7 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useCallback } from "react";
 import { Github, Linkedin, Mail } from "@/icons/lucide-social";
+import { scrollToSectionById } from "@/lib/sectionScroll";
 import { site } from "@/content/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -15,12 +17,16 @@ const displayPairClass =
 export function Hero() {
   const reduceMotion = useReducedMotion();
 
+  const onExperienceClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (scrollToSectionById("experience")) e.preventDefault();
+  }, []);
+
   return (
     <section
       id="hero"
-      className="relative flex min-h-[min(82svh,880px)] flex-col sm:min-h-[min(80svh,900px)]"
+      className="relative flex min-h-[min(72svh,680px)] flex-col sm:min-h-[min(76svh,760px)] lg:min-h-[min(78svh,800px)]"
     >
-      <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col justify-center px-6 py-8 pb-14 pt-4 sm:px-8 sm:py-10 sm:pb-20 sm:pt-5 lg:px-10 lg:py-12 lg:pb-24 lg:pt-6">
+      <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col justify-center px-6 py-6 pb-12 pt-2 sm:px-8 sm:py-8 sm:pb-14 sm:pt-3 lg:px-10 lg:py-10 lg:pb-16 lg:pt-4">
         <motion.p
           className="text-[15px] font-normal leading-relaxed tracking-tight text-stone-500 sm:text-base"
           initial={reduceMotion ? false : { opacity: 0, y: 6 }}
@@ -78,6 +84,7 @@ export function Hero() {
         >
           <a
             href="#experience"
+            onClick={onExperienceClick}
             className="inline-flex h-10 items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-6 text-sm font-medium text-white shadow-md shadow-violet-500/20 transition hover:from-violet-500 hover:to-indigo-500 hover:shadow-lg hover:shadow-violet-500/25"
           >
             View experience
