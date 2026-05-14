@@ -28,24 +28,27 @@ export function AboutSection() {
               id="about-heading"
               className="max-w-editorial font-display text-2xl font-medium leading-snug tracking-tight text-stone-900 sm:text-3xl lg:text-[clamp(1.75rem,1.5vw+1.35rem,2rem)] lg:leading-[1.22]"
             >
-              I care about how products feel, how teams decide, and how systems hold up
-              when reality gets messy.
+              I&apos;m a Product Manager focused on building intelligent systems that
+              improve how people work, decide, and interact with complex products.
             </h2>
             <div className="mt-6 max-w-editorial space-y-4 text-[15px] leading-[1.75] text-stone-600 sm:mt-7 sm:text-base sm:leading-[1.72]">
               <p className="text-pretty">
-                My background blends product strategy with a respect for craft: clear
-                narratives, honest metrics, and interfaces that earn trust—especially when
-                you&apos;re asking people to change how they work.
+                My background spans marketing, analytics, UX research, and product
+                management — which has shaped how I approach product development:
+                understanding user behavior deeply, simplifying operational complexity, and
+                designing systems that scale.
               </p>
               <p className="text-pretty">
-                I&apos;m drawn to problems where growth meets complexity: onboarding that
-                compounds, AI-assisted workflows that stay explainable, and platforms that
-                have to scale without losing a human voice.
+                Over the past few years, I&apos;ve led platform migrations, digital
+                adoption initiatives, API integration strategies, and AI-powered workflow
+                experiments across healthcare and public-sector environments. Increasingly,
+                I&apos;m interested in how AI-native products and agentic workflows can
+                reshape operational software, decision support, and user experience.
               </p>
               <p className="text-pretty text-stone-500">
-                If you&apos;re building something ambitious in product-led growth, AI, or
-                platform—and you value thoughtful execution—I&apos;d love to hear what
-                you&apos;re working on.
+                I&apos;m especially drawn to product teams working on platforms, workflow
+                tools, infrastructure, and AI-enabled systems where product, technology,
+                and human behavior intersect.
               </p>
             </div>
           </motion.div>
