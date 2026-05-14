@@ -9,7 +9,7 @@ import { site } from "@/content/site";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const iconLinkClass =
-  "inline-flex h-10 w-10 items-center justify-center rounded-full border border-stone-200/90 bg-white/80 text-stone-500 shadow-sm transition-all duration-300 hover:border-violet-200/90 hover:bg-white hover:text-violet-700 hover:shadow-md active:scale-[0.97]";
+  "inline-flex h-10 w-10 items-center justify-center rounded-full border border-stone-200/90 bg-white/80 text-stone-500 shadow-sm transition-all duration-300 hover:border-accent/25 hover:bg-white hover:text-accent hover:shadow-md active:scale-[0.97]";
 
 const displayPairClass =
   "font-display text-[clamp(2.15rem,7.5vw,3.5rem)] font-medium leading-[1.06] tracking-[-0.028em]";
@@ -46,13 +46,7 @@ export function Hero() {
         </motion.p>
 
         <motion.p
-          className={`${displayPairClass} mt-1.5 max-w-4xl text-balance text-transparent sm:mt-2`}
-          style={{
-            backgroundImage:
-              "linear-gradient(118deg, rgb(109 40 217) 0%, rgb(79 70 229) 35%, rgb(37 99 235) 68%, rgb(14 165 233) 100%)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-          }}
+          className={`${displayPairClass} gradient-hero-text mt-1.5 max-w-4xl text-balance sm:mt-2`}
           initial={reduceMotion ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: reduceMotion ? 0 : 0.08, ease }}
@@ -85,7 +79,7 @@ export function Hero() {
           <a
             href="#experience"
             onClick={onExperienceClick}
-            className="inline-flex h-10 items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-6 text-sm font-medium text-white shadow-md shadow-violet-500/20 transition hover:from-violet-500 hover:to-indigo-500 hover:shadow-lg hover:shadow-violet-500/25"
+            className="inline-flex h-10 items-center justify-center rounded-full bg-gradient-to-r from-accent to-accent-mid px-6 text-sm font-medium text-white shadow-md shadow-accent/20 transition hover:from-accent-mid hover:to-accent-blue hover:shadow-lg hover:shadow-accent/25"
           >
             View experience
           </a>

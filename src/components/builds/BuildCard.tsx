@@ -23,16 +23,16 @@ export function BuildCard({ build, index }: Props) {
       }}
       className="h-full"
     >
-      <div className="flex h-full flex-col rounded-xl border border-dashed border-indigo-100/80 bg-gradient-to-b from-sky-50/25 via-white to-white p-5 shadow-sm transition-[border-color,box-shadow,transform] duration-300 hover:border-indigo-200/90 hover:shadow-md motion-safe:hover:-translate-y-0.5 sm:p-6">
+      <div className="flex h-full flex-col rounded-xl border border-dashed border-accent/20 bg-gradient-to-b from-accent/[0.06] via-white to-white p-5 shadow-sm transition-[border-color,box-shadow,transform] duration-300 hover:border-accent/35 hover:shadow-md motion-safe:hover:-translate-y-0.5 sm:p-6">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <h3 className="font-display text-lg font-medium tracking-tight text-stone-900 sm:text-xl">
               {build.title}
             </h3>
-            <p className="mt-1 text-sm font-medium text-indigo-600/95">{build.tagline}</p>
+            <p className="mt-1 text-sm font-medium text-accent-mid/95">{build.tagline}</p>
           </div>
           <span
-            className="shrink-0 rounded-md border border-indigo-100/90 bg-indigo-50/60 px-2 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-indigo-800/90"
+            className="shrink-0 rounded-md border border-accent/15 bg-accent/[0.08] px-2 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-accent-strong/90"
             aria-hidden
           >
             Lab
@@ -43,7 +43,7 @@ export function BuildCard({ build, index }: Props) {
           {build.tags.map((tag) => (
             <li
               key={tag}
-              className="rounded-md border border-sky-100/90 bg-sky-50/50 px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wide text-sky-900/80"
+              className="rounded-md border border-accent/12 bg-accent/[0.05] px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wide text-accent-strong/85"
             >
               {tag}
             </li>
@@ -55,7 +55,7 @@ export function BuildCard({ build, index }: Props) {
               href={build.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13px] font-medium text-indigo-700 underline-offset-4 hover:text-indigo-800 hover:underline"
+              className="text-[13px] font-medium text-accent underline-offset-4 hover:text-accent-strong hover:underline"
             >
               {build.linkLabel ?? "Open"}
             </a>

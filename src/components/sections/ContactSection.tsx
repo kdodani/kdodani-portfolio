@@ -8,7 +8,7 @@ import { site } from "@/content/site";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const cardBase =
-  "group flex h-full min-h-[11.5rem] flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white/80 p-5 shadow-sm transition-all duration-300 ease-out hover:border-violet-200/90 hover:bg-white hover:shadow-md motion-safe:hover:-translate-y-0.5 sm:min-h-[12.5rem] sm:p-6";
+  "group flex h-full min-h-[11.5rem] flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white/80 p-5 shadow-sm transition-all duration-300 ease-out hover:border-accent/25 hover:bg-white hover:shadow-md motion-safe:hover:-translate-y-0.5 sm:min-h-[12.5rem] sm:p-6";
 
 type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -87,7 +87,7 @@ export function ContactSection() {
             const Icon = row.Icon;
             const body = (
               <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-stone-200/90 bg-stone-50 text-stone-500 transition-colors duration-300 group-hover:border-violet-200 group-hover:bg-violet-50/80 group-hover:text-violet-700">
+                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-stone-200/90 bg-stone-50 text-stone-500 transition-colors duration-300 group-hover:border-accent/30 group-hover:bg-accent/8 group-hover:text-accent">
                   <Icon className="h-[18px] w-[18px]" strokeWidth={1.5} aria-hidden />
                 </span>
                 <span className="mt-4 block text-[11px] font-medium uppercase tracking-[0.14em] text-stone-500 sm:mt-5">

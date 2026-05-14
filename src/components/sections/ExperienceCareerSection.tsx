@@ -25,31 +25,35 @@ export function ExperienceCareerSection() {
             transition={{ duration: 0.5, ease }}
           >
             <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:text-xs">
-              Career
+              Experience
             </p>
             <h2
               id="experience-heading"
               className="font-display mt-3 text-3xl font-medium tracking-tight text-stone-900 sm:mt-4 sm:text-[2rem] lg:text-4xl"
             >
-              Experience
+              Experience &amp; Skills
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-stone-600 sm:text-base">
-              A concise arc across regulated platforms, growth, and systems work—less
-              resume-style listing, more how I think about product.
+              A single thread from growth experimentation to platform systems and
+              AI-native product work—how breadth turned into depth, and how that shows up
+              in launches below.
             </p>
           </motion.div>
 
-          <ol className="mt-10 list-none space-y-0 sm:mt-12">
+          <p className="mt-10 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:mt-12 sm:text-xs">
+            Career timeline
+          </p>
+          <ol className="mt-4 flex flex-col gap-4 sm:mt-5 sm:gap-5">
             {experienceEntries.map((entry, index) => (
               <motion.li
                 key={`${entry.organization}-${entry.period}`}
-                className="group relative border-b border-stone-200/90 py-8 last:border-b-0 last:pb-0 sm:py-10"
+                className="relative"
                 initial={reduceMotion ? false : { opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-48px" }}
                 transition={{ duration: 0.5, delay: reduceMotion ? 0 : index * 0.05, ease }}
               >
-                <div className="-mx-3 rounded-2xl px-3 py-2 transition-colors duration-300 group-hover:bg-white/70 sm:-mx-4 sm:px-4">
+                <div className="rounded-2xl border border-stone-200/90 bg-white p-5 shadow-sm shadow-stone-900/[0.035] ring-1 ring-stone-200/40 transition-[border-color,box-shadow,transform] duration-300 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md motion-safe:hover:shadow-stone-900/[0.06] hover:border-stone-200 hover:ring-stone-200/60 sm:p-6">
                   <p className="text-[13px] font-normal leading-relaxed text-stone-500 sm:text-sm">
                     <span className="text-stone-600">{entry.period}</span>
                     <span className="mx-2 text-stone-400" aria-hidden>
@@ -70,7 +74,7 @@ export function ExperienceCareerSection() {
                     {entry.bullets.map((item) => (
                       <li key={item} className="flex gap-3">
                         <span
-                          className="mt-[0.55em] h-px w-3 shrink-0 bg-emerald-400/70"
+                          className="mt-[0.55em] h-px w-3 shrink-0 bg-accent-mid/55"
                           aria-hidden
                         />
                         <span>{item}</span>

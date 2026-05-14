@@ -31,13 +31,13 @@ export default async function ProjectPage({ params }: Props) {
       <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
         {project.title}
       </h1>
-      <p className="mt-2 text-lg text-violet-700/90">{project.tagline}</p>
+      <p className="mt-2 text-lg text-accent/90">{project.tagline}</p>
       <p className="mt-8 text-stone-600">{project.summary}</p>
       <p className="mt-10 text-sm text-stone-500">
         Full write-up coming soon.{" "}
         <HomeHashLink
           sectionId="experience"
-          className="font-medium text-violet-700 underline-offset-4 hover:text-violet-800 hover:underline"
+          className="font-medium text-accent underline-offset-4 hover:text-accent-strong hover:underline"
         >
           Back to experience
         </HomeHashLink>

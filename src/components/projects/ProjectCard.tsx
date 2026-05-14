@@ -25,7 +25,7 @@ export function ProjectCard({ project, index }: Props) {
     >
       <Link
         href={`/projects/${project.slug}`}
-        className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white/90 p-px shadow-sm transition-[border-color,box-shadow,transform] duration-300 hover:border-violet-200/90 hover:shadow-md motion-safe:hover:-translate-y-0.5"
+        className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white/90 p-px shadow-sm transition-[border-color,box-shadow,transform] duration-300 hover:border-accent/30 hover:shadow-md motion-safe:hover:-translate-y-0.5"
       >
         <div className="flex h-full flex-col rounded-[15px] bg-gradient-to-b from-white to-stone-50/80 p-6 sm:p-7">
           <div className="flex items-start justify-between gap-4">
@@ -33,12 +33,12 @@ export function ProjectCard({ project, index }: Props) {
               <p className="text-[11px] font-medium uppercase tracking-widest text-stone-500">
                 {project.year}
               </p>
-              <h3 className="font-display mt-2 text-xl font-medium tracking-tight text-stone-900 transition-colors group-hover:text-violet-800 sm:text-[1.35rem]">
+              <h3 className="font-display mt-2 text-xl font-medium tracking-tight text-stone-900 transition-colors group-hover:text-accent-strong sm:text-[1.35rem]">
                 {project.title}
               </h3>
             </div>
             <span
-              className="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200/90 bg-white text-stone-500 transition-all duration-300 group-hover:border-violet-200 group-hover:bg-violet-50 group-hover:text-violet-700"
+              className="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200/90 bg-white text-stone-500 transition-all duration-300 group-hover:border-accent/30 group-hover:bg-accent/8 group-hover:text-accent"
               aria-hidden
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -53,7 +53,7 @@ export function ProjectCard({ project, index }: Props) {
             </span>
           </div>
 
-          <p className="mt-1 text-sm font-medium text-violet-700/90">{project.tagline}</p>
+          <p className="mt-1 text-sm font-medium text-accent/90">{project.tagline}</p>
 
           <p className="mt-4 flex-1 text-sm leading-relaxed text-stone-600">{project.summary}</p>
 

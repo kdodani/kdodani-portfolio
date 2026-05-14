@@ -7,6 +7,13 @@
     color-scheme: light;
     /* Sticky header (~3.25–3.5rem) + breathing room; used by sections + hash scroll */
     --section-scroll-margin: max(5.5rem, calc(env(safe-area-inset-top, 0px) + 4.25rem));
+
+    /* Hero-aligned accent system (space-separated RGB for Tailwind opacity) */
+    --accent-hero-1: 109 40 217;
+    --accent-hero-2: 79 70 229;
+    --accent-hero-3: 37 99 235;
+    --accent-hero-4: 14 165 233;
+    --accent-strong: 91 33 182;
   }
 
   html {
@@ -32,6 +39,20 @@
 @layer utilities {
   .scroll-mt-section {
     scroll-margin-top: var(--section-scroll-margin);
+  }
+
+  /** Matches hero role line; single source for gradient headline text */
+  .gradient-hero-text {
+    background-image: linear-gradient(
+      118deg,
+      rgb(var(--accent-hero-1)) 0%,
+      rgb(var(--accent-hero-2)) 35%,
+      rgb(var(--accent-hero-3)) 68%,
+      rgb(var(--accent-hero-4)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .text-balance {

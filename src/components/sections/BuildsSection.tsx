@@ -23,7 +23,7 @@ export function BuildsSection() {
           viewport={{ once: true, margin: "-56px" }}
           transition={{ duration: 0.5, ease }}
         >
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-indigo-600/90 sm:text-xs">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-accent/85 sm:text-xs">
             Builds
           </p>
           <h2
