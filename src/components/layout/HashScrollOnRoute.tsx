@@ -15,7 +15,10 @@ function scrollPendingOrHash(): void {
     queueScrollAfterPaint(() => {
       if (scrollToSectionById(pending)) return;
       window.setTimeout(() => {
-        scrollToSectionById(pending);
+        if (scrollToSectionById(pending)) return;
+        window.setTimeout(() => {
+          scrollToSectionById(pending);
+        }, 280);
       }, 120);
     });
     return;

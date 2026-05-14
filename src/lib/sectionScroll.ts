@@ -1,5 +1,14 @@
+import type { MouseEvent as ReactMouseEvent } from "react";
+
 /** Survives App Router transitions that drop the `#fragment` from `Link` / `router.push`. */
 export const PENDING_SECTION_SCROLL_KEY = "kdodani-portfolio:pending-section-scroll";
+
+/** When true, let the browser handle the anchor (new tab, middle click, modified clicks). */
+export function shouldDeferToBrowserNavigation(e: ReactMouseEvent<HTMLElement>): boolean {
+  if (e.defaultPrevented) return true;
+  if (e.button !== 0) return true;
+  return e.metaKey || e.ctrlKey || e.altKey || e.shiftKey;
+}
 
 export function scrollToSectionById(id: string): boolean {
   const el = document.getElementById(id);

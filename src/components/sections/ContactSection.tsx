@@ -2,6 +2,7 @@
 
 import type { ComponentType, SVGProps } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { SectionFrame } from "@/components/layout/SectionFrame";
 import { Github, Linkedin, Mail } from "@/icons/lucide-social";
 import { site } from "@/content/site";
 
@@ -52,14 +53,10 @@ export function ContactSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section
-      id="contact"
-      className="scroll-mt-section border-t border-stone-200/80"
-      aria-labelledby="contact-heading"
-    >
-      <div className="mx-auto min-w-0 max-w-6xl px-6 py-section-pad sm:px-8 lg:px-10">
+    <SectionFrame id="contact" aria-labelledby="contact-heading" viewportFocus>
+      <div className="mx-auto flex w-full max-w-frame flex-col items-stretch">
         <motion.div
-          className="max-w-2xl"
+          className="max-w-editorial"
           initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-56px" }}
@@ -70,19 +67,17 @@ export function ContactSection() {
           </p>
           <h2
             id="contact-heading"
-            className="font-display mt-3 text-3xl font-medium tracking-tight text-stone-900 sm:mt-4 sm:text-[2rem] lg:text-4xl"
+            className="font-display mt-3 text-[clamp(1.85rem,2.2vw+1.1rem,2.35rem)] font-medium tracking-tight text-stone-900 sm:mt-4 lg:text-[clamp(2rem,1.8vw+1.25rem,2.5rem)]"
           >
             Let&apos;s connect
           </h2>
-          <p className="mt-4 max-w-lg text-base leading-relaxed text-stone-600 sm:text-lg">
+          <p className="mt-4 max-w-editorial text-base leading-relaxed text-stone-600 sm:text-lg">
             Email is best for a quick hello; GitHub and LinkedIn for context on how I build
             and collaborate.
           </p>
         </motion.div>
 
-        <ul
-          className="mx-auto mt-10 grid w-full max-w-5xl grid-cols-1 gap-4 sm:mt-12 sm:max-w-6xl sm:grid-cols-[repeat(3,minmax(0,1fr))] sm:gap-5"
-        >
+        <ul className="mx-auto mt-10 grid w-full max-w-[min(100%,52rem)] grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-3 sm:gap-5">
           {rows.map((row, index) => {
             const Icon = row.Icon;
             const body = (
@@ -127,6 +122,6 @@ export function ContactSection() {
           })}
         </ul>
       </div>
-    </section>
+    </SectionFrame>
   );
 }

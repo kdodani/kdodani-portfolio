@@ -56,7 +56,7 @@ export default function RootLayout({
             aria-hidden
           />
           <SiteHeader />
-          <main className="relative z-10 flex-1">{children}</main>
+          <main className="relative z-10 flex-1 min-h-0 isolate">{children}</main>
           <SiteCredit />
         </div>
       </body>

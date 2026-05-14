@@ -24,7 +24,7 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
 
   return (
-    <article className="mx-auto max-w-3xl px-6 pb-16 pt-8 sm:px-8 sm:pt-10 lg:px-10 lg:pb-20">
+    <article className="mx-auto max-w-scene px-page-x pb-16 pt-8 sm:pt-10 lg:pb-20">
       <p className="text-xs font-medium uppercase tracking-widest text-stone-500">
         Case study · {project.year}
       </p>

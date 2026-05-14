@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useCallback } from "react";
 import { Github, Linkedin, Mail } from "@/icons/lucide-social";
-import { scrollToSectionById } from "@/lib/sectionScroll";
+import { scrollToSectionById, shouldDeferToBrowserNavigation } from "@/lib/sectionScroll";
 import { site } from "@/content/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -12,21 +12,22 @@ const iconLinkClass =
   "inline-flex h-10 w-10 items-center justify-center rounded-full border border-stone-200/90 bg-white/80 text-stone-500 shadow-sm transition-all duration-300 hover:border-accent/25 hover:bg-white hover:text-accent hover:shadow-md active:scale-[0.97]";
 
 const displayPairClass =
-  "font-display text-[clamp(2.15rem,7.5vw,3.5rem)] font-medium leading-[1.06] tracking-[-0.028em]";
+  "font-display text-[clamp(2.05rem,4.2vw+1.1rem,3.35rem)] font-medium leading-[1.06] tracking-[-0.028em]";
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
 
   const onExperienceClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (shouldDeferToBrowserNavigation(e)) return;
     if (scrollToSectionById("experience")) e.preventDefault();
   }, []);
 
   return (
     <section
       id="hero"
-      className="relative flex min-h-[min(72svh,680px)] flex-col sm:min-h-[min(76svh,760px)] lg:min-h-[min(78svh,800px)]"
+      className="scroll-mt-section relative flex min-h-[calc(100svh-4.75rem)] flex-col sm:min-h-[calc(100svh-3.25rem)]"
     >
-      <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col justify-center px-6 py-6 pb-12 pt-2 sm:px-8 sm:py-8 sm:pb-14 sm:pt-3 lg:px-10 lg:py-10 lg:pb-16 lg:pt-4">
+      <div className="mx-auto flex w-full max-w-scene flex-1 flex-col justify-center px-page-x py-[clamp(2.5rem,6vh,4rem)] pb-[clamp(3rem,8vh,5rem)] pt-[clamp(0.75rem,2vh,1.25rem)] sm:pb-[clamp(3.25rem,9vh,5.5rem)]">
         <motion.p
           className="text-[15px] font-normal leading-relaxed tracking-tight text-stone-500 sm:text-base"
           initial={reduceMotion ? false : { opacity: 0, y: 6 }}
@@ -46,7 +47,7 @@ export function Hero() {
         </motion.p>
 
         <motion.p
-          className={`${displayPairClass} gradient-hero-text mt-1.5 max-w-4xl text-balance sm:mt-2`}
+          className={`${displayPairClass} gradient-hero-text mt-1.5 max-w-[min(100%,44rem)] text-balance sm:mt-2`}
           initial={reduceMotion ? false : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: reduceMotion ? 0 : 0.08, ease }}
@@ -55,7 +56,7 @@ export function Hero() {
         </motion.p>
 
         <motion.div
-          className="mt-7 max-w-2xl space-y-4 text-[15px] leading-[1.72] text-stone-600 sm:mt-8 sm:space-y-[1.125rem] sm:text-base sm:leading-[1.7]"
+          className="mt-7 max-w-editorial space-y-4 text-[15px] leading-[1.72] text-stone-600 sm:mt-8 sm:space-y-[1.125rem] sm:text-base sm:leading-[1.7]"
           initial={reduceMotion ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.12, ease }}

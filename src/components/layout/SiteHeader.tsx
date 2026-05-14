@@ -50,9 +50,14 @@ function NavItemControl({
     );
   }
   return (
-    <Link href={item.href} className={baseNavClass("resume")}>
+    <a
+      href={item.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={baseNavClass("resume")}
+    >
       {item.label}
-    </Link>
+    </a>
   );
 }
 
@@ -88,7 +93,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 isolate border-b border-stone-200/70 bg-[#faf9f6]/85 backdrop-blur-xl">
-      <div className="mx-auto flex min-h-14 max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-6 py-2.5 sm:h-[3.25rem] sm:flex-nowrap sm:px-8 sm:py-0 lg:px-10">
+      <div className="mx-auto flex min-h-14 max-w-frame flex-wrap items-center justify-between gap-x-4 gap-y-2 px-page-x py-2.5 sm:h-[3.25rem] sm:flex-nowrap sm:py-0">
         <Link
           href="/"
           className="font-display shrink-0 text-[15px] font-medium tracking-tight text-stone-900 transition-colors hover:text-accent"

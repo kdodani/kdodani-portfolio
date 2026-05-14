@@ -1,7 +1,7 @@
 export function SiteCredit() {
   return (
     <footer className="border-t border-stone-200/60 py-10 sm:py-12 lg:py-14">
-      <div className="mx-auto max-w-xl px-6 text-center sm:max-w-2xl lg:max-w-3xl lg:px-10">
+      <div className="mx-auto max-w-scene px-page-x text-center">
         <p className="text-[12px] font-normal leading-[1.65] text-stone-500 sm:text-[13px] sm:leading-relaxed">
           Built &amp; designed as an exploration of AI-assisted product development, rapid
           iteration, and systems thinking.

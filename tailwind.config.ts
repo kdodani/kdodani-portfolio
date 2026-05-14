@@ -8,8 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        editorial: "min(100%, 40rem)",
+        scene: "min(100%, 52rem)",
+        frame: "min(100%, 68rem)",
+      },
       spacing: {
-        "section-pad": "clamp(3.25rem, 4vw + 2rem, 5rem)",
+        "page-x": "clamp(1rem, 2.8vw + 0.65rem, 2.75rem)",
+        "section-pad": "clamp(3.25rem, 5vh + 2rem, 5.75rem)",
       },
       colors: {
         accent: {
