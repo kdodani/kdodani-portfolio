@@ -15,7 +15,7 @@ type NavItem =
 const nav: NavItem[] = [
   { kind: "section", id: "about", label: "About" },
   { kind: "section", id: "experience", label: "Experience" },
-  { kind: "section", id: "builds", label: "Builds" },
+  { kind: "section", id: "builds", label: "AI Builds" },
   { kind: "section", id: "contact", label: "Contact" },
   { kind: "file", href: site.resumePdf, label: "Resume", variant: "resume" },
 ];

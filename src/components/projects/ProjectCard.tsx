@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import type { Project } from "@/content/types";
+import { fadeUpInitial, motionDelay } from "@/lib/motion";
 
 type Props = {
   project: Project;
@@ -14,12 +15,12 @@ export function ProjectCard({ project, index }: Props) {
 
   return (
     <motion.article
-      initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+      initial={fadeUpInitial(reduceMotion, 16)}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{
         duration: 0.45,
-        delay: reduceMotion ? 0 : index * 0.06,
+        delay: motionDelay(reduceMotion, index * 0.06),
         ease: [0.22, 1, 0.36, 1],
       }}
     >

@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SectionFrame } from "@/components/layout/SectionFrame";
 import { Github, Linkedin, Mail } from "@/icons/lucide-social";
 import { site } from "@/content/site";
+import { fadeUpInitial, motionDelay } from "@/lib/motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -57,7 +58,7 @@ export function ContactSection() {
       <div className="mx-auto flex w-full max-w-frame flex-col items-stretch">
         <motion.div
           className="max-w-editorial"
-          initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+          initial={fadeUpInitial(reduceMotion, 12)}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-56px" }}
           transition={{ duration: 0.55, ease }}
@@ -98,10 +99,10 @@ export function ContactSection() {
               <motion.li
                 key={row.key}
                 className="min-w-0"
-                initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+                initial={fadeUpInitial(reduceMotion, 14)}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: reduceMotion ? 0 : index * 0.06, ease }}
+                transition={{ duration: 0.5, delay: motionDelay(reduceMotion, index * 0.06), ease }}
               >
                 {row.external ? (
                   <a

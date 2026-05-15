@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionFrame } from "@/components/layout/SectionFrame";
+import { fadeUpInitial, motionDelay } from "@/lib/motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -19,7 +20,7 @@ export function AboutSection() {
         <div className="mt-8 grid gap-10 lg:mt-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-x-12 lg:gap-y-8 xl:gap-x-14">
           <motion.div
             className="order-2 min-w-0 lg:order-1"
-            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+            initial={fadeUpInitial(reduceMotion, 16)}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-56px" }}
             transition={{ duration: 0.6, ease }}
@@ -55,10 +56,10 @@ export function AboutSection() {
 
           <motion.div
             className="order-1 flex justify-center self-center px-2 sm:px-4 lg:order-2 lg:justify-end lg:px-0"
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            initial={fadeUpInitial(reduceMotion, 14)}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-56px" }}
-            transition={{ duration: 0.6, delay: reduceMotion ? 0 : 0.08, ease }}
+            transition={{ duration: 0.6, delay: motionDelay(reduceMotion, 0.08), ease }}
           >
             <div className="w-full max-w-[11.5rem] shrink-0 sm:max-w-[12.5rem] lg:max-w-[13rem]">
               <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-stone-200/90 shadow-md shadow-stone-900/5">

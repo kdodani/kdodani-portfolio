@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useCallback } from "react";
 import { Github, Linkedin, Mail } from "@/icons/lucide-social";
+import { fadeUpInitial, motionDelay } from "@/lib/motion";
 import { scrollToSectionById, shouldDeferToBrowserNavigation } from "@/lib/sectionScroll";
 import { site } from "@/content/site";
 
@@ -51,7 +52,7 @@ export function Hero() {
         <h1 className="mt-2 max-w-[min(100%,48rem)] text-balance">
           <motion.span
             className={`${nameClass} block`}
-            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            initial={fadeUpInitial(reduceMotion, 10)}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease }}
           >
@@ -59,9 +60,9 @@ export function Hero() {
           </motion.span>
           <motion.span
             className={`${roleLeadClass} mt-3 block max-w-[min(100%,44rem)] text-pretty sm:mt-3.5`}
-            initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+            initial={fadeUpInitial(reduceMotion, 8)}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.48, delay: reduceMotion ? 0 : 0.05, ease }}
+            transition={{ duration: 0.48, delay: motionDelay(reduceMotion, 0.05), ease }}
           >
             <span className="block sm:inline sm:whitespace-nowrap">Product Manager —</span>{" "}
             <span className="gradient-hero-text block sm:inline-block">
@@ -72,9 +73,9 @@ export function Hero() {
 
         <motion.div
           className="mt-8 max-w-editorial space-y-4 text-[15px] leading-[1.72] text-stone-600 sm:mt-10 sm:space-y-[1.125rem] sm:text-base sm:leading-[1.7]"
-          initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+          initial={fadeUpInitial(reduceMotion, 8)}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.1, ease }}
+          transition={{ duration: 0.45, delay: motionDelay(reduceMotion, 0.1), ease }}
         >
           <p className="text-pretty">
             With a background in marketing, UX research, and analytics, my work spans building
@@ -89,9 +90,9 @@ export function Hero() {
 
         <motion.div
           className="mt-9 flex flex-wrap items-center gap-3 sm:mt-11"
-          initial={reduceMotion ? false : { opacity: 0, y: 6 }}
+          initial={fadeUpInitial(reduceMotion, 6)}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.14, ease }}
+          transition={{ duration: 0.4, delay: motionDelay(reduceMotion, 0.14), ease }}
         >
           <a
             href="#experience"
@@ -106,8 +107,8 @@ export function Hero() {
               href={`mailto:${site.email}`}
               className={iconLinkClass}
               aria-label="Email"
-              whileHover={reduceMotion ? undefined : { y: -1 }}
-              whileTap={reduceMotion ? undefined : { scale: 0.97 }}
+              whileHover={reduceMotion === false ? { y: -1 } : undefined}
+              whileTap={reduceMotion === false ? { scale: 0.97 } : undefined}
               transition={{ duration: 0.2, ease }}
             >
               <Mail className="h-[17px] w-[17px]" strokeWidth={1.5} aria-hidden />
@@ -118,8 +119,8 @@ export function Hero() {
               rel="noopener noreferrer"
               className={iconLinkClass}
               aria-label="LinkedIn"
-              whileHover={reduceMotion ? undefined : { y: -1 }}
-              whileTap={reduceMotion ? undefined : { scale: 0.97 }}
+              whileHover={reduceMotion === false ? { y: -1 } : undefined}
+              whileTap={reduceMotion === false ? { scale: 0.97 } : undefined}
               transition={{ duration: 0.2, ease }}
             >
               <Linkedin className="h-[17px] w-[17px]" strokeWidth={1.5} aria-hidden />
@@ -130,8 +131,8 @@ export function Hero() {
               rel="noopener noreferrer"
               className={iconLinkClass}
               aria-label="GitHub"
-              whileHover={reduceMotion ? undefined : { y: -1 }}
-              whileTap={reduceMotion ? undefined : { scale: 0.97 }}
+              whileHover={reduceMotion === false ? { y: -1 } : undefined}
+              whileTap={reduceMotion === false ? { scale: 0.97 } : undefined}
               transition={{ duration: 0.2, ease }}
             >
               <Github className="h-[17px] w-[17px]" strokeWidth={1.5} aria-hidden />

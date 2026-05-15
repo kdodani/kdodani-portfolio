@@ -1,7 +1,6 @@
 export type BuildEntry = {
   id: string;
   title: string;
-  tagline: string;
   description: string;
   tags: string[];
   /** Optional outbound link when there is a demo or repo to share */
@@ -9,38 +8,27 @@ export type BuildEntry = {
   linkLabel?: string;
 };
 
-/** Side projects, AI experiments, and technical explorations outside core PM work */
+/** Hands-on AI projects exploring workflows, automation, and modern product tooling */
 export const buildEntries: BuildEntry[] = [
   {
-    id: "agentic-lab",
-    title: "Agentic workflow lab",
-    tagline: "Orchestration sketches",
+    id: "ai-pm-portfolio",
+    title: "AI-powered PM portfolio",
     description:
-      "Prototyping multi-step LLM flows with explicit handoffs, tool boundaries, and human checkpoints—focused on repeatability over novelty.",
-    tags: ["Agents", "Tool use", "Guardrails"],
+      "Built and iterated this portfolio using Cursor, Next.js, AI-assisted workflows, and modern product UX patterns.",
+    tags: ["Cursor", "Next.js", "AI UX", "Design Systems"],
   },
   {
-    id: "rec-playground",
-    title: "Recommendation playground",
-    tagline: "Ranking & retrieval",
+    id: "multi-agent-workflows",
+    title: "Multi-agent workflow system",
     description:
-      "Lightweight harnesses for candidate generation, re-ranking, and offline evaluation—useful for thinking through productized rec systems.",
-    tags: ["Embeddings", "Eval", "Python"],
+      "Exploring orchestration patterns, agent handoffs, memory, and human-in-the-loop workflows using n8n.",
+    tags: ["n8n", "Agents", "Automation", "LLMs"],
   },
   {
-    id: "copilot-sketches",
-    title: "Copilot interaction sketches",
-    tagline: "UX for AI-assisted work",
+    id: "pm-copilot-workflows",
+    title: "PM copilot workflows",
     description:
-      "Exploring inline vs panel assistants, disclosure patterns, and undo paths for knowledge work—not shipped product, but interaction craft.",
-    tags: ["UX", "Copilots", "Figma"],
-  },
-  {
-    id: "automation-kit",
-    title: "Automation & glue scripts",
-    tagline: "Internal speed tools",
-    description:
-      "Small scripts and no-code bridges that remove recurring manual steps—where the best ROI is boring reliability.",
-    tags: ["Automation", "APIs", "Ops"],
+      "Prototyping workflows for PRDs, synthesis, interview prep, and AI-assisted product operations.",
+    tags: ["Prompting", "Research", "Synthesis", "AI Workflows"],
   },
 ];

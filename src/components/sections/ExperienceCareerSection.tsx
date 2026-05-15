@@ -8,6 +8,7 @@ import type { ExperienceChapter } from "@/content/experience";
 import { experienceChapters } from "@/content/experience";
 import { projects } from "@/content/projects";
 import type { Project } from "@/content/types";
+import { fadeUpInitial, motionDelay } from "@/lib/motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -70,12 +71,12 @@ function WorkSafeLaunchCard({ project, index }: LaunchCardProps) {
   const reduceMotion = useReducedMotion();
   return (
     <motion.article
-      initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+      initial={fadeUpInitial(reduceMotion, 12)}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{
         duration: 0.42,
-        delay: reduceMotion ? 0 : index * 0.05,
+        delay: motionDelay(reduceMotion, index * 0.05),
         ease,
       }}
     >
@@ -259,10 +260,10 @@ type TsbcProjectCardProps = {
 function TsbcProjectCard({ project, index, reduceMotion }: TsbcProjectCardProps) {
   return (
     <motion.article
-      initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+      initial={fadeUpInitial(reduceMotion, 12)}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.42, delay: reduceMotion ? 0 : index * 0.05, ease }}
+      transition={{ duration: 0.42, delay: motionDelay(reduceMotion, index * 0.05), ease }}
       className="flex h-full flex-col rounded-xl border border-stone-200/70 bg-white px-7 py-8 sm:px-8 sm:py-9"
     >
       <h5 className="font-display text-[1.05rem] font-medium tracking-[-0.02em] text-stone-900 sm:text-[1.125rem]">
@@ -291,10 +292,10 @@ function TsbcProjectCard({ project, index, reduceMotion }: TsbcProjectCardProps)
 function TsbcAiSystemsCard({ project, index, reduceMotion }: TsbcProjectCardProps) {
   return (
     <motion.article
-      initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+      initial={fadeUpInitial(reduceMotion, 12)}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.42, delay: reduceMotion ? 0 : index * 0.05, ease }}
+      transition={{ duration: 0.42, delay: motionDelay(reduceMotion, index * 0.05), ease }}
       className="col-span-full flex flex-col rounded-xl border border-stone-200/70 bg-white px-7 py-8 sm:px-8 sm:py-9"
     >
       <h5 className="font-display text-[1.05rem] font-medium tracking-[-0.02em] text-stone-900 sm:text-[1.125rem]">
@@ -367,10 +368,10 @@ function TechnicalSafetyBcChapterBlock({
   return (
     <motion.div
       className="relative"
-      initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+      initial={fadeUpInitial(reduceMotion, 16)}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-48px" }}
-      transition={{ duration: 0.52, delay: reduceMotion ? 0 : index * 0.06, ease }}
+      transition={{ duration: 0.52, delay: motionDelay(reduceMotion, index * 0.06), ease }}
     >
       <article
         aria-label={`${chapter.role} at ${chapter.organization}`}
@@ -550,12 +551,12 @@ function WorkSafeBcChapterBlock({
   return (
     <motion.div
       className="relative"
-      initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+      initial={fadeUpInitial(reduceMotion, 16)}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-48px" }}
       transition={{
         duration: 0.52,
-        delay: reduceMotion ? 0 : index * 0.06,
+        delay: motionDelay(reduceMotion, index * 0.06),
         ease,
       }}
     >
@@ -706,12 +707,12 @@ function ConvertusChapterBlock({
   return (
     <motion.div
       className="relative"
-      initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+      initial={fadeUpInitial(reduceMotion, 16)}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-48px" }}
       transition={{
         duration: 0.52,
-        delay: reduceMotion ? 0 : index * 0.06,
+        delay: motionDelay(reduceMotion, index * 0.06),
         ease,
       }}
     >
@@ -861,12 +862,12 @@ function OneEightyDegreesChapterBlock({
   return (
     <motion.div
       className="relative"
-      initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+      initial={fadeUpInitial(reduceMotion, 16)}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-48px" }}
       transition={{
         duration: 0.52,
-        delay: reduceMotion ? 0 : index * 0.06,
+        delay: motionDelay(reduceMotion, index * 0.06),
         ease,
       }}
     >
@@ -990,12 +991,12 @@ function DefaultChapterBlock({
   return (
     <motion.div
       className="relative"
-      initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+      initial={fadeUpInitial(reduceMotion, 16)}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-48px" }}
       transition={{
         duration: 0.52,
-        delay: reduceMotion ? 0 : index * 0.06,
+        delay: motionDelay(reduceMotion, index * 0.06),
         ease,
       }}
     >
@@ -1112,7 +1113,7 @@ export function ExperienceCareerSection() {
       <div className="mx-auto w-full max-w-scene">
         <motion.div
           className="min-w-0 max-w-editorial"
-          initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+          initial={fadeUpInitial(reduceMotion, 10)}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-56px" }}
           transition={{ duration: 0.5, ease }}
