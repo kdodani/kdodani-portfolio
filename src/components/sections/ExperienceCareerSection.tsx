@@ -668,6 +668,161 @@ function WorkSafeBcChapterBlock({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Convertus — compact chapter (no project routes)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const CONVERTUS_LAUNCH_CARDS: TsbcProject[] = [
+  {
+    id: "performance-forecasting",
+    title: "Performance Forecasting Tool",
+    tagline: "Analytics Tooling · Forecasting · Experimentation",
+    summary:
+      "Built a Sheets + Supermetrics forecasting model to predict organic search performance with ~85% accuracy and support strategic SEO planning.",
+    tags: ["Analytics Tooling", "Forecasting", "Experimentation"],
+  },
+  {
+    id: "portfolio-growth",
+    title: "Portfolio Growth Optimization",
+    tagline: "Growth Strategy · SEO Analytics · Operations",
+    summary:
+      "Developed scalable organic growth strategies across 75+ websites, improving acquisition performance and standardizing reporting workflows.",
+    tags: ["Growth Strategy", "SEO Analytics", "Operations"],
+  },
+];
+
+type ConvertusChapterBlockProps = {
+  chapter: ExperienceChapter;
+  keySlug: string;
+  index: number;
+  reduceMotion: boolean | null;
+};
+
+function ConvertusChapterBlock({
+  chapter,
+  keySlug,
+  index,
+  reduceMotion,
+}: ConvertusChapterBlockProps) {
+  return (
+    <motion.div
+      className="relative"
+      initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-48px" }}
+      transition={{
+        duration: 0.52,
+        delay: reduceMotion ? 0 : index * 0.06,
+        ease,
+      }}
+    >
+      <article
+        aria-label={`${chapter.role} at ${chapter.organization}`}
+        className="overflow-hidden rounded-2xl border border-stone-200/75 bg-white shadow-[0_1px_0_rgba(255,255,255,0.95)_inset]"
+      >
+        <div className="px-6 pb-3 pt-12 sm:px-10 sm:pb-4 sm:pt-14 lg:px-12 lg:pt-16">
+          <header>
+            <p className="font-display text-[clamp(1.85rem,2.4vw+1.05rem,2.65rem)] font-medium tracking-[-0.035em] text-stone-900">
+              {chapter.organization}
+            </p>
+            <h3 className="font-display mt-5 max-w-[min(100%,44rem)] text-[clamp(1.2rem,1.1vw+0.95rem,1.55rem)] font-medium leading-[1.28] tracking-[-0.022em] text-stone-900 sm:mt-6">
+              {chapter.role}
+            </h3>
+            <p className="mt-3.5 text-[11px] font-normal uppercase tracking-[0.14em] text-stone-400 sm:mt-4 sm:text-xs sm:tracking-[0.13em]">
+              {chapter.period}
+            </p>
+          </header>
+
+          <div className="mt-10 sm:mt-12 lg:mt-14">
+            <p className="max-w-[min(100%,38rem)] font-display text-[clamp(1.02rem,0.55vw+0.88rem,1.2rem)] font-normal leading-[1.58] tracking-[-0.014em] text-stone-700 text-pretty">
+              {chapter.scopeSummary}
+            </p>
+          </div>
+
+          <section
+            className="mt-12 sm:mt-14 lg:mt-16"
+            aria-labelledby={`chapter-${keySlug}-focus`}
+          >
+            <h4
+              id={`chapter-${keySlug}-focus`}
+              className="text-[10px] font-normal uppercase tracking-[0.22em] text-stone-400"
+            >
+              Focus Areas
+            </h4>
+            <ul className="mt-6 max-w-[min(100%,36rem)] space-y-3.5 text-[15px] leading-[1.68] text-stone-700 sm:space-y-4 sm:leading-[1.7]">
+              {chapter.focusAreas.map((item) => (
+                <li key={item} className="flex gap-3.5">
+                  <span
+                    className="mt-[0.62em] h-px w-3 shrink-0 bg-stone-200/90"
+                    aria-hidden
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section
+            className="mt-12 sm:mt-14 lg:mt-16"
+            aria-labelledby={`chapter-${keySlug}-thinking`}
+          >
+            <h4
+              id={`chapter-${keySlug}-thinking`}
+              className="text-[10px] font-normal uppercase tracking-[0.22em] text-stone-400"
+            >
+              How The Work Evolved
+            </h4>
+            <ThinkingBody text={chapter.thinkingEvolved} mode="editorial" />
+          </section>
+
+          <section
+            className="mt-12 pb-1 sm:mt-14 sm:pb-2 lg:mt-16"
+            aria-labelledby={`chapter-${keySlug}-capabilities`}
+          >
+            <h4
+              id={`chapter-${keySlug}-capabilities`}
+              className="text-[10px] font-normal uppercase tracking-[0.22em] text-stone-400"
+            >
+              Capabilities Developed
+            </h4>
+            <div className="mt-6 max-w-[min(100%,38rem)]">
+              {chapter.capabilityRows.map((row) => (
+                <p
+                  key={row}
+                  className="font-display text-[14px] font-normal leading-[1.68] tracking-[-0.01em] text-stone-700 sm:text-[15px] sm:leading-[1.7]"
+                >
+                  {row}
+                </p>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        <footer className="border-t border-stone-200/35 bg-[#faf9f6]/50 px-6 pb-12 pt-12 sm:px-10 sm:pb-14 sm:pt-14 lg:px-12 lg:pb-16 lg:pt-16">
+          <section aria-labelledby={`chapter-${keySlug}-launches`}>
+            <h4
+              id={`chapter-${keySlug}-launches`}
+              className="text-[10px] font-normal uppercase tracking-[0.22em] text-stone-400"
+            >
+              Selected Launches
+            </h4>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 sm:gap-7 lg:mt-10 lg:gap-8">
+              {CONVERTUS_LAUNCH_CARDS.map((project, pIndex) => (
+                <TsbcProjectCard
+                  key={project.id}
+                  project={project}
+                  index={pIndex}
+                  reduceMotion={reduceMotion}
+                />
+              ))}
+            </div>
+          </section>
+        </footer>
+      </article>
+    </motion.div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // 180 Degrees Consulting (UBC Chapter) — structured engagements (no project routes)
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -1007,6 +1162,17 @@ export function ExperienceCareerSection() {
             if (chapter.organization === "Technical Safety BC") {
               return (
                 <TechnicalSafetyBcChapterBlock
+                  key={`${chapter.organization}-${chapter.period}`}
+                  chapter={chapter}
+                  keySlug={slug}
+                  index={index}
+                  reduceMotion={reduceMotion}
+                />
+              );
+            }
+            if (chapter.organization === "Convertus") {
+              return (
+                <ConvertusChapterBlock
                   key={`${chapter.organization}-${chapter.period}`}
                   chapter={chapter}
                   keySlug={slug}

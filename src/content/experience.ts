@@ -87,21 +87,21 @@ export const experienceChapters: ExperienceChapter[] = [
       "Client engagements where research and framing had to hold up for stakeholders navigating real constraints—not slide-deck abstraction.",
   },
   {
-    period: "May 2018 – July 2019",
+    period: "May 2018 — Jul 2019",
     organization: "Convertus",
-    role: "SEO Consultant",
+    role: "SEO Consultant — Growth & Analytics",
     scopeSummary:
-      "Organic growth across a large portfolio of sites—standardizing what worked, forecasting where resources should go, and treating search as a system rather than a checklist.",
+      "Built data-driven growth strategies across a portfolio of 75+ digital properties, improving organic acquisition performance by ~150%.",
     focusAreas: [
-      "Technical and content strategy at scale across 75+ properties",
-      "Performance analytics and forecasting to prioritize experiments",
-      "Funnel and acquisition loops where small changes had outsized leverage",
+      "Growth experimentation & performance optimization",
+      "Organic acquisition analytics",
+      "Forecasting & reporting systems",
+      "Scalable operational workflows",
     ],
     thinkingEvolved:
-      "This is where I started thinking in loops instead of pages. SEO forced a disciplined relationship with variance: ship, measure, explain, repeat. That habit—making bets explicit and letting data retire weak narratives—carried straight into product work where the stakes and constraints only grew.",
+      "Started with tactical SEO execution and evolved into building repeatable systems for forecasting, performance analysis, and strategic prioritization.\n\nThe work centered on identifying growth opportunities, measuring impact, and enabling faster decision-making through data.",
     capabilityRows: [
-      "SEO systems · funnel optimization · forecasting",
-      "experimentation · performance analytics · growth strategy",
+      "Growth analytics · forecasting systems · experimentation · cross-functional communication",
     ],
     launchSlugs: [],
   },
