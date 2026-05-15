@@ -46,42 +46,45 @@ export const experienceChapters: ExperienceChapter[] = [
       "Proof of execution across the systems, workflows, and intelligence layers described above.",
   },
   {
-    period: "October 2021 – April 2024",
+    period: "Oct 2021 - Apr 2024",
     organization: "Technical Safety BC",
-    role: "Product Manager",
+    role: "Product Manager → Former Business Analyst",
     scopeSummary:
-      "Growth and retention for regulated services—balancing experimentation with adoption in environments where trust and clarity matter as much as conversion.",
+      "Regulated operational services — analytics and retention work first, then product ownership, then AI-native workflow tooling. Environments where compliance, trust, and operational clarity shape what's possible and what's worth building.",
     focusAreas: [
-      "Churn and retention analytics tied to actionable lifecycle interventions",
-      "Segmentation-informed engagement without treating people as abstract cohorts",
-      "Experimentation and instrumentation that could justify the next investment—or the pause",
+      "Retention analytics tied to actionable lifecycle interventions",
+      "Workflow friction analysis across regulated operational surfaces",
+      "Product roadmap ownership in compliance-constrained environments",
+      "AI/NLP operational tooling — knowledge retrieval and email classification",
     ],
     thinkingEvolved:
-      "Retention work taught me to read behavior as a symptom of system design: where expectations broke, where value was invisible, and where friction was actually policy doing its job. Growth became less about funnels in isolation and more about aligning incentives, narrative, and operational reality so adoption could compound.",
+      "Started reading data as a diagnostic — where behavior broke, where value was invisible, and where friction was actually policy doing its job. Growth became less about funnels and more about aligning incentives with operational reality.\n\nMoved into product by earning the credibility to own the roadmap. Finished the chapter thinking about intelligence as infrastructure — not a feature, but a layer that makes operational workflows scalable and decisions more defensible.",
     capabilityRows: [
-      "behavioral design · retention analytics · product-led growth",
-      "experimentation frameworks · segmentation strategy · customer engagement systems",
+      "Product · AI & Data · Workflow Design · Execution · Business",
     ],
     launchSlugs: [],
   },
   {
-    period: "September 2020 – October 2021",
-    organization: "University of British Columbia",
-    role: "Strategy Consultant (180 Degrees Consulting)",
+    period: "SEP 2020 — OCT 2021",
+    organization: "180 Degrees Consulting (UBC Chapter)",
+    role: "Strategy Consultant (Intern)",
     scopeSummary:
-      "Mission-driven clients needing structured answers under ambiguity—market entry, conversion, and policy questions where evidence and storytelling had to travel together.",
+      "Worked across public-interest and sustainability-focused initiatives involving growth strategy, adoption systems, behavioral engagement, and data-informed outreach.",
     focusAreas: [
-      "Conversion and funnel diagnostics for organizations with lean measurement stacks",
-      "Market expansion and positioning grounded in interviews and secondary research",
-      "Policy and economic framing that leadership could reuse beyond the deck",
+      "Audience segmentation and outreach strategy",
+      "Multi-channel acquisition systems",
+      "Behavioral engagement and funnel analysis",
+      "Data-informed decision making",
     ],
     thinkingEvolved:
-      "Consulting sharpened how I collapse messy reality into a model someone else can act on. I learned to privilege clarity over cleverness: naming tradeoffs early, separating assumptions from findings, and writing recommendations that survived contact with stakeholders who were not in the room when the analysis started.",
+      "I started viewing growth, adoption, and engagement as interconnected systems shaped by incentives, communication channels, and behavioral patterns.\n\nThe work introduced me to acquisition strategy, analytics-driven decision making, and structured problem-solving under operational and regulatory constraints.",
     capabilityRows: [
-      "market research · systems mapping · stakeholder communication",
-      "analytical framing · narrative strategy",
+      "systems thinking · growth strategy · behavioral adoption",
+      "audience analytics · funnel analysis · strategic synthesis",
     ],
     launchSlugs: [],
+    launchIntro:
+      "Client engagements where research and framing had to hold up for stakeholders navigating real constraints—not slide-deck abstraction.",
   },
   {
     period: "May 2018 – July 2019",
