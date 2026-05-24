@@ -4,10 +4,14 @@ export type ExperienceChapter = {
   period: string;
   organization: string;
   role: string;
-  /** Concise scope: what surface area and complexity this role covered */
+  /** Concise scope: what surface area and complexity this role covered (2–3 lines) */
   scopeSummary: string;
+  /** Always-visible capability / focus signals (zero-click scan) */
+  focusPills: string[];
+  /** Always-visible systems-thinking evolution (1–2 lines) */
+  operatingLens: string;
   focusAreas: string[];
-  /** Reflective narrative: how judgment and framing shifted */
+  /** Reflective narrative — surfaced in supporting detail accordion only */
   thinkingEvolved: string;
   /** Each string is one editorial row (middot-separated phrases) */
   capabilityRows: string[];
@@ -22,7 +26,18 @@ export const experienceChapters: ExperienceChapter[] = [
     organization: "WorkSafeBC",
     role: "Product Manager — Provider Experience",
     scopeSummary:
-      "Healthcare provider journeys across referrals, identity, invoicing, and claims — where policy, clinical nuance, and operational systems intersect.",
+      "Designing operational systems for healthcare provider workflows across identity, referrals, claims, invoicing, and regulatory infrastructure — balancing policy, automation, clinical nuance, and scalable decision-making.",
+    focusPills: [
+      "AI-assisted operations",
+      "Operational orchestration",
+      "Human-in-the-loop systems",
+      "Platform modernization",
+      "Decision-support workflows",
+      "Regulated systems",
+      "API ecosystems",
+    ],
+    operatingLens:
+      "Shifted from feature-centric delivery toward designing operational systems — where workflows, policy constraints, automation, and human judgment must coordinate reliably at scale.",
     focusAreas: [
       "Operational friction across provider workflows",
       "Platform modernization & integrations",
@@ -43,14 +58,25 @@ export const experienceChapters: ExperienceChapter[] = [
       "medical-api-integration",
     ],
     launchIntro:
-      "Proof of execution across the systems, workflows, and intelligence layers described above.",
+      "Proof of execution across operational systems, intelligence layers, platform infrastructure, and provider workflows.",
   },
   {
     period: "Oct 2021 - Apr 2024",
     organization: "Technical Safety BC",
     role: "Product Manager → Former Business Analyst",
     scopeSummary:
-      "Regulated operational services — analytics and retention work first, then product ownership, then AI-native workflow tooling. Environments where compliance, trust, and operational clarity shape what's possible and what's worth building.",
+      "Designed operational systems across regulated inspection, compliance, analytics, and workflow infrastructure — evolving from operational intelligence and retention strategy into AI-assisted workflow tooling.",
+    focusPills: [
+      "Operational intelligence",
+      "AI-assisted workflows",
+      "Regulated systems",
+      "Workflow modernization",
+      "Human-in-the-loop tooling",
+      "Platform strategy",
+      "Operational analytics",
+    ],
+    operatingLens:
+      "Shifted from analytics-driven optimization toward designing operational systems — where workflows, automation, compliance, and human judgment must work together reliably in regulated environments.",
     focusAreas: [
       "Retention analytics tied to actionable lifecycle interventions",
       "Workflow friction analysis across regulated operational surfaces",
@@ -69,7 +95,18 @@ export const experienceChapters: ExperienceChapter[] = [
     organization: "180 Degrees Consulting (UBC Chapter)",
     role: "Strategy Consultant (Intern)",
     scopeSummary:
-      "Worked across public-interest and sustainability-focused initiatives involving growth strategy, adoption systems, behavioral engagement, and data-informed outreach.",
+      "Public-interest and sustainability initiatives spanning growth strategy, adoption systems, behavioral engagement, and data-informed outreach under real operational constraints.",
+    focusPills: [
+      "Systems thinking",
+      "Growth strategy",
+      "Behavioral adoption",
+      "Audience analytics",
+      "Funnel analysis",
+      "Strategic synthesis",
+      "Multi-channel acquisition",
+    ],
+    operatingLens:
+      "Began treating growth, adoption, and engagement as interconnected systems shaped by incentives, channels, and behavioral patterns — not isolated campaigns.",
     focusAreas: [
       "Audience segmentation and outreach strategy",
       "Multi-channel acquisition systems",
@@ -91,7 +128,17 @@ export const experienceChapters: ExperienceChapter[] = [
     organization: "Convertus",
     role: "SEO Consultant — Growth & Analytics",
     scopeSummary:
-      "Built data-driven growth strategies across a portfolio of 75+ digital properties, improving organic acquisition performance by ~150%.",
+      "Data-driven growth across 75+ digital properties — building forecasting, performance analysis, and repeatable operational workflows that improved organic acquisition by ~150%.",
+    focusPills: [
+      "Growth analytics",
+      "Forecasting systems",
+      "Experimentation",
+      "Organic acquisition",
+      "Operational workflows",
+      "Performance optimization",
+    ],
+    operatingLens:
+      "Evolved from tactical SEO execution toward repeatable systems for forecasting, prioritization, and faster data-informed growth decisions.",
     focusAreas: [
       "Growth experimentation & performance optimization",
       "Organic acquisition analytics",

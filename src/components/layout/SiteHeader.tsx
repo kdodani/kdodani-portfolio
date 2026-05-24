@@ -9,30 +9,29 @@ import { HomeHashLink } from "@/components/layout/HomeHashLink";
 const SECTION_IDS = ["about", "experience", "builds", "contact"] as const;
 
 type NavItem =
-  | { kind: "section"; id: string; label: string; variant?: "default" }
-  | { kind: "file"; href: string; label: string; variant: "resume" };
+  | { kind: "section"; id: string; label: string }
+  | { kind: "file"; href: string; label: string };
 
 const nav: NavItem[] = [
   { kind: "section", id: "about", label: "About" },
   { kind: "section", id: "experience", label: "Experience" },
   { kind: "section", id: "builds", label: "AI Builds" },
   { kind: "section", id: "contact", label: "Contact" },
-  { kind: "file", href: site.resumePdf, label: "Resume", variant: "resume" },
+  { kind: "file", href: site.resumePdf, label: "Resume" },
 ];
 
-function baseNavClass(variant?: "default" | "resume") {
-  if (variant === "resume") {
-    return "shrink-0 rounded-full border border-accent/20 bg-gradient-to-r from-accent/[0.07] to-accent-mid/[0.08] px-3.5 py-2 text-[13px] font-medium tracking-tight text-accent-strong shadow-sm transition-all duration-200 hover:border-accent/35 hover:from-accent/[0.11] hover:to-accent-mid/[0.12] hover:shadow-md";
-  }
-  return "shrink-0 rounded-md px-2.5 py-2 text-[13px] font-medium tracking-tight text-stone-600 transition-colors duration-200 hover:bg-stone-100/90 hover:text-stone-900";
+function resumeNavClass() {
+  return "shrink-0 rounded-full bg-gradient-to-r from-[#6D5EF5] to-[#4F8CFF] px-4 py-1.5 text-[13px] font-medium tracking-tight text-white shadow-[0_4px_14px_rgba(109,94,245,0.18)] transition-all duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_8px_20px_rgba(109,94,245,0.26)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/25";
 }
 
 function sectionNavClass(id: string, activeId: string) {
-  const base = baseNavClass();
-  if (activeId === id) {
-    return `${base} bg-white/90 text-stone-900 shadow-sm ring-1 ring-stone-200/80`;
-  }
-  return base;
+  const isActive = activeId === id;
+  return [
+    "shrink-0 rounded-full px-3 py-1.5 text-[13px] font-medium tracking-tight transition-all duration-[250ms]",
+    isActive
+      ? "bg-[rgba(109,94,245,0.08)] text-[#6D5EF5]"
+      : "text-stone-500 hover:bg-stone-100/80 hover:text-stone-800",
+  ].join(" ");
 }
 
 function NavItemControl({
@@ -54,7 +53,7 @@ function NavItemControl({
       href={item.href}
       target="_blank"
       rel="noopener noreferrer"
-      className={baseNavClass("resume")}
+      className={resumeNavClass()}
     >
       {item.label}
     </a>

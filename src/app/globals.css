@@ -41,6 +41,29 @@
     scroll-margin-top: var(--section-scroll-margin);
   }
 
+  /* Shared chip/tag style — pill shape, neutral tint, consistent across site */
+  .chip {
+    @apply rounded-full bg-stone-100/70 px-2.5 py-0.5 text-[11px] font-normal leading-relaxed text-stone-500 transition-colors duration-[250ms] hover:bg-stone-100;
+  }
+
+  /* Accent chip — purple tint for primary/featured tags */
+  .chip-accent {
+    @apply rounded-full bg-[rgba(109,94,245,0.07)] px-2.5 py-0.5 text-[11px] font-normal leading-relaxed text-[#6D5EF5] transition-colors duration-[250ms];
+  }
+
+  /* Shared card hover — lift + border glow + shadow */
+  .card-interactive {
+    transition:
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
+  }
+  .card-interactive:hover {
+    transform: translateY(-4px);
+    border-color: rgba(109, 94, 245, 0.2);
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.08);
+  }
+
   /** Matches hero role line; single source for gradient headline text */
   .gradient-hero-text {
     background-image: linear-gradient(

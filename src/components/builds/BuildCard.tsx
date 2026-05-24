@@ -28,25 +28,22 @@ export function BuildCard({ build, index }: Props) {
     >
       <div
         className={[
-          "flex h-full flex-col rounded-xl border border-stone-200/70 bg-white",
+          "group flex h-full flex-col rounded-2xl border border-stone-200/70 bg-white",
           "px-6 py-6 sm:px-7 sm:py-7",
-          "transition-[border-color,box-shadow,transform] duration-300",
-          "hover:border-stone-300/90 hover:shadow-[0_20px_48px_-36px_rgba(28,25,23,0.14)]",
-          "motion-safe:hover:-translate-y-px",
+          "transition-[border-color,box-shadow,transform] duration-[250ms]",
+          "hover:border-[rgba(109,94,245,0.22)] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.08)]",
+          "motion-safe:hover:-translate-y-1",
         ].join(" ")}
       >
-        <h3 className="font-display text-[1.05rem] font-medium tracking-[-0.02em] text-stone-900 sm:text-[1.125rem]">
+        <h3 className="font-display text-[1.05rem] font-medium tracking-[-0.02em] text-stone-900 transition-colors duration-[250ms] group-hover:text-[#6D5EF5] sm:text-[1.125rem]">
           {build.title}
         </h3>
         <p className="mt-3 flex-1 text-[13px] leading-relaxed text-stone-600 sm:text-[14px] sm:leading-[1.65]">
           {build.description}
         </p>
-        <ul className="mt-5 flex flex-wrap gap-x-2.5 gap-y-1.5 sm:mt-6">
+        <ul className="mt-5 flex flex-wrap gap-x-2 gap-y-1.5 sm:mt-6">
           {build.tags.map((tag) => (
-            <li
-              key={tag}
-              className="rounded-sm bg-stone-100/50 px-1.5 py-0.5 text-[10px] font-normal tracking-wide text-stone-500 sm:text-[11px]"
-            >
+            <li key={tag} className="chip">
               {tag}
             </li>
           ))}
@@ -57,7 +54,7 @@ export function BuildCard({ build, index }: Props) {
               href={build.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13px] font-medium text-stone-700 underline-offset-4 transition-colors hover:text-stone-900 hover:underline"
+              className="text-[13px] font-medium text-stone-600 underline-offset-4 transition-colors duration-[250ms] hover:text-[#6D5EF5] hover:underline"
             >
               {build.linkLabel ?? "View"}
             </a>

@@ -97,7 +97,7 @@ export function Hero() {
           <a
             href="#experience"
             onClick={onExperienceClick}
-            className="inline-flex h-10 items-center justify-center rounded-full bg-accent px-6 text-sm font-medium tracking-tight text-white shadow-sm transition-colors duration-200 hover:bg-accent-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/50"
+            className="inline-flex h-10 items-center justify-center rounded-full bg-gradient-to-r from-[#6D5EF5] to-[#4F8CFF] px-6 text-sm font-medium tracking-tight text-white shadow-[0_4px_14px_rgba(109,94,245,0.22)] transition-all duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_8px_20px_rgba(109,94,245,0.30)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/40"
           >
             View experience
           </a>

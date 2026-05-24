@@ -61,15 +61,15 @@ export function AboutSection() {
             viewport={{ once: true, margin: "-56px" }}
             transition={{ duration: 0.6, delay: motionDelay(reduceMotion, 0.08), ease }}
           >
-            <div className="w-full max-w-[11.5rem] shrink-0 sm:max-w-[12.5rem] lg:max-w-[13rem]">
-              <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-stone-200/90 shadow-md shadow-stone-900/5">
+            <div className="w-full max-w-[10.5rem] shrink-0 sm:max-w-[11.5rem] lg:max-w-[12rem]">
+              <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-stone-200/70 shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
                 <Image
                   src="/images/khushboo-dodani.png"
                   alt="Khushboo Dodani"
                   width={280}
                   height={350}
-                  className="h-auto w-full object-cover object-top"
-                  sizes="(min-width: 1024px) 208px, (min-width: 640px) 200px, 184px"
+                  className="h-auto w-full object-cover object-center"
+                  sizes="(min-width: 1024px) 192px, (min-width: 640px) 184px, 168px"
                   priority={false}
                 />
               </div>
