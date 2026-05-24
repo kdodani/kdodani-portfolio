@@ -72,7 +72,7 @@ export function Hero() {
         </h1>
 
         <motion.div
-          className="mt-8 max-w-editorial space-y-4 text-[15px] leading-[1.72] text-stone-600 sm:mt-10 sm:space-y-[1.125rem] sm:text-base sm:leading-[1.7]"
+          className="mt-8 max-w-editorial text-[15px] leading-[1.72] text-stone-600 sm:mt-10 sm:text-base sm:leading-[1.7]"
           initial={fadeUpInitial(reduceMotion, 8)}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: motionDelay(reduceMotion, 0.1), ease }}
@@ -82,9 +82,16 @@ export function Hero() {
             intelligent workflows that improve adoption, reduce friction, and support better
             decision-making across complex systems.
           </p>
-          <p className="text-pretty text-stone-600/90">
-            Currently exploring opportunities in product-led companies where I can work on growth
-            and intelligent systems at scale.
+        </motion.div>
+
+        <motion.div
+          className="mt-8 max-w-[650px] rounded-2xl border border-blue-100 bg-blue-50/60 px-5 py-4 transition-colors duration-200 hover:border-blue-200/90 hover:bg-blue-50/80"
+          initial={fadeUpInitial(reduceMotion, 8)}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: motionDelay(reduceMotion, 0.12), ease }}
+        >
+          <p className="text-pretty text-[15px] leading-[1.72] text-stone-600 sm:text-base sm:leading-[1.7] lg:whitespace-nowrap">
+            Currently exploring opportunities across growth, platform, or AI workflow teams.
           </p>
         </motion.div>
 

@@ -65,9 +65,12 @@ function OperatingLens({
 }) {
   return (
     <div className={tight ? "mt-4 sm:mt-5" : "mt-5 sm:mt-6"}>
-      <div className="flex items-center gap-1.5">
-        <span className="h-1 w-1 shrink-0 rounded-full bg-[rgba(109,94,245,0.45)]" aria-hidden />
-        <p className="text-[10px] font-normal uppercase tracking-[0.22em] text-stone-500">
+      <div className="flex items-center gap-2">
+        <span
+          className="h-px w-3 shrink-0 rounded-full bg-gradient-to-r from-[#6D5EF5] to-[#4F8CFF]"
+          aria-hidden
+        />
+        <p className="text-[10px] font-normal uppercase tracking-[0.22em] text-stone-400">
           {label}
         </p>
       </div>
@@ -84,7 +87,7 @@ function ChapterHeader({ chapter }: { chapter: ExperienceChapter }) {
       <p className="font-display text-[clamp(1.85rem,2.4vw+1.05rem,2.65rem)] font-medium tracking-[-0.035em] text-stone-900">
         {chapter.organization}
       </p>
-      <h3 className="font-display mt-5 text-[clamp(1.2rem,1.1vw+0.95rem,1.55rem)] font-medium leading-[1.28] tracking-[-0.022em] text-stone-900 sm:mt-6">
+      <h3 className="gradient-hero-text font-display mt-5 text-[clamp(1.2rem,1.1vw+0.95rem,1.55rem)] font-medium leading-[1.28] tracking-[-0.022em] sm:mt-6">
         {chapter.role}
       </h3>
       <p className="mt-3.5 text-[11px] font-normal uppercase tracking-[0.14em] text-stone-400 sm:mt-4 sm:text-xs sm:tracking-[0.13em]">
@@ -97,7 +100,10 @@ function ChapterHeader({ chapter }: { chapter: ExperienceChapter }) {
 const chapterArticleClass =
   "overflow-hidden rounded-2xl border border-stone-200/75 bg-white shadow-[0_1px_0_rgba(255,255,255,0.95)_inset]";
 
-const chapterBodyClass = "px-6 pb-5 pt-10 sm:px-10 sm:pb-6 sm:pt-12 lg:px-12 lg:pt-14";
+/** Matches horizontal inset inside experience chapter cards */
+const chapterContentInsetClass = "px-6 sm:px-10 lg:px-12";
+
+const chapterBodyClass = `${chapterContentInsetClass} pb-5 pt-10 sm:pb-6 sm:pt-12 lg:pt-14`;
 
 const launchesSectionClass =
   "-mx-6 mt-6 border-t border-stone-200/35 bg-[#faf9f6]/50 px-6 pb-1 pt-6 sm:-mx-10 sm:mt-7 sm:px-10 sm:pt-7 lg:-mx-12 lg:px-12";
@@ -477,7 +483,7 @@ function TsbcAiSystemsCard({ project, index, reduceMotion }: TsbcProjectCardProp
   );
 }
 
-const tsbcBodyClass = "px-6 pb-4 pt-10 sm:px-10 sm:pb-5 sm:pt-12 lg:px-12 lg:pt-14";
+const tsbcBodyClass = `${chapterContentInsetClass} pb-4 pt-10 sm:pb-5 sm:pt-12 lg:pt-14`;
 
 const tsbcLaunchesSectionClass =
   "-mx-6 mt-5 border-t border-stone-200/35 bg-[#faf9f6]/50 px-6 pb-0 pt-5 sm:-mx-10 sm:mt-6 sm:px-10 sm:pt-6 lg:-mx-12 lg:px-12";
@@ -533,7 +539,7 @@ function TechnicalSafetyBcChapterBlock({
                 id={`chapter-${keySlug}-work`}
                 className="text-[10px] font-normal uppercase tracking-[0.22em] text-stone-400"
               >
-                Operational Systems
+                Selected Work
               </h4>
             </div>
             <div className={`${tsbcLaunchesGridClass} [&>*:last-child:nth-child(odd)]:sm:col-span-2`}>
@@ -572,8 +578,7 @@ type ChapterBlockProps = {
   reduceMotion: boolean | null;
 };
 
-const workSafeBodyClass =
-  "px-6 pb-5 pt-9 sm:px-10 sm:pb-5 sm:pt-11 lg:px-12 lg:pt-12";
+const workSafeBodyClass = `${chapterContentInsetClass} pb-5 pt-9 sm:pb-5 sm:pt-11 lg:pt-12`;
 
 const workSafeLaunchesSectionClass =
   "-mx-6 mt-5 border-t border-stone-200/35 bg-[#faf9f6]/50 px-6 pb-0 pt-5 sm:-mx-10 sm:mt-6 sm:px-10 sm:pt-6 lg:-mx-12 lg:px-12";
@@ -622,7 +627,7 @@ function WorkSafeBcChapterBlock({
                   id={`chapter-${keySlug}-launches`}
                   className="text-[10px] font-normal uppercase tracking-[0.22em] text-stone-400"
                 >
-                  Selected Launches
+                  Selected Work
                 </h4>
               </div>
               {chapter.launchIntro ? (
@@ -666,8 +671,7 @@ const CONVERTUS_LAUNCH_CARDS: TsbcProject[] = [
   },
 ];
 
-const convertusBodyClass =
-  "px-6 pb-5 pt-9 sm:px-10 sm:pb-5 sm:pt-11 lg:px-12 lg:pt-12";
+const convertusBodyClass = `${chapterContentInsetClass} pb-5 pt-9 sm:pb-5 sm:pt-11 lg:pt-12`;
 
 const convertusLaunchesSectionClass =
   "-mx-6 mt-5 border-t border-stone-200/35 bg-[#faf9f6]/50 px-6 pb-0 pt-5 sm:-mx-10 sm:mt-6 sm:px-10 sm:pt-6 lg:-mx-12 lg:px-12";
@@ -724,7 +728,7 @@ function ConvertusChapterBlock({
                 id={`chapter-${keySlug}-launches`}
                 className="text-[10px] font-normal uppercase tracking-[0.22em] text-stone-400"
               >
-                Selected Launches
+                Selected Work
               </h4>
             </div>
             <div className={convertusLaunchesGridClass}>
@@ -774,8 +778,7 @@ type OneEightyDegreesChapterBlockProps = {
   reduceMotion: boolean | null;
 };
 
-const oneEightyBodyClass =
-  "px-6 pb-5 pt-9 sm:px-10 sm:pb-5 sm:pt-11 lg:px-12 lg:pt-12";
+const oneEightyBodyClass = `${chapterContentInsetClass} pb-5 pt-9 sm:pb-5 sm:pt-11 lg:pt-12`;
 
 const oneEightyLaunchesSectionClass =
   "-mx-6 mt-5 border-t border-stone-200/35 bg-[#faf9f6]/50 px-6 pb-0 pt-5 sm:-mx-10 sm:mt-6 sm:px-10 sm:pt-6 lg:-mx-12 lg:px-12";
@@ -822,7 +825,7 @@ function OneEightyDegreesChapterBlock({
                 id={`chapter-${keySlug}-engagements`}
                 className="text-[10px] font-normal uppercase tracking-[0.22em] text-stone-400"
               >
-                Selected Engagements
+                Selected Work
               </h4>
             </div>
             {chapter.launchIntro ? (
@@ -929,30 +932,28 @@ export function ExperienceCareerSection() {
 
   return (
     <SectionFrame id="experience" aria-labelledby="experience-heading">
-      <div className="mx-auto w-full max-w-scene">
-        <motion.div
-          className="min-w-0 max-w-editorial"
-          initial={fadeUpInitial(reduceMotion, 10)}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-56px" }}
-          transition={{ duration: 0.5, ease }}
+      <motion.div
+        className={`w-full min-w-0 ${chapterContentInsetClass}`}
+        initial={fadeUpInitial(reduceMotion, 10)}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-56px" }}
+        transition={{ duration: 0.5, ease }}
+      >
+        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:text-xs">
+          Experience
+        </p>
+        <h2
+          id="experience-heading"
+          className="font-display mt-3 text-[clamp(1.85rem,2.2vw+1.1rem,2.35rem)] font-medium tracking-tight text-stone-900 sm:mt-4 lg:text-[clamp(2rem,1.8vw+1.25rem,2.5rem)]"
         >
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:text-xs">
-            Experience
-          </p>
-          <h2
-            id="experience-heading"
-            className="font-display mt-3 text-[clamp(1.85rem,2.2vw+1.1rem,2.35rem)] font-medium tracking-tight text-stone-900 sm:mt-4 lg:text-[clamp(2rem,1.8vw+1.25rem,2.5rem)]"
-          >
-            Chapters in the work
-          </h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-stone-600 sm:text-base">
-            Each role is one composed thread—scope, focus, how my thinking shifted, what
-            capabilities formed from that pressure, and the launches that show the
-            output. Less résumé, more evolution of a systems-oriented product practice.
-          </p>
-        </motion.div>
-      </div>
+          Chapters in the work
+        </h2>
+        <p className="mt-4 text-[15px] leading-relaxed text-stone-600 sm:text-base">
+          Each role is one composed thread—scope, focus, how my thinking shifted, what
+          capabilities formed from that pressure, and the launches that show the
+          output. Less résumé, more evolution of a systems-oriented product practice.
+        </p>
+      </motion.div>
 
       <div className="mt-12 flex w-full flex-col gap-10 sm:mt-14 sm:gap-12 lg:mt-16 lg:gap-14">
         {experienceChapters.map((chapter, index) => {
