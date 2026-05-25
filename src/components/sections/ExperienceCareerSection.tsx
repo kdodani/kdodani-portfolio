@@ -33,6 +33,7 @@ function AccordionChevron({ expanded }: { expanded: boolean }) {
 }
 
 function FocusPills({ items }: { items: string[] }) {
+  if (items.length === 0) return null;
   return (
     <ul className="mt-4 flex flex-wrap gap-1.5 sm:mt-5">
       {items.map((item) => (
@@ -342,7 +343,7 @@ const TSBC_PROJECTS: TsbcProject[] = [
     tagline: "Operational intelligence for retention intervention",
     summary:
       "Designed behavioral intelligence systems that surfaced at-risk accounts and informed targeted operational interventions.",
-    tags: ["Operational analytics", "Behavioral signals", "Retention systems", "Intervention strategy"],
+    tags: ["Behavioral Analytics", "Risk Segmentation", "Retention Intelligence", "Intervention Workflows"],
   },
   {
     id: "remote-assessment",
@@ -350,7 +351,7 @@ const TSBC_PROJECTS: TsbcProject[] = [
     tagline: "Operational workflow redesign for regulated inspections",
     summary:
       "Redesigned field assessment workflows across evidence capture, compliance validation, and approval coordination to reduce operational friction while maintaining regulatory integrity.",
-    tags: ["Workflow redesign", "Field operations", "Compliance systems", "Operational UX"],
+    tags: ["Workflow Orchestration", "Human-in-the-Loop Review", "Offline-First UX", "Compliance Automation"],
   },
   {
     id: "ai-operational-systems",
@@ -358,7 +359,7 @@ const TSBC_PROJECTS: TsbcProject[] = [
     tagline: "NLP capabilities embedded in operational workflows",
     summary:
       "Embedded NLP and operational intelligence capabilities into internal workflows to improve triage, retrieval, classification, and operational decision support.",
-    tags: ["NLP", "AI", "Operational Intelligence", "Workflow Automation"],
+    tags: ["AI-Assisted Workflows", "Operational Intelligence", "Workflow Automation", "Human-AI Collaboration"],
     subProjects: [
       {
         id: "internal-chatbot",
@@ -366,7 +367,7 @@ const TSBC_PROJECTS: TsbcProject[] = [
         tagline: "Operational knowledge retrieval",
         description:
           "Designed retrieval workflows that surfaced operational procedures, documentation, and policy context for internal support teams.",
-        tags: ["RAG", "Knowledge retrieval", "Internal tooling"],
+        tags: ["Knowledge Retrieval", "Contextual Search", "Internal AI Tooling", "Workflow Assistance"],
       },
       {
         id: "email-classification",
@@ -374,7 +375,7 @@ const TSBC_PROJECTS: TsbcProject[] = [
         tagline: "Operational triage automation",
         description:
           "Built NLP-assisted classification workflows that prioritized inbound operational requests by intent and urgency.",
-        tags: ["Classification", "NLP", "Workflow automation"],
+        tags: ["AI Classification Systems", "Operational Triage", "Workflow Automation", "Intent Detection"],
       },
       {
         id: "client-impact-dashboard",
@@ -382,7 +383,7 @@ const TSBC_PROJECTS: TsbcProject[] = [
         tagline: "Operational risk intelligence",
         description:
           "Developed operational intelligence layers that surfaced risk, satisfaction, and intervention signals across client workflows.",
-        tags: ["Analytics", "Operational intelligence", "Intervention systems"],
+        tags: ["Operational Intelligence", "Risk Analytics", "Intervention Prioritization", "Behavioral Signals"],
       },
     ],
   },
@@ -522,7 +523,6 @@ function TechnicalSafetyBcChapterBlock({
         <div className={tsbcBodyClass}>
           <ChapterHeader chapter={chapter} />
           <RoleSummary text={chapter.scopeSummary} tight />
-          <FocusPills items={chapter.focusPills} />
           <OperatingLens
             label="How My Thinking Evolved"
             text={chapter.operatingLens}
@@ -609,7 +609,6 @@ function WorkSafeBcChapterBlock({
         <div className={workSafeBodyClass}>
           <ChapterHeader chapter={chapter} />
           <RoleSummary text={chapter.scopeSummary} tight />
-          <FocusPills items={chapter.focusPills} />
           <OperatingLens
             text={chapter.operatingLens}
             label="How My Thinking Evolved"
@@ -711,7 +710,6 @@ function ConvertusChapterBlock({
         <div className={convertusBodyClass}>
           <ChapterHeader chapter={chapter} />
           <RoleSummary text={chapter.scopeSummary} tight />
-          <FocusPills items={chapter.focusPills} />
           <OperatingLens
             label="How My Thinking Evolved"
             text={chapter.operatingLens}
@@ -808,7 +806,6 @@ function OneEightyDegreesChapterBlock({
         <div className={oneEightyBodyClass}>
           <ChapterHeader chapter={chapter} />
           <RoleSummary text={chapter.scopeSummary} tight />
-          <FocusPills items={chapter.focusPills} />
           <OperatingLens
             label="How My Thinking Evolved"
             text={chapter.operatingLens}
@@ -939,19 +936,11 @@ export function ExperienceCareerSection() {
         viewport={{ once: true, margin: "-56px" }}
         transition={{ duration: 0.5, ease }}
       >
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:text-xs">
-          Experience
-        </p>
-        <h2
+        <p
           id="experience-heading"
-          className="font-display mt-3 text-[clamp(1.85rem,2.2vw+1.1rem,2.35rem)] font-medium tracking-tight text-stone-900 sm:mt-4 lg:text-[clamp(2rem,1.8vw+1.25rem,2.5rem)]"
+          className="text-[11px] font-medium uppercase tracking-[0.18em] text-stone-500 sm:text-xs"
         >
-          Chapters in the work
-        </h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-stone-600 sm:text-base">
-          Each role is one composed thread—scope, focus, how my thinking shifted, what
-          capabilities formed from that pressure, and the launches that show the
-          output. Less résumé, more evolution of a systems-oriented product practice.
+          Experience
         </p>
       </motion.div>
 

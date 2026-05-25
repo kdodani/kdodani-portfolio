@@ -27,15 +27,7 @@ export const experienceChapters: ExperienceChapter[] = [
     role: "Product Manager — Provider Experience",
     scopeSummary:
       "Designing operational systems for healthcare provider workflows across identity, referrals, claims, invoicing, and regulatory infrastructure — balancing policy, automation, clinical nuance, and scalable decision-making.",
-    focusPills: [
-      "AI-assisted operations",
-      "Operational orchestration",
-      "Human-in-the-loop systems",
-      "Platform modernization",
-      "Decision-support workflows",
-      "Regulated systems",
-      "API ecosystems",
-    ],
+    focusPills: [],
     operatingLens:
       "Shifted from feature-centric delivery toward designing operational systems — where workflows, policy constraints, automation, and human judgment must coordinate reliably at scale.",
     focusAreas: [
@@ -65,16 +57,8 @@ export const experienceChapters: ExperienceChapter[] = [
     organization: "Technical Safety BC",
     role: "Product Manager → Former Business Analyst",
     scopeSummary:
-      "Designed operational systems across regulated inspection, compliance, analytics, and workflow infrastructure — evolving from operational intelligence and retention strategy into AI-assisted workflow tooling.",
-    focusPills: [
-      "Operational intelligence",
-      "AI-assisted workflows",
-      "Regulated systems",
-      "Workflow modernization",
-      "Human-in-the-loop tooling",
-      "Platform strategy",
-      "Operational analytics",
-    ],
+      "Designed operational systems across regulated inspection, compliance, analytics, and workflow infrastructure — evolving from retention strategy into AI-assisted workflow tooling.",
+    focusPills: [],
     operatingLens:
       "Shifted from analytics-driven optimization toward designing operational systems — where workflows, automation, compliance, and human judgment must work together reliably in regulated environments.",
     focusAreas: [
@@ -96,15 +80,7 @@ export const experienceChapters: ExperienceChapter[] = [
     role: "Strategy Consultant (Intern)",
     scopeSummary:
       "Public-interest and sustainability initiatives spanning growth strategy, adoption systems, behavioral engagement, and data-informed outreach under real operational constraints.",
-    focusPills: [
-      "Systems thinking",
-      "Growth strategy",
-      "Behavioral adoption",
-      "Audience analytics",
-      "Funnel analysis",
-      "Strategic synthesis",
-      "Multi-channel acquisition",
-    ],
+    focusPills: [],
     operatingLens:
       "Began treating growth, adoption, and engagement as interconnected systems shaped by incentives, channels, and behavioral patterns — not isolated campaigns.",
     focusAreas: [
@@ -129,14 +105,7 @@ export const experienceChapters: ExperienceChapter[] = [
     role: "SEO Consultant — Growth & Analytics",
     scopeSummary:
       "Data-driven growth across 75+ digital properties — building forecasting, performance analysis, and repeatable operational workflows that improved organic acquisition by ~150%.",
-    focusPills: [
-      "Growth analytics",
-      "Forecasting systems",
-      "Experimentation",
-      "Organic acquisition",
-      "Operational workflows",
-      "Performance optimization",
-    ],
+    focusPills: [],
     operatingLens:
       "Evolved from tactical SEO execution toward repeatable systems for forecasting, prioritization, and faster data-informed growth decisions.",
     focusAreas: [
