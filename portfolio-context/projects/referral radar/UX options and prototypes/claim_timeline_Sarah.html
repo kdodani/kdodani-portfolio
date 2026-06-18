@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workplace Injury Claim Timeline</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border-radius: 15px;
+        }
+        
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2em;
+        }
+        
+        .claim-info {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #e74c3c, #f39c12, #27ae60, #3498db, #9b59b6);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 60%;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 60%;
+            text-align: left;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 4px solid white;
+            z-index: 10;
+        }
+        
+        .phase-initial { background: #e74c3c; }
+        .phase-treatment { background: #f39c12; }
+        .phase-recovery { background: #27ae60; }
+        .phase-mental-health { background: #3498db; }
+        .phase-closure { background: #9b59b6; }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+        
+        .timeline-description {
+            color: #7f8c8d;
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+        
+        .phase-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .phase-summary {
+            margin: 40px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .phase-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid;
+        }
+        
+        .phase-card h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.3em;
+        }
+        
+        .phase-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .phase-1 { border-left-color: #e74c3c; }
+        .phase-2 { border-left-color: #f39c12; }
+        .phase-3 { border-left-color: #27ae60; }
+        .phase-4 { border-left-color: #3498db; }
+        .phase-5 { border-left-color: #9b59b6; }
+        
+        .key-insights {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .key-insights h3 {
+            margin: 0 0 20px 0;
+            font-size: 1.4em;
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .insight-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .insight-item h4 {
+            margin: 0 0 10px 0;
+            color: #ecf0f1;
+        }
+        
+        .insight-item p {
+            margin: 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 70px;
+                margin-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Workplace Injury Claim Timeline</h1>
+            <div class="claim-info">
+                <strong>Claim ID:</strong> #12345 | <strong>Duration:</strong> December 2023 - September 2024<br>
+                <strong>Claimant:</strong> Sarah | <strong>Injury:</strong> Fall down stairs → Torn meniscus + Post-trauma psychological impact
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="phase-badge phase-initial">Phase 1: Initial Incident</div>
+                    <div class="timeline-date">December 18, 2023</div>
+                    <div class="timeline-title">Incident Report & Intake Call</div>
+                    <div class="timeline-description">
+                        Sarah falls down 30 steps at work in front of colleagues. Reports swollen knee and emotional distress from the public nature of the incident. Jennifer (claims adjuster) demonstrates empathy and holistic approach from the start.
+                    </div>
+                </div>
+                <div class="timeline-dot phase-initial"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="phase-badge phase-treatment">Phase 2: Medical Treatment</div>
+                    <div class="timeline-date">January 5, 2024</div>
+                    <div class="timeline-title">MRI Results & Surgery Booking</div>
+                    <div class="timeline-description">
+                        MRI reveals torn meniscus. Surgery scheduled for January 20. Sarah expresses uncertainty about returning to work, hinting at emotional concerns beyond physical injury.
+                    </div>
+                </div>
+                <div class="timeline-dot phase-treatment"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="phase-badge phase-recovery">Phase 3: Physical Recovery</div>
+                    <div class="timeline-date">February - March 2024</div>
+                    <div class="timeline-title">Post-Surgery Recovery & Return to Work</div>
+                    <div class="timeline-description">
+                        Physical healing progresses, but Sarah reports feeling like "the girl who fell." Develops avoidance behaviors, taking alternate routes to avoid the incident location. Early signs of psychological impact emerge.
+                    </div>
+                </div>
+                <div class="timeline-dot phase-recovery"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="phase-badge phase-recovery">Phase 3: Ongoing Issues</div>
+                    <div class="timeline-date">April 2024</div>
+                    <div class="timeline-title">Mid-Claim Check-In</div>
+                    <div class="timeline-description">
+                        Knee is healing well, but Sarah reports morning dread, chest tightness, and social isolation. Jennifer recognizes these as important signals requiring attention beyond physical recovery.
+                    </div>
+                </div>
+                <div class="timeline-dot phase-recovery"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="phase-badge phase-mental-health">Phase 4: Mental Health Recognition</div>
+                    <div class="timeline-date">May 18, 2024</div>
+                    <div class="timeline-title">Turning Point - Mental Health Referral</div>
+                    <div class="timeline-description">
+                        Jennifer acknowledges Sarah's psychological symptoms as legitimate and refers her for mental health assessment. Sarah accepts the referral, recognizing her need for support.
+                    </div>
+                </div>
+                <div class="timeline-dot phase-mental-health"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="phase-badge phase-mental-health">Phase 4: AI Detection</div>
+                    <div class="timeline-date">May 19, 2024</div>
+                    <div class="timeline-title">AI Insight Aggregation</div>
+                    <div class="timeline-description">
+                        Referral Radar Engine analyzes case notes and identifies key indicators: "humiliating fall," avoidance behaviors, and panic symptoms. Recommends psychology assessment.
+                    </div>
+                </div>
+                <div class="timeline-dot phase-mental-health"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="phase-badge phase-mental-health">Phase 4: Professional Assessment</div>
+                    <div class="timeline-date">May 22 - June 12, 2024</div>
+                    <div class="timeline-title">Psychology Assessment & CBT Recommendation</div>
+                    <div class="timeline-description">
+                        Dr. Emily C. conducts assessment and confirms post-incident trauma. Recommends Cognitive Behavioral Therapy (CBT) program. Mental Health Advisor approves enrollment in specialized return-to-work program.
+                    </div>
+                </div>
+                <div class="timeline-dot phase-mental-health"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="phase-badge phase-mental-health">Phase 4: Program Enrollment</div>
+                    <div class="timeline-date">July 12 - Late July 2024</div>
+                    <div class="timeline-title">Mental Health Recovery Pathway</div>
+                    <div class="timeline-description">
+                        Claim plan updated to include mental health component. Sarah enrolled in Workplace Mental Health Recovery Pathway with trauma-informed therapy, flexible coaching, and confidence-building support.
+                    </div>
+                </div>
+                <div class="timeline-dot phase-mental-health"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="phase-badge phase-mental-health">Phase 4: Therapeutic Progress</div>
+                    <div class="timeline-date">Mid-August 2024</div>
+                    <div class="timeline-title">First Mental Health Check-In</div>
+                    <div class="timeline-description">
+                        Sarah reports positive progress with therapy, gaining insight into her emotional response to the incident. Begins verbalizing and processing feelings of embarrassment and trauma.
+                    </div>
+                </div>
+                <div class="timeline-dot phase-mental-health"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="phase-badge phase-closure">Phase 5: Recovery & Closure</div>
+                    <div class="timeline-date">Early September 2024</div>
+                    <div class="timeline-title">Milestone Achievement</div>
+                    <div class="timeline-description">
+                        Sarah successfully uses the main stairs for the first time since her fall, demonstrating significant psychological recovery and reclaiming of the workplace space.
+                    </div>
+                </div>
+                <div class="timeline-dot phase-closure"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="phase-badge phase-closure">Phase 5: Claim Closure</div>
+                    <div class="timeline-date">Mid-September 2024</div>
+                    <div class="timeline-title">Successful Claim Resolution</div>
+                    <div class="timeline-description">
+                        Both physical and mental health recovery complete. Claim closed with ongoing support resources available through employer. Sarah expresses gratitude for comprehensive care approach.
+                    </div>
+                </div>
+                <div class="timeline-dot phase-closure"></div>
+            </div>
+        </div>
+        
+        <div class="phase-summary">
+            <div class="phase-card phase-1">
+                <h3>Phase 1: Initial Incident (Dec 2023)</h3>
+                <p><strong>Duration:</strong> 1 day<br>
+                <strong>Key Events:</strong> Public fall, physical injury, emotional trauma<br>
+                <strong>Focus:</strong> Immediate response and empathetic intake process recognizing both physical and emotional impact from day one.</p>
+            </div>
+            
+            <div class="phase-card phase-2">
+                <h3>Phase 2: Medical Treatment (Jan 2024)</h3>
+                <p><strong>Duration:</strong> 1 month<br>
+                <strong>Key Events:</strong> MRI diagnosis, surgery scheduling<br>
+                <strong>Focus:</strong> Traditional medical intervention for torn meniscus with early indicators of psychological concerns being noted.</p>
+            </div>
+            
+            <div class="phase-card phase-3">
+                <h3>Phase 3: Physical Recovery (Feb-Apr 2024)</h3>
+                <p><strong>Duration:</strong> 3 months<br>
+                <strong>Key Events:</strong> Post-surgery healing, return to work, emergence of avoidance behaviors<br>
+                <strong>Focus:</strong> While knee healed successfully, psychological symptoms became more prominent and concerning.</p>
+            </div>
+            
+            <div class="phase-card phase-4">
+                <h3>Phase 4: Mental Health Recognition & Treatment (May-Aug 2024)</h3>
+                <p><strong>Duration:</strong> 4 months<br>
+                <strong>Key Events:</strong> AI detection, professional assessment, specialized program enrollment, therapy progress<br>
+                <strong>Focus:</strong> Comprehensive mental health intervention with trauma-informed care and workplace-specific support.</p>
+            </div>
+            
+            <div class="phase-card phase-5">
+                <h3>Phase 5: Recovery & Closure (Sep 2024)</h3>
+                <p><strong>Duration:</strong> 1 month<br>
+                <strong>Key Events:</strong> Behavioral milestones, space reclamation, claim closure<br>
+                <strong>Focus:</strong> Successful integration of physical and mental health recovery with sustainable return to full workplace participation.</p>
+            </div>
+        </div>
+        
+        <div class="key-insights">
+            <h3>Key Insights & Best Practices</h3>
+            <div class="insights-grid">
+                <div class="insight-item">
+                    <h4>Holistic Approach</h4>
+                    <p>Claims adjuster recognized early that recovery involved both physical and emotional components, leading to comprehensive care.</p>
+                </div>
+                <div class="insight-item">
+                    <h4>AI-Assisted Detection</h4>
+                    <p>Technology helped identify psychological indicators that might have been missed, enabling timely intervention.</p>
+                </div>
+                <div class="insight-item">
+                    <h4>Trauma-Informed Care</h4>
+                    <p>Specialized mental health programs addressed workplace-specific psychological impacts, not just general therapy.</p>
+                </div>
+                <div class="insight-item">
+                    <h4>Patient-Centered Communication</h4>
+                    <p>Empathetic, non-judgmental communication built trust and encouraged openness about psychological symptoms.</p>
+                </div>
+                <div class="insight-item">
+                    <h4>Flexible Treatment Planning</h4>
+                    <p>Claim plan adapted to include mental health components when traditional physical recovery proved insufficient.</p>
+                </div>
+                <div class="insight-item">
+                    <h4>Meaningful Outcomes</h4>
+                    <p>Success measured not just by physical healing but by behavioral milestones and workplace reintegration confidence.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Add click interaction for timeline items
+        document.querySelectorAll('.timeline-content').forEach(item => {
+            item.addEventListener('click', function() {
+                // Add a subtle animation to show interaction
+                this.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+        
+        // Add smooth scrolling for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = 'all 0.6s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>

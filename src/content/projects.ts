@@ -4,11 +4,11 @@ export const projects: Project[] = [
   {
     slug: "referral-radar",
     title: "Referral Radar",
-    tagline: "AI-powered healthcare referral orchestration",
+    tagline: "AI-powered referral intelligence for healthcare case managers.",
     summary:
-      "Built a multi-agent recommendation system that surfaces timely mental health referrals from complex claims data.",
-    tags: ["AI Agents", "LLMs", "LangGraph", "Healthcare AI"],
-    year: "2024",
+      "Helped transform fragmented claim information into explainable healthcare referral recommendations — 2nd place at WorkSafeBC InnoFest 2025.",
+    tags: ["AI Product Management", "Innovation Leadership", "Healthcare AI", "Explainable AI"],
+    year: "2025",
   },
   {
     slug: "bceid-migration",

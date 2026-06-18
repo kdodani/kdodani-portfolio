@@ -1,0 +1,270 @@
+# Referral Radar - Project Context
+
+## Project Overview
+
+Referral Radar was an AI-powered referral recommendation system built during WorkSafeBC's InnoFest 2025 innovation challenge.
+
+The challenge was organized for the Healthcare Programs department and focused on the following question:
+
+> How can we utilize AI to automate tasks, enhance provider collaboration, and improve program measurement?
+
+36 ideas were submitted across the organization.
+
+Referral Radar was shortlisted as a finalist in the Process Transformation category and ultimately placed 2nd among the finalists.
+
+The project was completed as a rapid innovation sprint with a cross-functional team consisting of product managers, data scientists, architects, and developers.
+
+---
+
+## Healthcare Programs Context
+
+The Healthcare Programs department oversees approximately 70 contracted healthcare services across British Columbia including physiotherapy, counselling, rehabilitation, and long-term care.
+
+The department coordinates healthcare services through external provider networks and supports injured workers throughout their recovery journey.
+
+One of the challenges faced by case managers is identifying appropriate healthcare programs and referrals from large volumes of claim information distributed across notes, documents, assessments, and communications.
+
+---
+
+## Problem
+
+Case managers review large amounts of claim information to determine when an injured worker may benefit from a healthcare program or referral.
+
+Relevant information is often buried inside:
+
+* Intake notes
+* Claim documents
+* Medical reports
+* Counselling plans
+* Case manager notes
+* Return-to-work planning documents
+
+As claim complexity increases, opportunities for early intervention or referral may be missed.
+
+The team explored whether AI could proactively identify referral opportunities and explain its reasoning using claim evidence.
+
+---
+
+## Solution
+
+Referral Radar was designed as an AI-assisted referral recommendation engine.
+
+The system analyzes claim information and surfaces:
+
+* Recommended healthcare programs
+* Referral priority levels
+* Supporting evidence from claim documents
+* Claim timelines
+* Searchable claim insights
+* Visual relationship mapping between issues, interventions, and outcomes
+
+The goal was not to replace case managers but to help them identify referral opportunities faster and with greater confidence.
+
+---
+
+## My Contributions
+
+### Product Strategy
+
+Helped define the problem space, user workflow, and overall product vision.
+
+Worked with SMEs, healthcare stakeholders, and technical team members to shape the MVP experience.
+
+---
+
+### Synthetic Data Creation
+
+Because production claim data could not be used during the innovation challenge, realistic training and testing data needed to be created.
+
+The healthcare SME supporting the project had limited availability.
+
+To overcome this constraint:
+
+* I used ChatGPT to generate realistic claim conversations and case management scenarios.
+* Created multiple versions of injured worker and case manager interactions.
+* Worked directly with an experienced case manager to review and validate scenarios.
+* Incorporated feedback and revisions.
+* Approved scenarios were provided to the data science team for model development and testing.
+
+This allowed the team to rapidly create realistic evaluation data while respecting privacy and security requirements.
+
+---
+
+### UX and Experience Design
+
+The initial concepts focused primarily on recommendation lists and traditional AI outputs.
+
+I pushed the team to create a more interactive and explainable experience.
+
+The goal was to help users understand:
+
+* Why a recommendation was generated
+* What evidence supported it
+* How claim events were connected
+
+This led to the creation of an interactive visual mind map experience rather than a simple recommendation screen.
+
+The mind map became one of the most memorable parts of the demonstration.
+
+---
+
+### Stakeholder Engagement
+
+Worked closely with:
+
+* Healthcare Programs SMEs
+* Case managers
+* Data scientists
+* Architects
+* Developers
+
+Helped align product, user, and technical perspectives throughout the sprint.
+
+Presented portions of the final solution during the InnoFest showcase.
+
+---
+
+## Key Features
+
+### Referral Recommendations
+
+AI-generated referral recommendations ranked by priority level.
+
+Examples:
+
+* Trauma-Informed Counselling
+* Return-to-Work Planning
+* Vocational Rehabilitation Intake
+
+Each recommendation included supporting evidence.
+
+---
+
+### Evidence Traceability
+
+Users could inspect the source information behind recommendations.
+
+Examples included:
+
+* Relevant claim notes
+* Counselling plans
+* Medical assessments
+* Supporting snippets
+
+This helped improve transparency and explainability.
+
+---
+
+### Claim Timeline
+
+Generated a summarized timeline of important claim events.
+
+Examples:
+
+* Initial assessments
+* Medical updates
+* Recovery milestones
+* Referral activities
+
+---
+
+### Search Experience
+
+Users could search claim documents and notes using natural language.
+
+---
+
+### Interactive Mind Map
+
+Visualized relationships between:
+
+* Symptoms
+* Barriers
+* Healthcare programs
+* Recommendations
+* Claim events
+
+The visualization allowed users to explore connections rather than reading through large volumes of text.
+
+---
+
+### Agent Trace View
+
+Displayed how the AI system arrived at recommendations and decisions.
+
+---
+
+## Architecture
+
+The solution combined:
+
+* Large Language Models
+* Retrieval-Augmented Generation (RAG)
+* Knowledge graph concepts
+* Multi-agent workflows
+* Document analysis
+* Claim summarization
+
+Architecture diagrams and technical implementation artifacts are available separately.
+
+---
+
+## Audience Feedback
+
+The project received strong engagement during the final showcase.
+
+Examples of audience feedback included:
+
+"Imagine working through this mind map on a big screen seeing everything in one place."
+
+"Amazing efforts Referral Radar 360!!"
+
+"Great demo!"
+
+"Can this be used for other subject matters such as pain?"
+
+Several attendees expressed interest in the visualization approach and potential applications beyond the original use case.
+
+Following the demonstration, a WorkSafeBC data architect independently reached out to learn more about the technology stack and visualization approach used in the mind map experience.
+
+---
+
+## Outcome
+
+* Selected as an InnoFest finalist
+* Placed 2nd in the Process Transformation category
+* Presented to a broad cross-functional audience
+* Generated significant engagement and discussion
+* Demonstrated the potential of AI-assisted referral recommendations
+* Validated interest in explainable AI experiences and visual knowledge exploration
+
+---
+
+## Skills Demonstrated
+
+* Product Strategy
+* AI Product Management
+* Innovation Leadership
+* Rapid Prototyping
+* Prompt Engineering
+* Synthetic Data Design
+* User Experience Design
+* Stakeholder Management
+* Cross-functional Leadership
+* Healthcare Domain Discovery
+* Explainable AI
+* Product Storytelling
+* Executive Presentations
+
+---
+
+## Available Artifacts
+
+* Demo video
+* Mind map screenshots
+* Recommendation screen screenshots
+* Agent trace screenshots
+* Architecture diagrams
+* Innovation challenge presentation
+* Audience feedback
+* Final showcase materials

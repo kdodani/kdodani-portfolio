@@ -1,4 +1,5 @@
 import { HomeHashLink } from "@/components/layout/HomeHashLink";
+import { ReferralRadarPage } from "@/components/projects/ReferralRadarPage";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/content/projects";
 
@@ -22,6 +23,10 @@ export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) notFound();
+
+  if (slug === "referral-radar") {
+    return <ReferralRadarPage />;
+  }
 
   return (
     <article className="mx-auto max-w-scene px-page-x pb-16 pt-8 sm:pt-10 lg:pb-20">

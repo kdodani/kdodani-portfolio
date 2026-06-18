@@ -246,10 +246,10 @@ const WORKSAFE_LAUNCH_DISPLAY: Record<
   Pick<Project, "tagline" | "summary" | "tags">
 > = {
   "referral-radar": {
-    tagline: "AI-assisted mental health referral workflows",
+    tagline: "AI-powered referral intelligence for healthcare case managers.",
     summary:
-      "Designed recommendation workflows that surface high-risk mental health referral opportunities from claims and operational signals.",
-    tags: ["AI agents", "LLMs", "Operational intelligence", "Claims signals"],
+      "Shaped product direction, created synthetic training data, and pushed the team toward an interactive visual experience — placing 2nd at WorkSafeBC InnoFest 2025.",
+    tags: ["AI Product Management", "Innovation Leadership", "Healthcare AI", "Explainable AI"],
   },
   "bceid-migration": {
     tagline: "Provider identity infrastructure modernization",
