@@ -41,5 +41,9 @@ TSBC PO dump/
 TSBC_Analyst/
 *.pdf
 *.mp4
+
+!public/videos/**/*.mp4
+
+
 TSBC PO dump/
 TSBC_Analyst/
