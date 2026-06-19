@@ -42,24 +42,28 @@ const FLOW_STEPS = [
 
 const GALLERY = [
   {
-    src: "/images/referral-radar/poc-interface-1.png",
-    alt: "Referral Radar recommendation engine",
+    type: "video" as const,
+    src: "/videos/referral-radar/priority-cases.mp4",
+    poster: "/images/referral-radar/poc-interface-1.png",
+    alt: "Priority cases — referral recommendations in action",
     caption: "Referral recommendations ranked by priority",
-    unoptimized: false,
   },
   {
+    type: "image" as const,
     src: "/images/referral-radar/poc-interface-details.png",
     alt: "Evidence traceability panel",
     caption: "Evidence traceability — source snippets from claim documents",
     unoptimized: false,
   },
   {
+    type: "image" as const,
     src: "/images/referral-radar/mindmap-screen.png",
     alt: "Interactive mind map visualization",
     caption: "Mind map — explore connections across symptoms, events, and programs",
     unoptimized: false,
   },
   {
+    type: "image" as const,
     src: "/images/referral-radar/context.gif",
     alt: "Referral Radar context agent animation",
     caption: "Multi-agent workflow processing claim context",
@@ -421,15 +425,29 @@ export function ReferralRadarPage() {
           {GALLERY.map((item, i) => (
             <motion.div key={item.src} {...fadeUp(0.06 + i * 0.07)}>
               <div className="overflow-hidden rounded-2xl border border-stone-200/70 bg-stone-50 shadow-[0_1px_0_rgba(255,255,255,0.95)_inset]">
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  width={800}
-                  height={450}
-                  className="w-full h-auto"
-                  unoptimized={item.unoptimized}
-                  sizes="(min-width: 640px) 50vw, 100vw"
-                />
+                {item.type === "video" ? (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster={item.poster}
+                    className="w-full h-auto"
+                  >
+                    <source src={item.src} type="video/mp4" />
+                  </video>
+                ) : (
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    width={800}
+                    height={450}
+                    className="w-full h-auto"
+                    unoptimized={item.unoptimized}
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                  />
+                )}
               </div>
               <p className="mt-2.5 px-1 text-[12px] leading-[1.6] text-stone-500">
                 {item.caption}
