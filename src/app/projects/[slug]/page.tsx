@@ -1,5 +1,6 @@
 import { HomeHashLink } from "@/components/layout/HomeHashLink";
 import { ReferralRadarPage } from "@/components/projects/ReferralRadarPage";
+import { ProviderInvoicePage } from "@/components/projects/ProviderInvoicePage";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/content/projects";
 
@@ -26,6 +27,10 @@ export default async function ProjectPage({ params }: Props) {
 
   if (slug === "referral-radar") {
     return <ReferralRadarPage />;
+  }
+
+  if (slug === "provider-invoice-digitization") {
+    return <ProviderInvoicePage />;
   }
 
   return (

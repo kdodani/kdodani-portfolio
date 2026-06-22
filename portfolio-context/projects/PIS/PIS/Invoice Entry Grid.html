@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)https://ux-demo.online.dv.worksafebc.com/PROVIDERINVOICING/xtras/batchinvoice-filled.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invoice Entry Grid</title>
+  <link href="./Invoice Entry Grid_files/bootstrap.min.css" rel="stylesheet">
+  <link href="./Invoice Entry Grid_files/all.min.css" rel="stylesheet">
+
+ <link href="./Invoice Entry Grid_files/grayscalex.css" rel="stylesheet">
+
+<style>
+  body {
+    background-color: #fff;
+    color: #000;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    position: relative;
+  }
+
+  table {
+    min-width: 1600px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #fff;
+    color: #000;
+  }
+
+  /* Column widths for early columns */
+  th:nth-child(1), td:nth-child(1),
+  th:nth-child(2), td:nth-child(2) {
+    min-width: 140px;
+  }
+
+  th:nth-child(3), td:nth-child(3) {
+    min-width: 130px;
+  }
+
+  th:nth-child(4), td:nth-child(4) {
+    min-width: 140px;
+  }
+
+  /* Only Line Total (12th) is sticky */
+  th:nth-child(12), td:nth-child(12) {
+    position: sticky;
+    right: 80px;
+    z-index: 10;
+    background-color: #fff;
+    min-width: 120px;
+    box-shadow: -4px 0 6px -2px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Actions (13th) is sticky at far right */
+  th:nth-child(13), td:nth-child(13) {
+    position: sticky;
+    right: 0;
+    z-index: 11;
+    background-color: #fff;
+    min-width: 80px;
+    box-shadow: -4px 0 6px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* GST/HST column (11) is now normal — not sticky */
+  th:nth-child(11), td:nth-child(11) {
+    min-width: 100px;
+    position: static;
+    box-shadow: none;
+    background-color: inherit;
+    z-index: auto;
+  }
+
+  td input, td select {
+    min-width: 100px;
+  }
+
+  .calculated {
+    padding-top: 6px;
+  }
+</style>
+
+
+</head>
+<body>
+
+<section class="py-5">
+  <div class="container-fluid">
+    <h2 class="fw-bold mb-4">Enter invoices</h2>
+    <p class="mb-4">Enter invoice lines for multiple workers and claims. Add, duplicate, or remove lines as needed. You’ll be able to review all details before final submission. Drafts remain in your list until submitted.</p>
+
+
+
+
+<div id="summary-panel" class="mt-4 p-3 border rounded bg-light">
+  <h5 class="mb-3">Invoice summary</h5>
+  <div class="row">
+    <!-- Summary Left -->
+
+
+    <!-- Prefilled Fields Right -->
+    <div class="col-md-4 d-flex flex-row align-items-md-end">
+      <div class="me-2 mr-2">
+        <label for="invoiceNumber" class="form-label mb-0">Invoice number</label>
+        <input type="text" class="form-control form-control-sm" id="invoiceNumber" value="INV-2025-001" readonly="">
+      </div>
+      <div>
+        <label for="contractId" class="form-label mb-0">Contract id</label>
+        <input type="text" class="form-control form-control-sm" id="contractId" value="C-789456" readonly="">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <form>
+      <div class="table-responsive">
+<table class="table table-bordered align-middle text-nowrap" id="invoice-table">
+  <thead>
+    <tr>
+      <th>Last name</th>
+      <th>Claim #</th>
+      <th>Date of service</th>
+      <th>Fee code</th>
+      <th>Document type</th>
+      <th class="attach-doc-col">Attach document</th>
+      <th>Units</th>
+      <th>Cost/Unit</th>
+      <th>Subtotal</th>
+      <th>PST %</th>
+      <th>GST/HST %</th>
+      <th>Line total</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="invoice-body">
+    <tr>
+      <td class="position-relative" style="height: 80px;">
+        <div class="position-relative">
+          <input type="text" class="form-control is-invalid" value="">
+          <div class="text-danger small position-absolute" style="bottom: -1.25rem;">Missing last name</div>
+        </div>
+      </td>
+      <td class="position-relative" style="height: 80px;">
+        <div class="position-relative">
+          <input type="number" class="form-control is-invalid" value="1234">
+          <div class="text-danger small position-absolute" style="bottom: -1.25rem;">Claim number must be 8 digits</div>
+        </div>
+      </td>
+      <td><input type="date" class="form-control" value="2025-06-01"></td>
+      <td><select class="form-select"><option selected="">123A</option></select></td>
+      <td><select class="form-select"><option selected="">Invoice</option></select></td>
+      <td><input type="file" class="form-control"></td>
+      <td class="position-relative" style="height: 80px;">
+        <div class="position-relative">
+          <input type="number" class="form-control is-invalid" value="">
+          <div class="text-danger small position-absolute" style="bottom: -1.25rem;">Required</div>
+        </div>
+      </td>
+      <td><input type="number" class="form-control" value="75.00"></td>
+      <td><div class="calculated subtotal">$0.00</div></td>
+      <td><input type="number" class="form-control" value="0.00"></td>
+      <td><input type="number" class="form-control" value="0.00"></td>
+      <td><div class="calculated total"><b>$0.00</b></div></td>
+      <td class="text-center"><i class="fas fa-exclamation-circle text-danger"></i></td>
+    </tr>
+    <tr>
+      <td class="position-relative" style="height: 80px;"><input type="text" class="form-control" value="Nguyen"></td>
+      <td class="position-relative" style="height: 80px;">
+        <div class="position-relative">
+          <input type="number" class="form-control is-invalid" value="">
+          <div class="text-danger small position-absolute" style="bottom: -1.25rem;">Required</div>
+        </div>
+      </td>
+      <td><input type="date" class="form-control" value="2025-06-01"></td>
+      <td><select class="form-select"><option selected="">234B</option></select></td>
+      <td><select class="form-select"><option selected="">Chart</option></select></td>
+      <td><input type="file" class="form-control"></td>
+      <td class="position-relative" style="height: 80px;">1</td>
+      <td><input type="number" class="form-control" value="50.00"></td>
+      <td><div class="calculated subtotal">$50.00</div></td>
+      <td><input type="number" class="form-control" value="0.00"></td>
+      <td><input type="number" class="form-control" value="2.50"></td>
+      <td><div class="calculated total"><b>$52.50</b></div></td>
+      <td class="text-center"><i class="fas fa-exclamation-circle text-danger"></i></td>
+    </tr>
+    <tr>
+      <td class="position-relative" style="height: 80px;"><input type="text" class="form-control" value="Singh"></td>
+      <td class="position-relative" style="height: 80px;"><input type="number" class="form-control" value="87654321"></td>
+      <td><input type="date" class="form-control" value="2025-06-02"></td>
+      <td><select class="form-select"><option selected="">F88</option></select></td>
+      <td><select class="form-select"><option selected="">Other</option></select></td>
+      <td><input type="file" class="form-control"></td>
+      <td class="position-relative" style="height: 80px;">
+        <div class="position-relative">
+          <input type="number" class="form-control is-invalid" value="">
+          <div class="text-danger small position-absolute" style="bottom: -1.25rem;">Units required</div>
+        </div>
+      </td>
+      <td><input type="number" class="form-control" value="85.00"></td>
+      <td><div class="calculated subtotal">$0.00</div></td>
+      <td><input type="number" class="form-control" value="0.00"></td>
+      <td><input type="number" class="form-control" value="4.25"></td>
+      <td><div class="calculated total"><b>$4.25</b></div></td>
+      <td class="text-center"><i class="fas fa-exclamation-circle text-danger"></i></td>
+    </tr>
+    <tr>
+      <td class="position-relative" style="height: 80px;"><input type="text" class="form-control" value="Taylor"></td>
+      <td class="position-relative" style="height: 80px;"><input type="number" class="form-control" value="56781234"></td>
+      <td><input type="date" class="form-control" value="2025-06-03"></td>
+      <td><select class="form-select"><option selected="">123A</option></select></td>
+      <td><select class="form-select"><option selected="">Clinical Note</option></select></td>
+      <td><input type="file" class="form-control"></td>
+      <td class="position-relative" style="height: 80px;">2</td>
+      <td><input type="number" class="form-control" value="60.00"></td>
+      <td><div class="calculated subtotal">$120.00</div></td>
+      <td><input type="number" class="form-control" value="0.00"></td>
+      <td><input type="number" class="form-control" value="6.00"></td>
+      <td><div class="calculated total"><b>$126.00</b></div></td>
+      <td class="text-center"><i class="fas fa-check-circle text-success"></i></td>
+    </tr>
+    <tr>
+      <td class="position-relative" style="height: 80px;">
+        <div class="position-relative">
+          <input type="text" class="form-control is-invalid" value="">
+          <div class="text-danger small position-absolute" style="bottom: -1.25rem;">Required</div>
+        </div>
+      </td>
+      <td class="position-relative" style="height: 80px;">
+        <div class="position-relative">
+          <input type="number" class="form-control is-invalid" value="999">
+          <div class="text-danger small position-absolute" style="bottom: -1.25rem;">Claim number too short</div>
+        </div>
+      </td>
+      <td><input type="date" class="form-control" value="2025-06-04"></td>
+      <td><select class="form-select"><option selected="">234B</option></select></td>
+      <td><select class="form-select"><option selected="">Chart</option></select></td>
+      <td><input type="file" class="form-control"></td>
+      <td class="position-relative" style="height: 80px;">1</td>
+      <td><input type="number" class="form-control" value="80.00"></td>
+      <td><div class="calculated subtotal">$80.00</div></td>
+      <td><input type="number" class="form-control" value="0.00"></td>
+      <td><input type="number" class="form-control" value="4.00"></td>
+      <td><div class="calculated total"><b>$84.00</b></div></td>
+      <td class="text-center"><i class="fas fa-exclamation-circle text-danger"></i></td>
+    </tr>
+    <tr>
+      <td class="position-relative" style="height: 80px;"><input type="text" class="form-control" value="Martinez"></td>
+      <td class="position-relative" style="height: 80px;"><input type="number" class="form-control" value="11223344"></td>
+      <td><input type="date" class="form-control" value="2025-06-05"></td>
+      <td><select class="form-select"><option selected="">F88</option></select></td>
+      <td><select class="form-select"><option selected="">Invoice</option></select></td>
+      <td><input type="file" class="form-control"></td>
+      <td class="position-relative" style="height: 80px;">1</td>
+      <td><input type="number" class="form-control" value="100.00"></td>
+      <td><div class="calculated subtotal">$100.00</div></td>
+      <td><input type="number" class="form-control" value="0.00"></td>
+      <td><input type="number" class="form-control" value="5.00"></td>
+      <td><div class="calculated total"><b>$105.00</b></div></td>
+      <td class="text-center"><i class="fas fa-check-circle text-success"></i></td>
+    </tr>
+  </tbody>
+</table>
+
+
+      </div>
+
+      <div class="d-flex justify-content-between mt-4">
+        <button type="button" class="btn btn-secondary" id="add-row-btn">+ Add invoice line</button>
+        <a href="https://ux-demo.online.dv.worksafebc.com/PROVIDERINVOICING/review.html" type="submit" class="btn btn-primary">Save and continue</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+
+
+
+</body></html>

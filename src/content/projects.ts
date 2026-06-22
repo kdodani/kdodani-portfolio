@@ -30,12 +30,12 @@ export const projects: Project[] = [
   },
   {
     slug: "provider-invoice-digitization",
-    title: "Provider Information System",
-    tagline: "Digital adoption across provider invoicing workflows",
+    title: "Provider Invoice Submission",
+    tagline: "Segment expansion for a B2B invoicing platform",
     summary:
-      "Redesigned high-volume invoice submission flows to reduce friction and accelerate digital adoption.",
-    tags: ["Operational UX", "Growth", "Behavior Change", "Segmentation"],
-    year: "2022",
+      "Led product strategy to unlock 280K blocked paper line items by rebuilding the submission experience for high-volume providers — without disrupting the existing user base.",
+    tags: ["Segment Expansion", "Growth", "Product Analytics", "Activation"],
+    year: "2025",
   },
 ];
 
