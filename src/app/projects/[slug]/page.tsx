@@ -1,6 +1,7 @@
 import { HomeHashLink } from "@/components/layout/HomeHashLink";
 import { ReferralRadarPage } from "@/components/projects/ReferralRadarPage";
 import { ProviderInvoicePage } from "@/components/projects/ProviderInvoicePage";
+import { DirectConnectPage } from "@/components/projects/DirectConnectPage";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/content/projects";
 
@@ -31,6 +32,10 @@ export default async function ProjectPage({ params }: Props) {
 
   if (slug === "provider-invoice-digitization") {
     return <ProviderInvoicePage />;
+  }
+
+  if (slug === "medical-api-integration") {
+    return <DirectConnectPage />;
   }
 
   return (

@@ -21,12 +21,12 @@ export const projects: Project[] = [
   },
   {
     slug: "medical-api-integration",
-    title: "Direct Connect Platform",
-    tagline: "EMR-native API integration strategy",
+    title: "Healthcare Interoperability Platform",
+    tagline: "Zero-to-one interoperability platform built from deep product discovery",
     summary:
-      "Validated a zero-to-one API integration model for structured healthcare data exchange across EMRs.",
-    tags: ["APIs", "EMR Integrations", "FHIR", "Platform Strategy"],
-    year: "2023",
+      "Identified a structural constraint locking 200K+ physician reports inside a 24-year-old billing system — then validated a direct API model that established the foundation for a scalable provider ecosystem.",
+    tags: ["Platform Strategy", "Healthcare Interoperability", "Zero-to-One", "Ecosystem Design"],
+    year: "2025",
   },
   {
     slug: "provider-invoice-digitization",

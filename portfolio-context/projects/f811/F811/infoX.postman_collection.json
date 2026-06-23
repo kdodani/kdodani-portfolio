@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "fa264f5e-9c04-4c79-988a-5a1e7e3804e1",
+		"name": "infoX",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1521297"
+	},
+	"item": [
+		{
+			"name": "get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{infoxapi}}",
+					"host": [
+						"{{infoxapi}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"submitBy\" : \"wsbc test\",\r\n  \"dateOfService\": \"2025-02-04\",\r\n  \"formType\": \"f8\",\r\n  \"patientInfo\": {\r\n    \"firstName\": \"Terry\",\r\n    \"middleInitial\": \"J\",\r\n    \"lastName\": \"Doe\",\r\n    \"dateOfBirth\":\"1992-05-19\",\r\n    \"phn\": \"9876 543 210\",\r\n    \"gender\": \"male\",\r\n    \"phoneNumber1\": \"778.555.1212\",\r\n    \"PhoneNumber1Type\": \"mobile\",\r\n    \"phoneNumber2\": \"604.999.1234\",\r\n    \"PhoneNumber2Type\": \"home\",\r\n    \"mailingAddress\": \"123 Main Street, Surrey, BC V1A 4N3\",\r\n    \"emailAddress\": \"terry@gg.cc\",\r\n    \"claimNumber\": \"12345\",\r\n    \"occupation\": \"roofer\",\r\n    \"handedness\": \"right\"\r\n  },\r\n  \"employerInfo\": {\r\n    \"employerName\": \"johns roofing\",\r\n    \"phoneNumber\": \"604.123.1234\",\r\n    \"address\": \"123 main st surrey\"\r\n  },\r\n  \"practitionerInfo\": {\r\n    \"isPatientsRegularPractitioner\": \"no\",\r\n    \"regularPractitionerName\": \"dr.drake ramoray\"\r\n  },\r\n  \"clinicalInfo\": {\r\n    \"dateOfInjury\": \"2025-03-18\",\r\n    \"isDateOfInjuryApproximate\": true,\r\n    \"subjectiveFindings\": \"Subjective findings\",\r\n    \"objectiveFindings\": \"Objective findings\",\r\n    \"assessmentAndDiagnosis\": \"Assessment and diagnosis(es)\",\r\n    \"iCD9\": [\r\n      \"922.31 - Back contusion\",\r\n      \"903\"\r\n    ],\r\n    \"plan\": \"my plan\",\r\n    \"patientNeedReassess\": true,\r\n    \"reassessDate\": \"2025-03-06\"\r\n  },\r\n  \"recoveryAndReturnToWorkSupport\": {\r\n    \"patientWorkingStatus\": \"currentlyNotWorking\",\r\n    \"patientExpectToReturnToWork\": \"no\",\r\n    \"anyActivitiesInstructedNotToDo\": true,\r\n    \"anyActivitiesInstructedNotToDoText\": \"do not ski\",\r\n    \"completeFunctionalAbilitiesChecklistAtThisTime\": false,\r\n    \"typicalRecoveryTimelineValue\": \"2\",\r\n    \"typicalRecoveryTimelineUnit\": \"weeks\"\r\n  },\r\n  \"supportFromWorkSafeBC\": {\r\n    \"needWorkSafeBCPhysician\": false,\r\n    \"whatYouNeed\": \"\"\r\n  },\r\n  \"additionalInformation\": \"\",\r\n  \"payeeInfo\": {\r\n    \"payeeNumber\": \"123456\",\r\n    \"payeeName\": \"First Medical Clinic\",\r\n    \"practitionerNumber\": \"number 321\",\r\n    \"practitionerName\": \"dr.drake ramoray\",\r\n    \"faxNumber\": \"6049991444\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{infoxapi}}/submit",
+					"host": [
+						"{{infoxapi}}"
+					],
+					"path": [
+						"submit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submit works",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"dateOfService\":\"2024-05-18\",\"formType\":\"f8\",\"patientInfo\":{\"firstName\":\"Terry\",\"middleInitial\":\"J\",\"lastName\":\"Doe\",\"dateOfBirth\":\"1992-03-01\",\"phn\":\"9876 543 210\",\"gender\":\"male\",\"phoneNumber1\":\"778.555.1212\",\"PhoneNumber1Type\":null,\"phoneNumber2\":\"\",\"PhoneNumber2Type\":null,\"mailingAddress\":\"123 Main Street, Surrey, BC V1A 4N3\",\"emailAddress\":\"\",\"claimNumber\":\"\",\"occupation\":\"\",\"handedness\":null},\"employerInfo\":{\"employerName\":\"\",\"phoneNumber\":\"\",\"address\":\"\"},\"practitionerInfo\":{\"regularPractitionerName\":\"\"},\"clinicalInfo\":{\"dateOfInjury\":\"2023-09-18\",\"isDateOfInjuryApproximate\":true,\"subjectiveFindings\":\"\",\"objectiveFindings\":\"\",\"assessmentAndDiagnosis\":\"\",\"iCD9\":[\"\"],\"plan\":\"\",\"patientNeedReassess\":false,\"reassessDate\":\"2022-09-18\"},\"recoveryAndReturnToWorkSupport\":{\"anyActivitiesInstructedNotToDo\":false,\"anyActivitiesInstructedNotToDoText\":\"\",\"completeFunctionalAbilitiesChecklistAtThisTime\":false,\"typicalRecoveryTimelineValue\":\"\",\"typicalRecoveryTimelineUnit\":\"days\"},\"supportFromWorkSafeBC\":{\"needWorkSafeBCPhysician\":false,\"whatYouNeed\":\"\"},\"additionalInformation\":\"\",\"payeeInfo\":{\"payeeNumber\":\"123456\",\"payeeName\":\"First Medical Clinic\",\"practitionerNumber\":\"\",\"practitionerName\":\"\",\"faxNumber\":\"\"}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{infoxapi}}/submit",
+					"host": [
+						"{{infoxapi}}"
+					],
+					"path": [
+						"submit"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
