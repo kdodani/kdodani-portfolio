@@ -12,12 +12,12 @@ export const projects: Project[] = [
   },
   {
     slug: "bceid-migration",
-    title: "BCEID Migration",
-    tagline: "Identity platform modernization for healthcare providers",
+    title: "Identity Platform Modernization",
+    tagline: "Migrated 5,600 healthcare providers to a modern CIAM platform without disrupting referral or claims services.",
     summary:
-      "Led migration of 5,600+ provider accounts to ForgeRock CIAM without disrupting operational workflows.",
-    tags: ["CIAM", "ForgeRock", "Migration Strategy", "Platform PM"],
-    year: "2024",
+      "Led discovery, business requirements, and change management for a high-stakes identity platform migration — transitioning 5,600 providers across 500 organizations from a deprecated government identity system to ForgeRock CIAM, with zero service disruptions.",
+    tags: ["Platform PM", "CIAM", "Identity & Access Management", "Change Management", "Enterprise Ecosystem"],
+    year: "2025",
   },
   {
     slug: "medical-api-integration",

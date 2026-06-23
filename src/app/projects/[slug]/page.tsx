@@ -2,6 +2,7 @@ import { HomeHashLink } from "@/components/layout/HomeHashLink";
 import { ReferralRadarPage } from "@/components/projects/ReferralRadarPage";
 import { ProviderInvoicePage } from "@/components/projects/ProviderInvoicePage";
 import { DirectConnectPage } from "@/components/projects/DirectConnectPage";
+import { BceidMigrationPage } from "@/components/projects/BceidMigrationPage";
 import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/content/projects";
 
@@ -36,6 +37,10 @@ export default async function ProjectPage({ params }: Props) {
 
   if (slug === "medical-api-integration") {
     return <DirectConnectPage />;
+  }
+
+  if (slug === "bceid-migration") {
+    return <BceidMigrationPage />;
   }
 
   return (
