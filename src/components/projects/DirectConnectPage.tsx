@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { HomeHashLink } from "@/components/layout/HomeHashLink";
+import { ProviderSegmentDiagram } from "@/components/projects/ProviderSegmentDiagram";
 import { fadeUpInitial, motionDelay } from "@/lib/motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -557,11 +558,24 @@ export function DirectConnectPage() {
       {/* ── Platform vision ────────────────────────────────────────────── */}
       <section className={`mx-auto max-w-frame px-page-x ${SECTION}`}>
         <motion.div {...fadeUp(0)}>
+          <SectionLabel>Provider experience platform</SectionLabel>
+          <SectionHeading>Route each segment to the channel that fits their workflow</SectionHeading>
+        </motion.div>
+
+        <motion.p {...fadeUp(0.08)} className="mt-3 text-[14px] leading-[1.7] text-stone-500 sm:text-[15px]">
+          Platform strategy isn&apos;t one interface for everyone. High-volume providers need a portal built for throughput; physicians need in-EMR submission at point of care. This project owned the physician path — EMR integrations via Direct Connect.
+        </motion.p>
+
+        <motion.div {...fadeUp(0.12)} className="mt-8">
+          <ProviderSegmentDiagram highlight="emr" />
+        </motion.div>
+
+        <motion.div {...fadeUp(0.16)} className="mt-10">
           <SectionLabel>Platform strategy</SectionLabel>
           <SectionHeading>One integration model. Any provider. Any workflow.</SectionHeading>
         </motion.div>
 
-        <motion.p {...fadeUp(0.08)} className="mt-3 text-[14px] leading-[1.7] text-stone-500 sm:text-[15px]">
+        <motion.p {...fadeUp(0.2)} className="mt-3 text-[14px] leading-[1.7] text-stone-500 sm:text-[15px]">
           OSCAR was the beachhead. The platform was the goal. WorkSafeBC publishes the API once; any EMR integrates using the same endpoint pattern. Each new partner expands physician reach without rebuilding the platform.
         </motion.p>
 

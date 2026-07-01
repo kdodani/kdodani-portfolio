@@ -9,7 +9,8 @@
     "reset": "npm run clean && npm run build",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export:jpgs": "python scripts/export_portfolio_jpgs.py"
   },
   "dependencies": {
     "framer-motion": "^11.18.0",

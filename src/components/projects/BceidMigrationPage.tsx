@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { HomeHashLink } from "@/components/layout/HomeHashLink";
+import { MigrationCoordinationDiagram } from "@/components/projects/MigrationCoordinationDiagram";
 import { fadeUpInitial, motionDelay } from "@/lib/motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -129,42 +130,6 @@ const DECISIONS = [
     tradeoff: "Additional preparation effort · Lower provider friction",
     impact:
       "FAQ documentation, a dedicated support email channel, and advance helpdesk briefing meant support staff were equipped before the first login attempt — not scrambling after.",
-  },
-] as const;
-
-const STAKEHOLDER_GROUPS = [
-  {
-    groupLabel: "External — Government",
-    nodes: [{ name: "BC Government", sub: "BCeID Branch · Deadline owner" }],
-  },
-  {
-    groupLabel: "External — Vendor",
-    nodes: [
-      { name: "TELUS", sub: "CPR · Provider Portal" },
-      { name: "PCIS", sub: "Portal Sustainment" },
-    ],
-  },
-  {
-    groupLabel: "WorkSafeBC — Product & Business",
-    nodes: [
-      { name: "Product", sub: "Discovery · Requirements · Strategy" },
-      { name: "Operations", sub: "Helpdesk · HC Programs" },
-    ],
-  },
-  {
-    groupLabel: "WorkSafeBC — Technical",
-    nodes: [
-      { name: "Architecture", sub: "ForgeRock Design" },
-      { name: "Security", sub: "Auth & Compliance" },
-      { name: "Privacy", sub: "PII Requirements" },
-    ],
-  },
-  {
-    groupLabel: "End Users",
-    nodes: [
-      { name: "Provider Admins", sub: "500 org administrators" },
-      { name: "Providers", sub: "5,600 healthcare providers" },
-    ],
   },
 ] as const;
 
@@ -762,7 +727,7 @@ export function BceidMigrationPage() {
       {/* ── Ecosystem complexity ──────────────────────────────────────── */}
       <section className={`mx-auto max-w-frame px-page-x ${SECTION}`}>
         <motion.div {...fadeUp(0)}>
-          <SectionLabel>Ecosystem complexity</SectionLabel>
+          <SectionLabel>Identity modernization</SectionLabel>
           <SectionHeading>Nine parties. One deadline.</SectionHeading>
         </motion.div>
 
@@ -770,37 +735,14 @@ export function BceidMigrationPage() {
           {...fadeUp(0.08)}
           className="mt-4 max-w-[52rem] text-[15px] leading-[1.72] text-stone-500"
         >
-          Every organization below had a role in the outcome. Alignment across all of them — with
-          different incentives, timelines, and levels of technical familiarity — was the coordination
-          surface the PM owned.
+          Government set the deadline. Vendors owned the portal. Engineering built ForgeRock.
+          Providers had to act before migration could begin. The artifact below maps how those
+          lanes coordinated across a fifteen-month program.
         </motion.p>
 
-        <div className="mt-8 flex flex-col gap-4">
-          {STAKEHOLDER_GROUPS.map((group, gi) => (
-            <motion.div key={group.groupLabel} {...fadeUp(0.06 + gi * 0.06)}>
-              <p className="mb-2.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-400">
-                {group.groupLabel}
-              </p>
-              <div className="flex flex-wrap gap-2.5">
-                {group.nodes.map((node) => (
-                  <div
-                    key={node.name}
-                    className={`rounded-xl border px-4 py-3 ${
-                      gi === 2
-                        ? "border-[rgba(109,94,245,0.18)] bg-gradient-to-br from-[rgba(109,94,245,0.05)] to-transparent"
-                        : gi === 4
-                        ? "border-stone-200/80 bg-stone-50"
-                        : "border-stone-200/60 bg-white"
-                    }`}
-                  >
-                    <p className="text-[13px] font-semibold text-stone-800">{node.name}</p>
-                    <p className="mt-0.5 text-[11px] text-stone-400">{node.sub}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div {...fadeUp(0.12)} className="mt-8">
+          <MigrationCoordinationDiagram />
+        </motion.div>
       </section>
 
       {/* ── Technical environment ─────────────────────────────────────── */}
