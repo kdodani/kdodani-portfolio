@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import { site } from "@/content/site";
 import { HomeHashLink } from "@/components/layout/HomeHashLink";
 
-const SECTION_IDS = ["about", "experience", "builds", "contact"] as const;
+const SECTION_IDS = ["about", "experience", "failed-experiments", "builds", "contact"] as const;
 
 type NavItem =
   | { kind: "section"; id: string; label: string }
@@ -15,6 +15,7 @@ type NavItem =
 const nav: NavItem[] = [
   { kind: "section", id: "about", label: "About" },
   { kind: "section", id: "experience", label: "Experience" },
+  { kind: "section", id: "failed-experiments", label: "Failed Experiments" },
   { kind: "section", id: "builds", label: "AI Builds" },
   { kind: "section", id: "contact", label: "Contact" },
   { kind: "file", href: site.resumePdf, label: "Resume" },

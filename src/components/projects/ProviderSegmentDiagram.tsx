@@ -1,4 +1,4 @@
-type Highlight = "portal" | "emr" | "none";
+type Highlight = "portal" | "vendor" | "emr" | "none";
 
 type SegmentRow = {
   id: string;
@@ -30,13 +30,13 @@ const SEGMENTS: SegmentRow[] = [
     route: "emr",
   },
   {
-    id: "org-admins",
-    segment: "Org administrators",
-    segmentDetail: "500 provider organizations",
-    channel: "Portal admin tools",
-    channelDetail: "Identity · user provisioning",
-    workflows: "Access management · onboarding",
-    route: "portal",
+    id: "hearing-aid",
+    segment: "Hearing aid providers",
+    segmentDetail: "Blueprint practice management software",
+    channel: "Vendor EMR integration",
+    channelDetail: "Bulk upload · new Blueprint release",
+    workflows: "Device billing · multi-patient invoices",
+    route: "vendor",
   },
 ];
 

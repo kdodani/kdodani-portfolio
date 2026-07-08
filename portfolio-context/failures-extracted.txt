@@ -1,0 +1,2551 @@
+================================================================================
+FILE: behavioural.pdf
+PAGES: 23
+================================================================================
+--- PAGE 1 ---
+Behavioral instances 
+Monday, May 06, 2024 1:55 PM 
+Conflicts 1. Physio extension app  • Pushback from solutions architect and senior PMs for claims regarding launching an extension feature asa majority of cases get approved anyway – so they are wondering why cant we just auto approve theextension upto a certain value? Problem with was it defeats the business purpose of the extension appas we needed case managers to be more involved in accepting or declining extensions becauseotherwise physios want to keep treating injured workers and wsbc is paying a lot in insurance.   2. Injured worker portal  • Scope of MVP1 wasn’t well defined/ technicality wasn’t clear. For example the user story was – workerscan submit one single-item receipt for reimbursement.  Confusion for devs and scrum master - What does this mean though? Just upload to front end? Uploadto backend into the CMS? Or mid-way upload to browser and store it there?   3. Injured worker portal  • New prototype was made available before devs were able to complete currents print goal devs prefermaking changes now before committing changes to current sprint goal. Scrum master's objection is itcould expand our scope and we get locked into it. Look to PO to make sure scope is not expanded.   4. Prioritizing internal processes over user experience  Flow A. for each category of expense, users are expected to start up a new form and choose a categorybecause internally that's how data flows. It would be manual work for case managers internally  5. Hiring a BE or not for pod  Who does the BE benefit? Po or dev? Some concerns – he said/ she said, who will the dev team go to forquestions? Po or dev?  6. Overwhelming requests from business stakeholders at sprint review  Tian and sannie derailing scope by adding new feature requests (add ai, add links to pages, etc.) to avoidburnout for CMs and doc uploader   7. Telus health disagreement with harm about vision of portal vision Swapping from bceid to forgerock because prov govt is taking bceid down is a good time to revisitcontract and negotiate terms -  Just swapping alone telus is charging half a million dollars. We are paying $50K per month for servicedesk and portal maintenance. This portal was initially built for wsbc and we don’t own an intellectualproperty. We don’t have access to the portal back end. We cant buy the portal because we don’t have the skillset that knows how to operate the portal. If weare using forgerock now is a good time to consider absorbing the portal or getting part access to ourproduct   8. What could be causing bugs post production  
+  9. Importance of failing tests for every new development  10. When do I need dev support? Is this something I can solve? Is it a config issue? Ask howard - Mps date of service/ fee codes issue  
+  11. Prioritization scenario based question  MPS – pxt application -> Introducing a new service (ability to request extensions digitally vs making a faxor phone call) vs improving user experience (implementing a pdf reader or AI data extraction to avoidusers entering redundant information) 
+
+--- PAGE 2 ---
+ 12. Tech debt is not always bad.  Introducing tech debt for bceid was being considered if we wanted total absorption of bceid/ telushealth by mps. Introducing tech debt now would be beneficial long term. This was happening at the timewhen working group was condering different options to implement bceid retirement – like for likereplacement of bceid with forgerock, wsbc taking on cpr and onboarding/ registration, eliminating telusentirely by housing artifacts, user resources etc.     13. Challenging experience Working on products that you have no access to. As a new po at wsbc protocol is to work with and getacquainted with the product but with telus health there was no access as it was built by them for wsbc.Used video, spoke to stakeholders, created ….   14. Using simpler design and workflows as angular was slowing things down. A lot was being spent for very little work done. All projects were running behind schedule. Spent $600kfor 4 screens for wor (a lot of it was spent on upgrading angular versions for security purposes).  Toavoid that, POs and PMs along with designers to build designs that are simple. Or use a hybrid approachbetween waterfall and agile where story points for every user story are estimated before hand. To bemore pro-active, use developers and designers at the time of discovery for pxt forms portion (build newweb forms or use doc uploader). All this while an enterprise level conversation is going on about movingaway from angular. We need something where there one block of code that connects to differentdatabases vs devs coding every element out (angular)   15. Had to immediately cut the scope down at the time a dev pod was made available in 2 weeks (at leastone month earlier much earlier than anticipated) Issues with that – back end work, architectural designs weren't ready, telus/ vendor dependencies – stillin conversation with telus for integrations and work required on their end  Considerations – what front end work could start for development that wasn’t dependent on back enddecisions, how could scope be narrowed without compromising on user experience/ benefit andbusiness value, scope couldn’t be too small so that the pod would only need 2 weeks to complete andthen they had no work   16. Potential impact on bceid project  To reduces costs paid to telus by $145K, made cosmetic changes to authentication call and no structuralchanges. To do this we designed the solution that had minimal impact or changes for vendor in terms ofintegrations that needed to build (telus). We emulated the bceid call and passed on the same tokens asbefore.   17. What has been challenging as PO/PM? Context switching, back to back meetings – but time with directors is hard to get so how do you makesure  youre not wasting time and still drive conversations well    18. Working with an experienced/ senior team helps anticipate problems and mitigate them. See examplebelow   19. Would each of the button below one front end project or multiple ones? Would each button need aseparate app? For some team earlier they assumed they could have 1 solution but they failed securityand that delayed the project by 1 year (ask william dev on pioneers this) 
+ 
+20. Design process / rationale  We wanted minimum screens to be built out leveraging existing ux/ui. Initially design/ flow wasbuilt out differently where providers needed to enter injured worker info after choosing requesttype for each service they requested (as follows)  
+
+
+--- PAGE 3 ---
+   
+ So screen 2 would need to be built out/ linked to 6 times   Instead we moved screens around for the provider to first enter injured worker information nomatter what the request is. This was we build it out only once, better user experience, providerscan add multiple requests for one single claim without having the need to keep entering info forsame worker and the injured worker information can be validated before a provider goes throughall the steps while requesting a service (as follows) 
+ 
+
+--- PAGE 4 ---
+21. Increased scope of project when it aligned better with business objectives  We increased the scope of the provider expansion project by introducing screening questions andthe provider invoice api (that included the nature of the contract providers have with wsbc) forthe following reasons: • The screening questions would educate providers on which service/ program to choose whichwould reduce the possibility of errors and redoing their request later on  • The above would help wsbc qa department  • The api would ensure only the services a provider has signed up for would show as valid options tochoose from • This scope change would only add to front end development and nothing backend would change(cms or database related). This is treated as an onboarding tool for new providers  • The api already exists and we only need to expose it to the tool  
+
+
+--- PAGE 5 ---
+ 
+• Michael was informed pretty late that he was going to be a full-time architect on the providerexpansion project, which means he didn’t get the chance to create the entire architect for theproposed solution. So we wouldn’t be able to go to sys test by end of oct which would impact ourtimelines and target launch date. • Right now security team is swamped, so everything is  uncommitted. What helped me here is tony(experienced dev well versed with doc uploader and environments). He suggested to have dev envw/o threat model ready. 
+Prioritization example -  Form 6 was implementing a body map for injured workers to pick and choose area of injury.Stakeholders thought this could be useful for providers too for the provider extension app (60 daysrequest). But this would not only increase the scope to translate that image as info for case managersbut also it didn’t make sense for providers as injured workers may or may not know what the area ofinjury is (what it is called in medical terms). But providers should know it and it is not adding any valuefor them. Something as simple as text box should suffice for phase 1       Example of where you used data to make product decisions  - we were debating launch of two features: call back request and ping feature. Goal of call back was tostreamline communication and service for physios. Goal of ping was if a request in stuck in pending formore than 1 week, providers can ping a cm for more info as to why it is stuck. We used data to de-prioritize the ping feature as most request on average were resolved within 3 days from the date ofsubmission. So most requests we actually not stuck in pending for too long for the ping feature to bevaluable. Decided to experiment with the call back feature  instead so that case managers have thediscretion to call back based on the reason providers have requested. But if providers have questionsabout payments etc. They should be re-routed to call center as this doesn’t need CO input. This toolwould implement screening questions and branching to avoid tasks that have nothing to do with CMs toreach them.   this shows how many PT extension requests are per day of aging.  I've grouped the requests by the yearthey were submitted and it's actually sort of encouraging.  The proportion of requests are that resolvedwithin 3 days of submission has increased.  Caveat: still trying to verify whether any of this includes faxesrequests... my feeling is it doesn't but it's hard to tell. The numbers you see in this graph are: thepercentage of requests resolved in Y number of days that year and the absolute count of requestsbeside it  This data also shows how 27% of requests get resolved on the same day. This is concerning as we arentsure if CMs arent looking at details before approving these requests. This is a problem because we wantCMs more involved/  
+
+
+--- PAGE 6 ---
+ Questions to ask at PM interviews • How does funding for projects work at your company? Through ideas or financials such as ebitda,npv through sensitivity analysis? • How frequently does a PM need to acquire funds  
+Impact I made -  1. Improved research questions and surveys. Provider Segmentation - Miro Though discovery we identified that the pxt app is not being used by physiotherapists but their officeadmin. But surveys were filled out by physiotherapsists. So there was a bias in survey results as when ascore is poor and they are dissatisfied with wsbc, we arent sure if they are dissatisfied by the contractterms (poor rates) or dissatisfied with the tool itself. We don’t currently ask on the surveys for roles thatare filling out the surveys. We don’t know who actually fills the survey out. When they say responserates are poor, we don’t know responsiveness on what is poor.   2. In future discovery through focus groups, surveys, - important to note about physiotherapistsinformation sharing preferences. This would help to design better web forms that can proactivelyhelp capture effective information for case managers For example  • Physios don’t want to fill out functional abilities on the web form. They want to be paid more forthat • Clinics arent comfortable in sharing other info like what is the reason for delay in treatment. Forthis, patients need to give consent. They would rather wsbc reaches out to patients directly.  We don’t have enough research on this    3. What is the level of self serve that providers would enjoy with forgerock implementation? Do theywant to be able to grant and revoke access by themselves?  This would help make decisions on vendor management and get rid of them if required asproviders will have more control on their experiences and wsbc wouldn’t have to pay telus forpoor service. We already have evidence that telus is a poor vendor but we don’t know clientimpact.  questions like how often are your calls redirected from telus to wsbc. How often are yourquestions not answered by telus. Telus' helpdesk usually answers all provider questions, but wedon’t follow up with surveys or feedback on service performance.   4. Improved data tracking and measuring performance metrics Provider expansion measures.docx 
+Working with devs  • At tsbc preference was for PRDs • But at wsbc, devs preferred high fidelity prototypes as there are challenges with prd versioncontrol, stagnant documents. Version control is easier with prototypes, can socialize the ideabetter, changes are dynamic. 
+Examples of smaller use cases that were deprioritized-  1. Ping feature  2. Pdf conversion/ reader to auto-populate web form  3. Requests without a claim number. Should be providers be allowed to proceed with making arequest without a valid claim number  4.  
+How do you respond to team B needs your devs? - think of how the healthcare pod was looking at embedding cms devs into carebears     How do you as PO respond to tasks that show up on your backlog that originate as part of the productbacklog? For example security related tasks or software being deprecated? How do you use POdiscretion here?      
+
+--- PAGE 7 ---
+Negotiating with designers to build new design components.  
+ As po I wanted something more cleaner, like linkedin requests where the character counter in inside thebox on the bottom right hand corner as 90/100 and keeps reducing from there. But this would needdavid to create a new design component as a template doesn’t exist already. Decided to deprioritize thisas was not critical to the project, no other projects probably see value in this right now and my projectdidn’t have a lot of open text fields.  But if there are other bigger projects that were form heavy that would benefit from it, it is important tohave that. 
+Building design artifacts with david – for multiple reasons  • Easier for product to communicate with devs and BE for user stories  • More effective for devs as visual cues into functionality  • Artifacts for design so when we do scale the product out to other provider types, we can reuse most of this  • ux-demo.online.dv.worksafebc.com/UXGUIDES/guide-errorhandling.html 
+  
+ 
+
+
+--- PAGE 8 ---
+  
+BCeID  • Shipped an enterprise authentication tool using SAML authentication enabling fast authorizationchecks at enormous scale while maintaining a flexible model that can be adapted to even the mostcomplex use cases. Built a role-based access control with other features such as SSO, MFA, usermanagement and self-serve (forgerock implementation) 
+Is there a product that you can think of, if you could freeze time, and work on it with your team more,what would you change about it? In the context of the same product goal/ business goal • Design • Features/ function • Implementation •  
+Different orgs have different processes and workflows to do product Tsbc didn’t have a r&d/ experience team Wsbc had a very dedicated team. It was easier for me as a PM to shape experiences and build to mystrengths, show my impact by improving surveys and defining goals of product/ teams  
+Can you think of an example of when you have interacted with a bunch of PMs and you realize a system/product is too complex but everyone made all the right local decisions and yet together they are toocomplex and so you've had to revisit the system.  
+Can you think of a time when you thought you could ship a product really fast but then realized youcouldn’t and had to pivot?  
+Helped PMs develop pods by taking an active part in recruitment  • Mistake I made at tsbc was, candidates didn’t have long term plan for product or to be in it • Structured questions to test real day to day product experiences  
+
+--- PAGE 9 ---
+How else did you improve research at WSBC? In second round of discovery removed a control for that version of prototype to see if users missed it,didn’t care for it, wanted demand for that feature 
+Think of a time when you took an idea and socialized it  Innofest sep 2024 – Death to pdfs – project InfoX   
+Give a brief description for your idea  
+We want to use data-sharing APIs and standards to digitally exchange information with health care providers.  Thiswould require building robust internal systems that allow for rapid API design, development, testing and publishingwith the goal of seamless API integrations with EMR vendors – amongst other possible solutions. 
+ 
+What is your vision for your idea 
+Whether we create our own standards and APIs, or adopt industry ones (for ex: Jane), we envision a data-sharingecosystem that: 
+• Frees up capacity for WorkSafeBC developers by eliminating redundant, manual and complex internal backendsystem integrations while also reducing dependencies for API access • Makes it easier for EMR vendor developers to integrate with our APIs • Inspires the confidence of health care providers by being reliable, secure, and tightly integrated with their existingprocesses, • Improves the decision-making capabilities of WorkSafeBC by creating a rich and dynamic data landscape, • Supports the recovery and RTW of injured workers by ensuring that information about their care and claim iscurrent, accurate, and coordinate between WorkSafeBC and health care providers. 
+ 
+ 
+What problem will your idea solve? Which stakeholders are affected? 
+For InnoFest, our team will focus on where our main interests and expertise lie - health care providers. However,benefits of this idea would expand beyond that. Our goal is to test this idea with PDF forms pertaining tohealthcare providers (physiotherapy) and if successful, eventually expand to other major stakeholder groupsincluding employers and injured workers. 
+ 
+Every year, more than 20,000 health care providers rely on over 150 forms to send WorkSafeBC information aboutthe injured workers they treat.  Providers download these forms from our website in PDF format.  Oncecompleted, providers submit over 600,000 of them per year to WorkSafeBC by website upload, fax, and evenpostal mail.  This is despite the challenges that WorkSafeBC and providers have with forms completed andsubmitted in this manner.  
+  
+PDF-based forms create a constellation of problems that include - 
+• Highly complex to integrate PDF forms and their contents with databases and other applications, • Data that is “locked-in” on the PDF, inaccessible to data analytics, • Lack of version control, resulting in out-of-date forms circulating and incomplete forms being submitted, • Limited interactive and dynamic features such as real-time data and form type validation, auto-completion, andbranching logic, • High sustainment costs of creating, updating, and storing PDF forms. 
+ 
+What are the biggest benefits of your idea? 
+Our idea will unlock the full value of the data and information that are currently 
+  
+For WorkSafeBC - 
+• Robust internal systems and data exchange standards making API integrations easier for external partners such asEMR vendors • Cleaner, standardized data - Data collect by API has passed validations, saving data cleanup and data prep tasks • Enhanced data analytics - Incoming data is well-structured and immediately ready for analysis, enabling faster andbetter decision-making 
+ 
+For health care providers - 
+• Improved confidence - APIs help providers to submit and receive complete, correct, and current information toand from WorkSafeBC, reducing phone calls and assuring payments, • More efficient business processes - By integrating data-exchange APIs or standards into their clinic software,providers can use their usual in-clinic workflows when seeing and reporting on WorkSafeBC patients. 
+ 
+For workers - 
+• Can focus on recovery and RTW - workers will no longer need to fill in nor suffer missing information between theirprovider and WorkSafeBC, • Receive better care - workers’ health care providers are empowered with more and current information abouttheir claim and clinical status. 
+ 
+Which categories apply to your idea? 
+
+--- PAGE 10 ---
+• Eliminate pain points  • Free up capacity with purpose • Enhance knowledge sharing • Other 
+ 
+ 
+Who from your team will participate  
+Howard, Linda, David, Taric? 
+ 
+Additional comments 
+WorkSafeBC is far behind the times making it difficult for providers to work with us, old-school PDFs being one ofthe many problems. While InfoX’s vision is to create a new data exchange standard for healthcare providers first,this will prove as a good first step to address a corporate problem that WorkSafeBC is a burden to work with. Wewant to be a preferred choice in the future.  
+ 
+How did  you make sure you're mitigating risks of delay in project and running out of funding beforeyou've built at least major/ most useful components of the project.  • we looked to structure the build so that parts of the product are built only when resources areavailable for sure (example cms) • But cms discovery had started earlier already as not the entire pod capacity was required  • Met with cms POs and PMs to anticipate roadblocks and mitigation strategies (for example – nopaper forms were involved for cvpts or 60 days. This made the build easier from cms side, noradicle changes were required for service plan changes). Also got a sense of cms discovery andbuild timelines. Understood cms models would need to be changed to we became proactive byusing fake data in parallel to cms discovery • Built vertical slices  • Met with devs frequently to understand implications of prototype and what parts would be mostcomplicated or take long to build. Given that understood any that needed uploaders would behard to build, so tried to find ways we could reuse code from other projects such as WOR. Gotdevs from both projects to conduct KTs  • Re-did slices so that dev can be completed in time, condensed forms so that there is no additionalbuild and less dependency on cms 
+Impact you've had as a product person on the culture of your team  • For innofest got most people from healthcare pod to put in ideas that were not only for orgbenefit but also would benefit their projects and they would have some outcome to take withthem if it went forward. • So whichever idea would win would take the healthcare pod forward and get visibility – buildingground up support for these projects and get early feedback before we even win any funding. Sothat when we do get funding we can hit the ground running  • How do you take an idea and start socializing it.  • Meeting with new devs on the pod and wsbc (joanna zhou), giving product demos and explainingwhat we're doing, why we're doing it • Ideas submitted: ○ Zak (BE) - intelligent project planning Idea view | Planbox ○ Khush, howard, linda (PO and SMEs) - InfoX and data sharing systems Idea view | Planbox ○ Madhu (dev) - local angular testing Idea view | Planbox • Negotiating with designers and experience team to reduce overwhelming amounts of text andcleaner designs, display options. Got pushback about other products in the company are using thisway of doing it and this is pretty "standard" - idea is to be experimental and have your product bethe new precedence in the company 
+Most problems don’t require formal product discovery  • Think of examples of this and how you failed by wasting resources  
+
+--- PAGE 11 ---
+How do you make sure most value is built out before you run out of money • Importance of slicing. Went through multiple rounds of this with devs and business andarchitects  • Vertical slicing vs horizontal  
+Usability improvement examples  Most users already know claim numbers. It is too much text to have at the very top. Put in a tooltip nextto claim number instead   
+  Sub text below wasn't adding a lot of value. Page looked chunky. Removed sub-text 
+ When they say yes they have more info to share, the next field shouldn’t be optional – otherwise userscan just select no instead 
+
+
+--- PAGE 12 ---
+ 
+ 
+During user stories planning and estimation, what happens if your devs arent on the same page aboutthe effort required for a specific story? For example  • Asked whoever voted 2 why do they estimate so little? • Get devs to talk and understand nuances, find a middle ground  
+  
+For features that don’t need to change, you still need an acceptance criteria for devs to be on the samepage. For example for track requests, although there are no enhancements happening in slice 1, it isimportant that feature still works as it currently and it should not break as it will be made available forproviders to use in the first release. This is important because we need dev capacity and time to test/make sure track requests still works in QA. Users will be able to track requests like they currently do 
+Being proactive about future roadblocks -  Pxt was going to be transferred from pioneers to carebears after the first slice. To reduce friction  • We got madhu and tony from carebears to shadow  • Did some KT sessions 
+Example of user stories and mentioning what should be allowed but also what should not be allowed  • While doc uploader takes file types such as docx, pdf, jpeg etc. Our application would not acceptany document formats  • Need to mention that in user story 
+
+
+--- PAGE 13 ---
+ 
+Example of how user stories were becoming confusing for devs  • by using the word upload, devs were confused that an api would be involved but the upload wasonly storing in memory/ session data/ nothing was being transferred to backend till they hoitsubmit  • So to avoid confusion we re-wrote use stories to say stored in memory  
+ 
+Received pushback from devs about accommodating for heic file types as doc uploader currently doesn’thave it so to add it would be some effort. Devs were worried this would be blocker.  • Got tony (dev who worked on something like this on WOR) to speak to it • Tony clarified there is an existing library to do that and function is pretty simple, he pasted the linkand function in chat for devs to be at ease upload-receipt.component.ts - Repos (azure.com) • Re-emphasized the business need for it (how many providers use an iphone to click photos andupload forms) Qa has a web application from common engineering (simulator) to test heic file types for use case ofwhen providers take photos of pdfs and upload them  Kobiton 
+Devs question – where do we get the colour and fonts from? Wsbc library or other methods? • There is probably embedded css and html source  • Need to confirm with UX team 
+Devs preferred splitting stories up especially when there is heavy backend work • For example when a user submits a request, frontend UI is not too much  • But backend needs a lot of stuff to happen in the database and then storing information, theywanted to have this as a separate story and then estimate it  
+Reducing the number of steps it takes for users to find relevant forms  
+
+--- PAGE 14 ---
+• Merged the following navigation pages while still making sure it serves the purpose ofstreamlining user experience and educational goals (know your contracta nd what you arerequesting) 
+ 
+Finishing issues with designers  • Tooltip not positioned well • Repeating contact numbers inside tooltip and bottom of page making the tooltip very long 
+
+
+--- PAGE 15 ---
+• Padding issues between text and submit button 
+ 
+Example of detailing required so that design is cleaner  • in our database there seems to be a provider and payee name AND provider and payee number.in some cases these may be different too. do we know which field we are exactly retrieving foreach of these fields here? • SY ProviderProfile-DB and sample JSONData. We need to look at the code and see which field isbeing used.  I think PayeeName is the one being used. Need to check. • {"payeeID": "00011", "payeeName": "GARY ALTON ORTHOPEDIC SOLUTIONS", "type": "MSP",  
+•   "organizationNames" : [{"type": "Legal", "name": "GARY ALTON ORTHOPEDIC SOLUTIONS",}, 
+•   {"type": "Trade", "name": "GARY ALTON ORTHOPEDIC SOLUTIONS",}],  
+•   "addresses": [{ "addressLine1": "684-61178 18 IGI", "city": "SURREY  BC", "country": "CA","postalCode": "V3S5K7", "primaryIndicator": true, "addressType": "Mailing"}],  
+•   "phoneNumbers": [{"areaCode": "778", "phoneNumber": "1476767", "primaryIndicator": true}]} •  
+•
+• Current PXT application uses "payeeName" from the JSON. •  the payee number is associated to the users login userID by the user themselves right? yes 
+
+
+--- PAGE 16 ---
+Working with other product managers/ product owners  • Requested mimi (po for cms) to be part of her discovery for case managers which is otherwisedone in isolation. Motivation is to not step on her toes but to make sure we get what we want outout of it as well and realign on product goals without compromising on quality. Both teams shouldbe on the same page to maximize outcomes and to make sure nothing is cut short for eitherproduct I.e. pxt and cms  • If I want to change the workflow that impacts other products as well, how do you manage frictionor pushback from internal stakeholders especially other POs? Do discovery, try and explain thewhy, drive value for each group. For example by moving the injured worker page up font, this hadalmost no benefit to designers, but for developers this meant they wouldn’t have to connect theinjured worker form to 6 different pages but instead just make one connect from injured workerpage to type of service page, for security team this meant earlier and upfront validation of theclaim number, for users this meant better user experience because previously they would need togo through almost half the flow and then enter claim information (if the claim info was wrong,their effort would basically be wasted). The idea is to create a new precedence for your productinside your company.  
+Conflict with designers  • Andrew: doesn’t do version control of prototypes. For example two versions of the form had thesame version number, he published the wrong one with disabled button not allowing the users torequest the right thing. This resulted in invoicing issues in cents per user but compounded quite alot.  • Have to double check his work, set repetitive meetings, delayed work, translate requirements overand over. Slowly the project and team down. Had to create word docs/ miro screenshots of whatdesigns I wanted to communicate with devs and BEs • No support from my manager. • Did a live working session of 1.5 hours where I had him make changes and publish them to makesure they are done 
+Project that you are proud of  - infoX. Project that had nothing to do with my actual job but I found value in it. I came across researchthat was done 2 years back in 2021 but it never got funded. I came across pain points in my project anddecided to re-pitch it. I took a hypothesis of using web forms instead of pdfs would be of immense valueto the provider network in BC. Started to socialize this idea with multiple groups of people likedevelopers, smes, solution architects and re-define the value proposition. Did additional research andvalidation to elevate initial pitch. Moved from angular web forms to apis and integrations with existingprovider emrs to integrating with open source emrs such as oscar. This would mean  • providers wont have to leave their general workflow to file insurance claims  • Providers would adopt a free open source emr software  • Ease of work for emr developers  Created a business plan to address anticipated pushback of what incentive do emr developers have towork with worksafe bc. The plan was to create demand through providers. Oscar was built by mcmasteruniversity and approx 500 providers in the province were already using mcmaster emr software. Wewould build a proof of concept with them and build social acceptance and eventually have providersinfluence their emrs to work with wsbc.  Proud of it because even though we didn’t win at innofest we socialized the idea enough that it gotvisibility and engagement (votes) for the project to re-pick up. Somebody from the innovation councilreached out and decided to make a formal pitch to the council with our research and we won $80K tobuild a proof of concept for a project that would define the nest strategic direction for wsbc. 
+ 
+Incident handling 3 levels of incident handling -  Level 1 – client care/ customer support  Level 2 – tech support  Level 3 – POs and devs   
+
+--- PAGE 17 ---
+But howard introduced a level 2.5 which is basically just the PO. We don’t want to escalate to devsunless absolutely sure it is a problem they need to solve. This would mean pulling incidents into sprintsand dev time is expensive.   For example -  the following incident didn’t require any dev support. It was an error on the user's partwhen they requested the wrong date while re-filling the web form at the time of making the request.We checked Unified Navigation App | ServiceNow (service-now.com)  And looked at cms production to see the actual submission that was made. Looked at the xmlsubmission to cms and a copy of the submitted pdf and web form. While the pdf had the right date, theuser entered the wrong date on the additional details bit of the webform. Howard followed up with theclient. But this request was approved by case manager, so along with following up with the client, followed upwith the case manager too to make sure they were aware and if they approved the actual requested enddate.   
+ 
+ 
+
+
+--- PAGE 18 ---
+ 
+Integration team was swamped so we had to meet with devs and solutions architect to break down theint story so that the int team can take smaller stories into iterations broke the following story down into2 -  Higher priority one story is points 1 and 2  Followed by 4 and then 3    
+ 
+ 
+Problem for physio extensions - Harm spoke with Gabi this morning, she said that this year Physio is ourbiggest health care spend ($80 million out of the total $500 million) and physio extensions are a bigpiece of this. So, I think that we should shut the door on automation for now - we do need casemanagers to review each one.  Why this is a problem – case managers arent reviewing requests coming in. Most are just skimmingthrough it and approving requests. Wsbc is having to pay a lot in insurance because of that. 16% ofannual spending   
+Stats: 
+• The final status for a physio extension requests are: ○ completed – a decision has been made ○ duplicate – claim owner determines it is a duplicate ○ Revised Request Required – claim owner determines it is missing information andis meant to inform the provider to resubmit with the required info. 
+No. Final Status Count 
+1 Completed 133,390 
+2 Duplicate 5,017 
+3 Revised Request Required 973 
+  Total 139,380 
+  
+• For cases where a decision is made (ie ‘completed’ status), there are actually 2 itemsto make a decision on …first one is physio extension and the second one is hydro(which may or may not exist depending on whether it can be requested).   Therefore,it is possible to have a decision for 1 item or 2 items.  The decision can be ○ Approve ○ Deny ○ Not requested – this was the workaround whereby ‘My Provider Services’ appearto request both physio and hydro even though hydro was not actually requested
+
+--- PAGE 19 ---
+(ie technical glitch in using MPS), this was a way for the Claim owner to say itemwas not actually requested. 
+Completed'Requests     
+No. Item 1 -decision Item 2 -decision Result Count 
+1 approve approve approve everything 109,693 
+2 approve     
+3 deny deny deny everything 9,123 
+4 deny     
+5 approve deny mixed approval (12023 + 36) 12059 
+6 deny approve   
+7 approve not requested approve with not requested (2435+ 4) 2439 
+8 not requested approve   
+9 deny not requested deny wih not requested (38 + 1) 39 
+10 not requested deny   
+11 not requested not requested not requested for everything 37 
+12 not requested     
+      Total 133,390 
+  
+What does all this mean …in terms of automation potential? 
+• Looks like 109,693/139,380 = 79% always approve…so is it worth automating thisapproval within guardrails (ie is there a way to queue out cases where we canpotentially deny today?) • Automation potential may be higher if system can detect duplicates well and if MPSusage is discontinued for this use case/glitch fixed. 
+  
+  
+@Poon, Howard, as an aside, happen to notice from the stats in an operational perspective,some claims owners are approving hydro only which was not the intent…but at least thenumbers are very very small 
+• #6 – denied physio but approved hydro = 36 • #8 – approve hydro only = 4  
+ 
+Dev scenarios   • Scenario – dev decides a story is not reday to work on in the middle of the sprint (william's tickethttps://dev.azure.com/wcbbc/IT-App-Delivery/_workitems/edit/778905 ) BE removed it from sprint but we had a story that is a stretch with 8 points so that will take up anyfree capacity/ therefore didn’t replace william's ticket with any other story 
+
+--- PAGE 20 ---
+Planning around carebear's freed up capacity. There was a concern that we wouldn’t be able shipeverything we had planned for by q2. To make that possible started looking for pods with additionalcapacity  -  Zak as BE for carebears let me and harm know that there is freed up capacity from devs of carebears andadditional funding of upto $100K In 2024 For year of 2024 for provider expansion $300K was approved. Of which pioneers devs will use 190K uptill the end of the year. Cms team is anticipated to use 60-80K. This is good because now simultaneously two pods can work on different parts of the project withoutconflict. As po I has prioritize what gets built out next. But this woiuld depend on how much capacity hasbeen freed up and which devs have capacity.   Planning and build/ budget scenarios • Pxt is going to shift hands from pioneers to carebears in the new year. Zak reached out tounderstand scope for carebears and at what point transfer was happening. In order to shipeverything we had in mind before running out of budget, zak suggested that carebears start worknow as he thinks devs on carebears has capacity. Depending on how much capacity they have wecan structure stories for the following situations  ○ If tony has capacity he can do the doc uploader for cvpt extensions ○ If it is other devs on carebears with capacity, they cans tart with other front end forms ○ If overall there is capacity can work on above tasks simultaneously  Risk with this – 2 sets of devs from different pods will work on the same code base . They could writeover each other and it could be more expensive.  finding ways to implement trunk based development. I and zak started writing out other user stories and then took them to devs of both pods.  
+In my xp recently, it has worked better for us to come to the table with Stories written and explained fromthe Product perspective. Then they can fill in the gaps with the tech perspective. It saves most of their time. 
+  
+Sometimes devs are better are story writing and want to be involved from an early conceptual level - but Ihaven't seen that the case here. It just makes them confused and they don't enjoy sitting in the meetingwatching the Story being written and the PM/PO/BE talking and figuring things out. 
+  
+Most challenging part of provider expansion project  instead of updating existing data tables within CMS that captures all the new info from our new forms,we believe creating a new data table on our end would be more beneficial so that we only retrieve therequest decision and rationale from CMS   • Question for you - To do the above, how will mapping our datable and CMS occur? Will it be claimnumber, provider ID, cms reference number or a combination of one or more of these values?   Michael  
+Currently, the request is submitted through DocUploader to CMS, but the request information is notsaved in the online side. For this reason, we have a sensor that reads CMS HUB DB and surface up therequest information (submitted request and approval information). This information flow won't bechanging. 
+  
+
+--- PAGE 21 ---
+With new request types, current online DB tables will be used mainly to store the approval informationfrom CMS. New table will be created to capture the request information for different request types(same information will be submitted to CMS as well). Based on my understanding, there could bemultiple requests with claim# & provider ID combination, so we need a link between what we havecollected online and what CMS has approved.  
+  
+Thought about few options. Regardless of the type, my assumption is all requests are going to be PDFsubmission to CMS. This means CMS Reference# will be returned and we can link RequestSubmission(online side) and ProviderRequest/RequestItem (CMS side). Or we can useINCOMING_REFERENCE_NUM, but it requires additional changes in CMS.  
+  
+While CMS change hasn't been explored yet, I am not sure if we can address my question at this point.Maybe we can meet and discuss. 
+ Mimi can you send me a copy of what CMS sends to the portal (ie XML you get)...just want to take a look atwhat we currently supply.  The reason I ask is that we do have a request ID whenever a request iscreated in CMS.  It doesn't show on any screens but it is stored in the database and it is a uniqueidentifier for the request....we could contemplate sending you this ID (we probably already send it toyou in the existing  xml interface...that's why I wanted to take a look)  Michael  
+CMS Listener calls ICCDataSweeper to submit a request. Currently, endpoint returns below XMLincluding CMSRef#. 
+  
+XML <?xml version="1.0" encoding="utf-8"?> <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">       <Body>         <SubmitDocumentResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://worksafebc.com/ICCDataSweeperMessages">           <ReturnCode>1</ReturnCode>           <ReturnDescription>ReturnDescription1</ReturnDescription>           <ReferenceNumber>ReferenceNumber1</ReferenceNumber>         </SubmitDocumentResponse>       </Body> </Envelope>   There is no API interface for the decision data. Sensor is retrieving PXT from CMSHUB and updatedirectly to the Online DB. Current online DB structure is Information Viewpoint - Overview. Yes, requestID is unique and if we can get the request ID upon submission, it would work for us.  Either we can create a new endpoint in ICCDataSweeper for ProviderRequestSubmission or online sidecan pass unique identifier which can be stored in the Request table to be surface up later, so we canlink.  Mimi 
+maybe...I'm just thinking that for all 7 use case, the pattern should be consistent going forward (I'm not surewhy physio extension use case should be different than the others)....but it's more of an architecturalstrategy between you and Chitanya when we get there.... 
+  
+I should clarify...either the old way or new way...just saying it shoud probably be consistent 
+  Michael  Yes. Main reason is we used DocUploader to submit PhysioExtension, which doesn't store what was capturedin the Online side. The PXT application simply retrieve what was submitted and decided, so DB tablestructure is very similar to CMS table structure. However, more types, we can't use this pattern becausedifferent request type has different data model, that's why different approach is required. Moving forward,we should do it with a new way as it is more flexible. What we can surface up from CMS would be onlydecision data, no need to surface up what was submitted.  Mimi 
+Thanks for the background.  
+Having similar dilemma on the CMS side as well....how to structure requests in the database to be moreflexible and consistent....will get there once I get an better understanding of the problem space and ready to
+
+--- PAGE 22 ---
+start thinking on design.    Michael  On Friday, I discussed the high level approach with Chitanya. Online side passes an unique identifier when therequest is submitted. The unique number will be stored in the request table in CMS, so it can be surfaced upand linked. I just wanted to post here, so we can be on the same page.  Mimi let's reconvene during design phase.  If portal is already in design stage, then let's have a group meeting (plsinvite Chitanya & Rajat from the CMS side).  Reason I say this is that these request don't only come from theportal....the physio extension come from fax/mail so needs to understand wholistically how all these requestswill be handle in the future.  Best to discuss in group setting. 
+Negotiating with other POs 1. With howard (for tony and madhu as smes for pioneers) 2. With farhad – security vulnerabilities came up that would impact story points that were allotted for pioneers devs for PRQ. Either his project would need to be de-prioritized mine  3. With mimi to reduce scope of discovery on her end – carebears had already done the discovery that spanned months and we had defined the scope for mimi's team for discowhich was limited to the cms wizard. She wanted to undertake discovery of her own going over how the product has evolved. A few concerns with this approach  a. There was no cap on her end about when she would finish discovery ("I don’t know what I don’t know"). This was risky as we had only $300 worth of budget left for theforeseeable future for this product. And carebears was sitting to start work. Until discovery was done, it was hard to know for sure what cms would be ready for so thacarebear devs can build that out on the front end. Cms team wasn’t ready to commit to an end date. b. By increasing the scope of the discovery on their end, we would digress as we would start to get feedback on provider facing/ forms that historically didn’t sit too well wCOs but it was imperative from a provider perspective  i. For example COs didn’t find the need to have forms built out for interruptions. They just wanted providers to call instead. But this had already been validated byproviders and they saw it as important so that there was written record for it   Mimi's argument was – depending on her discovery there could be an instance where COs would like to share more information with providers than has been prototyped. Thiss coresult in changes in the UX/UI of the product   What we wanted -  1. Our PO be included in their discovery to guardrail it  2. Reduced time and scope of discovery so that we can get to dev soon  3. We set the agenda for their discovery   How we did it  • We placed bets/ took risks on features we had strong inclination that would be built out by cms too (for example view details. How this would look like would only be slighltydifferent) • Got cms team in touch with business sponsors re-emphasizing the need for this product and that we wont have any money left if we lose it this time. This project had to beaccomplished in 2023  • Harm's way to negotiate - In this scenario, I have the luxury of being senior and can negotiate with Taric first - he understands the timeline and cost constraints, but I need tounderstand if he is letting her do this approach to keep her happy.   As peer to peer, it’s a bit more challenging because we are asking for support - even though it is inefficient support. So, if it were just you and Mimi, you’d have to show her tsteps that were taken to validate with case managers and providers and show how we’ve already narrowed and prioritized the scope.  What should have happened -  As we knew there were CMS dependencies, mimi should have been part of the initial discovery sessions. If not that, there shouldve been a KT session of the initial discovery to her 
+Getting buy-in for usability/ better UX features – non functional features In my opinion there is not a single direct answer. Have to understand hierarchies and motivationsbehind this/ thought processes and give-and-take. Be ready to offer first and then ask. Understandincentives  1. Depends on whose buy in you need. • Somebody who needs to put in money/ directors/ sponsors/ cross-team leaders -  
+
+--- PAGE 23 ---
+• Other POs -  • Engineering leaders/ Devs -  • Customers - 2. Where has the feature request come from – if it is someone higher up on the ladder or lower 3. Demos 4. Evidence from other products/ cross domains. Industries/ products with similar goals/ outcomes 5. Heatmaps 6. Internal sponsors/ ambassadors for the feature/ product/ idea for example – error validationartifact, font size for disclaimers  
+Mimi trying to squeeze in carebears budget to complete cms discovery  • Took 1.5 to complete discovery – shouldn’t have taken that long  
+
+================================================================================
+FILE: updated behavioral experiences.pdf
+PAGES: 120
+================================================================================
+--- PAGE 1 ---
+Behavioral experiences
+Conflicts
+   Physio extension app
+Pushback from solutions architect and senior PMs for claims regarding
+launching an extension feature as a majority of cases get approved anyway –
+so they are wondering why cant we just auto approve the extension upto a
+certain value? Problem with was it defeats the business purpose of the
+extension app as we needed case managers to be more involved in accepting
+or declining extensions because otherwise physios want to keep treating
+injured workers and wsbc is paying a lot in insurance.
+   Injured worker portal
+Scope of MVP1 wasnʼt well defined/ technicality wasnʼt clear. For example the
+user story was – workers can submit one single-item receipt for
+reimbursement.
+Confusion for devs and scrum master - What does this mean though? Just upload
+to front end? Upload to backend into the CMS? Or mid-way upload to browser and
+store it there?
+   Injured worker portal
+New prototype was made available before devs were able to complete
+currents print goal devs prefer making changes now before committing
+changes to current sprint goal. Scrum master's objection is it could expand our
+scope and we get locked into it. Look to PO to make sure scope is not
+expanded.
+   Prioritizing internal processes over user experience
+Flow A. for each category of expense, users are expected to start up a new form
+and choose a category because internally that's how data flows. It would be
+manual work for case managers internally
+Behavioral experiences
+1
+
+--- PAGE 2 ---
+   Hiring a BE or not for pod
+Who does the BE benefit? Po or dev? Some concerns – he said/ she said, who will
+the dev team go to for questions? Po or dev?
+   Overwhelming requests from business stakeholders at sprint review
+Tian and sannie derailing scope by adding new feature requests (add ai, add links
+to pages, etc.) to avoid burnout for CMs and doc uploader
+   Telus health disagreement with harm about vision of portal vision
+Swapping from bceid to forgerock because prov govt is taking bceid down is a
+good time to revisit contract and negotiate terms -
+Just swapping alone telus is charging half a million dollars. We are paying $50K
+per month for service desk and portal maintenance. This portal was initially built
+for wsbc and we donʼt own an intellectual property. We donʼt have access to the
+portal back end.
+We cant buy the portal because we donʼt have the skillset that knows how to
+operate the portal. If we are using forgerock now is a good time to consider
+absorbing the portal or getting part access to our product
+What could be causing bugs post production  
+   Importance of failing tests for every new development
+   When do I need dev support? Is this something I can solve? Is it a config
+issue?
+Behavioral experiences
+2
+
+--- PAGE 3 ---
+Ask howard - Mps date of service/ fee codes issue
+   Prioritization scenario based question
+MPS – pxt application   Introducing a new service (ability to request extensions
+digitally vs making a fax or phone call) vs improving user experience
+(implementing a pdf reader or AI data extraction to avoid users entering redundant
+information)
+   Tech debt is not always bad.
+Introducing tech debt for bceid was being considered if we wanted total
+absorption of bceid/ telus health by mps. Introducing tech debt now would be
+beneficial long term. This was happening at the time when working group
+was condering different options to implement bceid retirement – like for like
+replacement of bceid with forgerock, wsbc taking on cpr and onboarding/
+registration, eliminating telus entirely by housing artifacts, user resources etc.
+13. Challenging experience
+Working on products that you have no access to. As a new po at wsbc protocol is
+to work with and get acquainted with the product but with telus health there was
+no access as it was built by them for wsbc. Used video, spoke to stakeholders,
+created ….
+   Using simpler design and workflows as angular was slowing things down.
+A lot was being spent for very little work done. All projects were running behind
+schedule. Spent $600k for 4 screens for wor (a lot of it was spent on upgrading
+angular versions for security purposes).  To avoid that, POs and PMs along with
+designers to build designs that are simple. Or use a hybrid approach between
+waterfall and agile where story points for every user story are estimated before
+hand. To be more pro-active, use developers and designers at the time of
+discovery for pxt forms portion (build new web forms or use doc uploader). All this
+while an enterprise level conversation is going on about moving away from
+angular. We need something where there one block of code that connects to
+different databases vs devs coding every element out (angular)
+   Had to immediately cut the scope down at the time a dev pod was made
+available in 2 weeks (at least one month earlier much earlier than anticipated)
+Behavioral experiences
+3
+
+--- PAGE 4 ---
+Issues with that – back end work, architectural designs weren't ready, telus/
+vendor dependencies – still in conversation with telus for integrations and work
+required on their end
+Considerations – what front end work could start for development that wasnʼt
+dependent on back end decisions, how could scope be narrowed without
+compromising on user experience/ benefit and business value, scope couldnʼt be
+too small so that the pod would only need 2 weeks to complete and then they had
+no work
+    Impact statement] Potential impact on bceid project
+To reduces costs paid to telus by $145K, made cosmetic changes to
+authentication call and no structural changes. To do this we designed the solution
+that had minimal impact or changes for vendor in terms of integrations that
+needed to build (telus). We emulated the bceid call and passed on the same
+tokens as before.
+   What has been challenging as PO/PM?
+Context switching, back to back meetings – but time with directors is hard to get
+so how do you make sure  youre not wasting time and still drive conversations well
+   Working with an experienced/ senior team helps anticipate problems and
+mitigate them. See example below
+   Would each of the button below one front end project or multiple ones? Would
+each button need a separate app? For some team earlier they assumed they
+could have 1 solution but they failed security and that delayed the project by 1
+year (ask william dev on pioneers this)
+Behavioral experiences
+4
+
+--- PAGE 5 ---
+Michael was informed pretty late that he was going to be a full-time architect
+on the provider expansion project, which means he didnʼt get the chance to
+create the entire architect for the proposed solution. So we wouldnʼt be able to
+go to sys test by end of oct which would impact our timelines and target
+launch date.
+Right now security team is swamped, so everything is uncommitted. What
+helped me here is tony (experienced dev well versed with doc uploader and
+environments). He suggested to have dev env w/o threat model ready.
+Prioritization example -
+Form 6 was implementing a body map for injured workers to pick and choose area
+of injury. Stakeholders thought this could be useful for providers too for the
+provider extension app  60 days request). But this would not only increase the
+scope to translate that image as info for case managers but also it didnʼt make
+sense for providers as injured workers may or may not know what the area of
+injury is (what it is called in medical terms). But providers should know it and it is
+not adding any value for them. Something as simple as text box should suffice for
+phase 1
+Example of where you used data to make product decisions
+we were debating launch of two features: call back request and ping feature.
+Goal of call back was to streamline communication and service for physios.
+Goal of ping was if a request in stuck in pending for more than 1 week,
+providers can ping a cm for more info as to why it is stuck. We used data to
+de-prioritize the ping feature as most request on average were resolved within
+3 days from the date of submission. So most requests we actually not stuck in
+pending for too long for the ping feature to be valuable. Decided to experiment
+with the call back feature instead so that case managers have the discretion to
+call back based on the reason providers have requested. But if providers have
+questions about payments etc. They should be re-routed to call center as this
+doesnʼt need CO input. This tool would implement screening questions and
+branching to avoid tasks that have nothing to do with CMs to reach them.
+this shows how many PT extension requests are per day of aging.  I've grouped
+the requests by the year they were submitted and it's actually sort of
+encouraging.  The proportion of requests are that resolved within 3 days of
+Behavioral experiences
+5
+
+--- PAGE 6 ---
+submission has increased.  Caveat: still trying to verify whether any of this
+includes faxes requests... my feeling is it doesn't but it's hard to tell. The numbers
+you see in this graph are: the percentage of requests resolved in Y number of
+days that year and the absolute count of requests beside it
+This data also shows how 27% of requests get resolved on the same day. This is
+concerning as we arent sure if CMs arent looking at details before approving these
+requests. This is a problem because we want CMs more involved/
+   Design process / rationale
+We wanted minimum screens to be built out leveraging existing ux/ui. Initially
+design/ flow was built out differently where providers needed to enter injured
+worker info after choosing request type for each service they requested (as
+follows)
+Behavioral experiences
+6
+
+--- PAGE 7 ---
+Behavioral experiences
+7
+
+--- PAGE 8 ---
+So screen 2 would need to be built out/ linked to 6 times
+Instead we moved screens around for the provider to first enter injured worker
+information no matter what the request is. This was we build it out only once,
+better user experience, providers can add multiple requests for one single claim
+without having the need to keep entering info for same worker and the injured
+worker information can be validated before a provider goes through all the steps
+while requesting a service (as follows)
+Behavioral experiences
+8
+
+--- PAGE 9 ---
+   Increased scope of project when it aligned better with business objectives
+We increased the scope of the provider expansion project by introducing
+screening questions and the provider invoice api (that included the nature of the
+contract providers have with wsbc) for the following reasons:
+The screening questions would educate providers on which service/ program
+to choose which would reduce the possibility of errors and redoing their
+request later on
+The above would help wsbc qa department
+The api would ensure only the services a provider has signed up for would
+show as valid options to choose from
+This scope change would only add to front end development and nothing
+backend would change (cms or database related). This is treated as an
+onboarding tool for new providers
+The api already exists and we only need to expose it to the tool
+Behavioral experiences
+9
+
+--- PAGE 10 ---
+Behavioral experiences
+10
+
+--- PAGE 11 ---
+Behavioral experiences
+11
+
+--- PAGE 12 ---
+Questions to ask at PM interviews
+How does funding for projects work at your company? Through ideas or
+financials such as ebitda, npv through sensitivity analysis?
+How frequently does a PM need to acquire funds
+Working with devs
+At tsbc preference was for PRDs
+Behavioral experiences
+12
+
+--- PAGE 13 ---
+But at wsbc, devs preferred high fidelity prototypes as there are challenges
+with prd version control, stagnant documents. Version control is easier with
+prototypes, can socialize the idea better, changes are dynamic.
+Examples of smaller use cases that were deprioritized-
+   Ping feature
+   Pdf conversion/ reader to auto-populate web form
+   Requests without a claim number. Should be providers be allowed to proceed
+with making a request without a valid claim number
+   
+Impact I made -
+   Improved research questions and surveys. Provider Segmentation - Miro
+Though discovery we identified that the pxt app is not being used by
+physiotherapists but their office admin. But surveys were filled out
+by physiotherapsists. So there was a bias in survey results as when a score is
+poor and they are dissatisfied with wsbc, we arent sure if they are dissatisfied by
+the contract terms (poor rates) or dissatisfied with the tool itself. We donʼt
+currently ask on the surveys for roles that are filling out the surveys. We donʼt
+know who actually fills the survey out. When they say response rates are poor, we
+donʼt know responsiveness on what is poor.
+   In future discovery through focus groups, surveys, - important to note about
+physiotherapists information sharing preferences. This would help to design
+better web forms that can proactively help capture effective information for
+case managers
+For example
+Physios donʼt want to fill out functional abilities on the web form. They want to
+be paid more for that
+Clinics arent comfortable in sharing other info like what is the reason for delay
+in treatment. For this, patients need to give consent. They would
+Behavioral experiences
+13
+
+--- PAGE 14 ---
+rather wsbc reaches out to patients directly.
+We donʼt have enough research on this
+   What is the level of self serve that providers would enjoy
+with forgerock implementation? Do they want to be able to grant and revoke
+access by themselves?
+This would help make decisions on vendor management and get rid of them if
+required as providers will have more control on their experiences
+and wsbc wouldnʼt have to pay telus for poor service. We already have evidence
+that telus is a poor vendor but we donʼt know client impact.  questions like how
+often are your calls redirected from telus to wsbc. How often are your questions
+not answered by telus. Telus' helpdesk usually answers all provider questions, but
+we donʼt follow up with surveys or feedback on service performance.
+   Improved data tracking and measuring performance metrics Provider
+expansion measures.docx
+How do you respond to team B needs your devs?
+think of how the healthcare pod was looking at
+embedding cms devs into carebears
+How do you as PO respond to tasks that show up on your backlog that originate as
+part of the product backlog? For example security related tasks or software being
+deprecated? How do you use PO discretion here?
+Negotiating with designers to build new design components.
+As po I wanted something more cleaner, like linkedin requests where the character
+counter in inside the box on the bottom right hand corner as 90/100 and keeps
+reducing from there. But this would need david to create a new design component
+as a template doesnʼt exist already. Decided to deprioritize this as was not critical
+to the project, no other projects probably see value in this right now and my
+project didnʼt have a lot of open text fields.
+But if there are other bigger projects that were form heavy that would benefit from
+it, it is important to have that.
+Building design artifacts with david – for multiple reasons
+Easier for product to communicate with devs and BE for user stories
+Behavioral experiences
+14
+
+--- PAGE 15 ---
+More effective for devs as visual cues into functionality
+Artifacts for design so when we do scale the product out to other provider
+types, we can reuse most of this
+ux-demo.online.dv.worksafebc.com/UXGUIDES/guide-errorhandling.html
+Behavioral experiences
+15
+
+--- PAGE 16 ---
+[impact statement] BCeID
+Shipped an enterprise authentication tool using SAML authentication enabling
+fast authorization checks at enormous scale while maintaining a flexible model
+that can be adapted to even the most complex use cases. Built a role-based
+access control with other features such as SSO, MFA, user management and
+self-serve (forgerock implementation)
+Is there a product that you can think of, if you could freeze time, and work on it
+with your team more, what would you change about it? In the context of the same
+product goal/ business goal
+Design
+Behavioral experiences
+16
+
+--- PAGE 17 ---
+Features/ function
+Implementation
+Different orgs have different processes and workflows to do product
+Tsbc didnʼt have a r&d/ experience team
+Wsbc had a very dedicated team. It was easier for me as a PM to shape
+experiences and build to my strengths, show my impact by improving surveys and
+defining goals of product/ teams
+Can you think of an example of when you have interacted with a bunch of PMs
+and you realize a system/ product is too complex but everyone made all the right
+local decisions and yet together they are too complex and so you've had to revisit
+the system.  
+Can you think of a time when you thought you could ship a product really fast but
+then realized you couldnʼt and had to pivot?
+Helped PMs develop pods by taking an active part in recruitment
+Mistake I made at tsbc was, candidates didnʼt have long term plan for product
+or to be in it
+Structured questions to test real day to day product experiences
+[impact statement] How else did you improve research at WSBC?
+In second round of discovery removed a control for that version of prototype to
+see if users missed it, didnʼt care for it, wanted demand for that feature
+Think of a time when you took an idea and socialized it
+Innofest sep 2024 –
+Death to pdfs – project InfoX
+Give a brief description for your idea 
+We want to use data-sharing APIs and standards to digitally exchange information
+with health care providers.  This would require building robust internal systems
+Behavioral experiences
+17
+
+--- PAGE 18 ---
+that allow for rapid API design, development, testing and publishing with the goal
+of seamless API integrations with EMR vendors – amongst other possible
+solutions.
+What is your vision for your idea
+Whether we create our own standards and APIs, or adopt industry ones (for ex:
+Jane), we envision a data-sharing ecosystem that:
+Frees up capacity for WorkSafeBC developers by eliminating redundant,
+manual and complex internal backend system integrations while also reducing
+dependencies for API access
+Makes it easier for EMR vendor developers to integrate with our APIs
+Inspires the confidence of health care providers by being reliable, secure, and
+tightly integrated with their existing processes,
+Improves the decision-making capabilities of WorkSafeBC by creating a rich
+and dynamic data landscape,
+Supports the recovery and RTW of injured workers by ensuring that
+information about their care and claim is current, accurate, and coordinate
+between WorkSafeBC and health care providers.
+What problem will your idea solve? Which stakeholders are affected?
+For InnoFest, our team will focus on where our main interests and expertise lie -
+health care providers. However, benefits of this idea would expand beyond that.
+Our goal is to test this idea with PDF forms pertaining to healthcare providers
+(physiotherapy) and if successful, eventually expand to other major stakeholder
+groups including employers and injured workers.
+Every year, more than 20,000health care providers rely on over 150 forms to send
+WorkSafeBC information about the injured workers they treat.  Providers download
+these forms from our website in PDF format.  Once completed, providers submit
+over 600,000 of them per year to WorkSafeBC by website upload, fax, and even
+postal mail.  This is despite the challenges that WorkSafeBC and providers have
+with forms completed and submitted in this manner.
+PDF-based forms create a constellation of problems that include -
+Behavioral experiences
+18
+
+--- PAGE 19 ---
+Highly complex to integrate PDF forms and their contents with databases and
+other applications,
+Data that is “locked-in” on the PDF, inaccessible to data analytics,
+Lack of version control, resulting in out-of-date forms circulating and
+incomplete forms being submitted,
+Limited interactive and dynamic features such as real-time data and form type
+validation, auto-completion, and branching logic,
+High sustainment costs of creating, updating, and storing PDF forms.
+What are the biggest benefits of your idea?
+Our idea will unlock the full value of the data and information that are currently
+For WorkSafeBC -
+Robust internal systems and data exchange standards making API integrations
+easier for external partners such as EMR vendors
+Cleaner, standardized data - Data collect by API has passed validations,
+saving data cleanup and data prep tasks
+Enhanced data analytics - Incoming data is well-structured and immediately
+ready for analysis, enabling faster and better decision-making
+For health care providers -
+Improved confidence - APIs help providers to submit and receive complete,
+correct, and current information to and from WorkSafeBC, reducing phone
+calls and assuring payments,
+More efficient business processes - By integrating data-exchange APIs or
+standards into their clinic software, providers can use their usual in-clinic
+workflows when seeing and reporting on WorkSafeBC patients.
+For workers -
+Can focus on recovery and RTW - workers will no longer need to fill in nor
+suffer missing information between their provider and WorkSafeBC,
+Receive better care - workersʼ health care providers are empowered with more
+and current information about their claim and clinical status.
+Behavioral experiences
+19
+
+--- PAGE 20 ---
+Which categories apply to your idea?
+Eliminate pain points 
+Free up capacity with purpose
+Enhance knowledge sharing
+Other
+Who from your team will participate 
+Howard, Linda, David, Taric?
+Additional comments
+WorkSafeBC is far behind the times making it difficult for providers to work with
+us, old-school PDFs being one of the many problems. While InfoXʼs vision is to
+create a new data exchange standard for healthcare providers first, this will prove
+as a good first step to address a corporate problem that WorkSafeBC is a burden
+to work with. We want to be a preferred choice in the future.
+How did  you make sure you're mitigating risks of delay in project and running out
+of funding before you've built at least major/ most useful components of the
+project.
+we looked to structure the build so that parts of the product are built only
+when resources are available for sure (example cms)
+But cms discovery had started earlier already as not the entire pod capacity
+was required
+Met with cms POs and PMs to anticipate roadblocks and mitigation strategies
+(for example – no paper forms were involved for cvpts or 60 days. This made
+the build easier from cms side, no radicle changes were required for service
+plan changes). Also got a sense of cms discovery and build timelines.
+Understood cms models would need to be changed to we became proactive
+by using fake data in parallel to cms discovery
+Built vertical slices
+Met with devs frequently to understand implications of prototype and what
+parts would be most complicated or take long to build. Given that understood
+Behavioral experiences
+20
+
+--- PAGE 21 ---
+any that needed uploaders would be hard to build, so tried to find ways we
+could reuse code from other projects such as WOR. Got devs from both
+projects to conduct KTs
+Re-did slices so that dev can be completed in time, condensed forms so that
+there is no additional build and less dependency on cms
+Impact you've had as a product person on the culture of your team
+For innofest got most people from healthcare pod to put in ideas that were not
+only for org benefit but also would benefit their projects and they would have
+some outcome to take with them if it went forward.
+So whichever idea would win would take the healthcare pod forward and get
+visibility – building ground up support for these projects and get early
+feedback before we even win any funding. So that when we do get funding we
+can hit the ground running
+How do you take an idea and start socializing it.
+Meeting with new devs on the pod and wsbc (joanna zhou), giving product
+demos and explaining what we're doing, why we're doing it
+Ideas submitted:
+Zak  BE  - intelligent project planning Idea view | Planbox
+Khush, howard, linda  PO and SMEs) - InfoX and data sharing
+systems Idea view | Planbox
+Madhu (dev) - local angular testing Idea view | Planbox
+Negotiating with designers and experience team to reduce overwhelming
+amounts of text and cleaner designs, display options. Got pushback about
+other products in the company are using this way of doing it and this is pretty
+"standard" - idea is to be experimental and have your product be the new
+precedence in the company
+Most problems donʼt require formal product discovery
+Think of examples of this and how you failed by wasting resources
+Behavioral experiences
+21
+
+--- PAGE 22 ---
+How do you make sure most value is built out before you run out of money
+Importance of slicing. Went through multiple rounds of this with devs and
+business and architects
+Vertical slicing vs horizontal
+Usability improvement examples
+Most users already know claim numbers. It is too much text to have at the very
+top. Put in a tooltip next to claim number instead
+Sub text below wasn't adding a lot of value. Page looked chunky. Removed sub-
+text
+Behavioral experiences
+22
+
+--- PAGE 23 ---
+When they say yes they have more info to share, the next field shouldnʼt be
+optional – otherwise users can just select no instead
+Behavioral experiences
+23
+
+--- PAGE 24 ---
+During user stories planning and estimation, what happens if your devs arent on
+the same page about the effort required for a specific story? For example
+Asked whoever voted 2 why do they estimate so little?
+Get devs to talk and understand nuances, find a middle ground
+For features that donʼt need to change, you still need an acceptance criteria for
+devs to be on the same page. For example for track requests, although there are
+no enhancements happening in slice 1, it is important that feature still works as it
+currently and it should not break as it will be made available for providers to use in
+the first release. This is important because we need dev capacity and time to test/
+make sure track requests still works in QA. Users will be able to track requests like
+they currently do 
+Being proactive about future roadblocks -
+Pxt was going to be transferred from pioneers to carebears after the first slice. To
+reduce friction
+We got madhu and tony from carebears to shadow
+Did some KT sessions
+Behavioral experiences
+24
+
+--- PAGE 25 ---
+Example of user stories and mentioning what should be allowed but also what
+should not be allowed
+While doc uploader takes file types such as docx, pdf, jpeg etc. Our
+application would not accept any document formats
+Need to mention that in user story
+Example of how user stories were becoming confusing for devs
+by using the word upload, devs were confused that an api would be involved
+but the upload was only storing in memory/ session data/ nothing was being
+transferred to backend till they hoit submit
+So to avoid confusion we re-wrote use stories to say stored in memory
+Behavioral experiences
+25
+
+--- PAGE 26 ---
+Received pushback from devs about accommodating for heic file types as doc
+uploader currently doesnʼt have it so to add it would be some effort. Devs were
+worried this would be blocker.
+Got tony (dev who worked on something like this on WOR) to speak to it
+Tony clarified there is an existing library to do that and function is pretty
+simple, he pasted the link and function in chat for devs to be at ease upload-
+receipt.component.ts - Repos (azure.com)
+Re-emphasized the business need for it (how many providers use an iphone to
+click photos and upload forms)
+Qa has a web application from common engineering (simulator) to test heic file
+types for use case of when providers take photos of pdfs and upload
+them  Kobiton
+Devs question – where do we get the colour and fonts from? Wsbc library or other
+methods?
+There is probably embedded css and html source
+Need to confirm with UX team
+Behavioral experiences
+26
+
+--- PAGE 27 ---
+Devs preferred splitting stories up especially when there is heavy backend work
+For example when a user submits a request, frontend UI is not too much
+But backend needs a lot of stuff to happen in the database and then storing
+information, they wanted to have this as a separate story and then estimate it
+Reducing the number of steps it takes for users to find relevant forms
+Merged the following navigation pages while still making sure it serves the
+purpose of streamlining user experience and educational goals (know
+your contracta nd what you are requesting)
+Behavioral experiences
+27
+
+--- PAGE 28 ---
+Finishing issues with designers
+Tooltip not positioned well
+Repeating contact numbers inside tooltip and bottom of page making the
+tooltip very long
+Behavioral experiences
+28
+
+--- PAGE 29 ---
+Padding issues between text and submit button
+Example of detailing required so that design is cleaner
+in our database there seems to be a provider and payee name AND provider
+and payee number. in some cases these may be different too. do we know
+which field we are exactly retrieving for each of these fields here?
+Behavioral experiences
+29
+
+--- PAGE 30 ---
+SY ProviderProfile-DB and sample JSONData. We need to look at the code and
+see which field is being used. I think PayeeName is the one being used. Need
+to check.
+{"payeeID": "00011", "payeeName": "GARY ALTON ORTHOPEDIC
+SOLUTIONS", "type": "MSP",
+"organizationNames" : [{"type": "Legal", "name": "GARY ALTON ORTHOPEDIC
+SOLUTIONS",},
+{"type": "Trade", "name": "GARY ALTON ORTHOPEDIC SOLUTIONS",}],
+"addresses": [{ "addressLine1": "684 61178 18 IGI", "city": "SURREY BC",
+"country": "CA", "postalCode": "V3S5K7", "primaryIndicator": true,
+"addressType": "Mailing"}],
+"phoneNumbers": [{"areaCode": "778", "phoneNumber": "1476767",
+"primaryIndicator": true}]}
+Current PXT application uses "payeeName" from the JSON.
+the payee number is associated to the users login userID by the user
+themselves right? yes
+Behavioral experiences
+30
+
+--- PAGE 31 ---
+Working with other product managers/ product owners
+Requested mimi (po for cms) to be part of her discovery for case managers
+which is otherwise done in isolation. Motivation is to not step on her toes but
+to make sure we get what we want out out of it as well and realign on product
+goals without compromising on quality. Both teams should be on the same
+page to maximize outcomes and to make sure nothing is cut short for either
+product I.e. pxt and cms
+If I want to change the workflow that impacts other products as well, how do
+you manage friction or pushback from internal stakeholders especially other
+POs? Do discovery, try and explain the why, drive value for each group. For
+example by moving the injured worker page up font, this had almost no benefit
+to designers, but for developers this meant they wouldnʼt have to connect the
+injured worker form to 6 different pages but instead just make one connect
+from injured worker page to type of service page, for security team this meant
+earlier and upfront validation of the claim number, for users this meant better
+user experience because previously they would need to go through almost
+half the flow and then enter claim information (if the claim info was wrong,
+their effort would basically be wasted). The idea is to create a new
+precedence for your product inside your company.
+Behavioral experiences
+31
+
+--- PAGE 32 ---
+Conflict with designers
+Andrew: doesnʼt do version control of prototypes. For example two versions of
+the form had the same version number, he published the wrong one with
+disabled button not allowing the users to request the right thing. This resulted
+in invoicing issues in cents per user but compounded quite a lot.
+Have to double check his work, set repetitive meetings, delayed work,
+translate requirements over and over. Slowly the project and team down. Had
+to create word docs/ miro screenshots of what designs I wanted to
+communicate with devs and BEs
+No support from my manager.
+Did a live working session of 1.5 hours where I had him make changes and
+publish them to make sure they are done
+Project that you are proud of
+infoX. Project that had nothing to do with my actual job but I found value in it. I
+came across research that was done 2 years back in 2021 but it never got
+funded. I came across pain points in my project and decided to re-pitch it. I
+took a hypothesis of using web forms instead of pdfs would be of immense
+value to the provider network in BC. Started to socialize this idea with multiple
+groups of people like developers, smes, solution architects and re-define the
+value proposition. Did additional research and validation to elevate initial pitch.
+Moved from angular web forms to apis and integrations with existing
+provider emrs to integrating with open source emrs such as oscar. This would
+mean
+providers wont have to leave their general workflow to file insurance claims
+Providers would adopt a free open source emr software
+Ease of work for emr developers
+Created a business plan to address anticipated pushback of what incentive
+do emr developers have to work with worksafe bc. The plan was to create demand
+through providers. Oscar was built by mcmaster university and approx 500
+providers in the province were already using mcmaster emr software. We would
+Behavioral experiences
+32
+
+--- PAGE 33 ---
+build a proof of concept with them and build social acceptance and eventually
+have providers influence their emrs to work with wsbc.
+Proud of it because even though we didnʼt win at innofest we socialized the idea
+enough that it got visibility and engagement (votes) for the project to re-pick up.
+Somebody from the innovation council reached out and decided to make a formal
+pitch to the council with our research and we won $80K to build a proof of
+concept for a project that would define the nest strategic direction for wsbc.
+Incident handling
+3 levels of incident handling -
+Level 1 – client care/ customer support
+Level 2 – tech support
+Level 3   POs and devs
+But howard introduced a level 2.5 which is basically just the PO. We donʼt want to
+escalate to devs unless absolutely sure it is a problem they need to solve. This
+would mean pulling incidents into sprints and dev time is expensive.
+For example -  the following incident didnʼt require any dev support. It was an error
+on the user's part when they requested the wrong date while re-filling the web
+form at the time of making the request. We checked Unified Navigation App |
+ServiceNow (service-now.com)
+And looked at cms production to see the actual submission that was made.
+Looked at the xml submission to cms and a copy of the submitted pdf and web
+form. While the pdf had the right date, the user entered the wrong date on the
+additional details bit of the webform. Howard followed up with the client.
+But this request was approved by case manager, so along with following up with
+the client, followed up with the case manager too to make sure they were aware
+and if they approved the actual requested end date.
+Behavioral experiences
+33
+
+--- PAGE 34 ---
+Behavioral experiences
+34
+
+--- PAGE 35 ---
+Integration team was swamped so we had to meet with devs and solutions
+architect to break down the int story so that the int team can take smaller stories
+into iterations broke the following story down into 2 -
+Higher priority one story is points 1 and 2
+Followed by 4 and then 3
+Behavioral experiences
+35
+
+--- PAGE 36 ---
+Problem for physio extensions - Harm spoke with Gabi this morning, she said that
+this year Physio is our biggest health care spend  $80 million out of the total $500
+million) and physio extensions are a big piece of this. So, I think that we should
+shut the door on automation for now - we do need case managers to review each
+one.
+Why this is a problem – case managers arent reviewing requests coming in. Most
+are just skimming through it and approving requests. Wsbc is having to pay a lot in
+insurance because of that. 16% of annual spending
+Stats:
+The final status for a physio extension requests are:
+completed – a decision has been made
+duplicate – claim owner determines it is a duplicate
+Revised Request Required – claim owner determines it is missing
+information and is meant to inform the provider to resubmit with the
+required info.
+No. Final Status Count
+1 Completed 133,390
+2 Duplicate 5,017
+3 Revised Request Required 973
+Behavioral experiences
+36
+
+--- PAGE 37 ---
+Total 139,380
+For cases where a decision is made (ie ‘completedʼ status), there are actually 2
+items to make a decision on …first one is physio extension and the second one
+is hydro (which may or may not exist depending on whether it can be
+requested). Therefore, it is possible to have a decision for 1 item or 2 items.
+The decision can be
+Approve
+Deny
+Not requested – this was the workaround whereby ‘My Provider Servicesʼ
+appear to request both physio and hydro even though hydro was not
+actually requested (ie technical glitch in using MPS , this was a way for the
+Claim owner to say item was not actually requested.
+Completed'
+Requests
+No. Item 1 -
+decision
+Item 2 -
+decision Result Count
+1 approve approve approve
+everything 109,693
+2 approve
+3 deny deny deny everything 9,123
+4 deny
+5 approve deny mixed approval
+ 12023   36  12059
+6 deny approve
+7 approve not requested
+approve with not
+requested  2435
++ 4 
+2439
+8 not requested approve
+9 deny not requested deny wih not
+requested  38   1  39
+10 not requested deny
+Behavioral experiences
+37
+
+--- PAGE 38 ---
+11 not requested not requested not requested for
+everything 37
+12 not requested
+Total 133,390
+What does all this mean …in terms of automation potential?
+Looks like 109,693/139,380   79% always approve…so is it worth automating
+this approval within guardrails (ie is there a way to queue out cases where we
+can potentially deny today? 
+Automation potential may be higher if system can detect duplicates well and if
+MPS usage is discontinued for this use case/glitch fixed.
+ Poon, Howard, as an aside, happen to notice from the stats in an operational
+perspective, some claims owners are approving hydro only which was not the
+intent…but at least the numbers are very very small
+#6 – denied physio but approved hydro = 36
+#8 – approve hydro only = 4
+Dev scenarios
+Scenario – dev decides a story is not reday to work on in the middle of the
+sprint (william's ticket https://dev.azure.com/wcbbc/IT App-
+Delivery/_workitems/edit/778905 )
+BE removed it from sprint but we had a story that is a stretch with 8 points so that
+will take up any free capacity/ therefore didnʼt replace william's ticket with any
+other story
+Planning around carebear's freed up capacity. There was a concern that we
+wouldnʼt be able ship everything we had planned for by q2. To make that possible
+started looking for pods with additional capacity  -
+Zak as BE for carebears let me and harm know that there is freed up capacity
+from devs of carebears and additional funding of upto $100K In 2024
+Behavioral experiences
+38
+
+--- PAGE 39 ---
+For year of 2024 for provider expansion $300K was approved. Of which
+pioneers devs will use 190K up till the end of the year. Cms team is anticipated to
+use 60 80K.
+This is good because now simultaneously two pods can work on different parts of
+the project without conflict. As po I has prioritize what gets built out next. But
+this woiuld depend on how much capacity has been freed up and which devs have
+capacity.
+Planning and build/ budget scenarios
+Pxt is going to shift hands from pioneers to carebears in the new year. Zak
+reached out to understand scope for carebears and at what point transfer was
+happening. In order to ship everything we had in mind before running out of
+budget, zak suggested that carebears start work now as he
+thinks devs on carebears has capacity. Depending on how much capacity they
+have we can structure stories for the following situations
+If tony has capacity he can do the doc uploader for cvpt extensions
+If it is other devs on carebears with capacity, they cans tart with other
+front end forms
+If overall there is capacity can work on above tasks simultaneously
+Risk with this – 2 sets of devs from different pods will work on the same code base
+. They could write over each other and it could be more expensive.  finding ways
+to implement trunk based development.
+I and zak started writing out other user stories and then took them to devs of both
+pods.
+In my xp recently, it has worked better for us to come to the table with Stories
+written and explained from the Product perspective. Then they can fill in the gaps
+with the tech perspective. It saves most of their time.
+Sometimes devs are better are story writing and want to be involved from an early
+conceptual level - but I haven't seen that the case here. It just makes them
+confused and they don't enjoy sitting in the meeting watching the Story being
+written and the PM/PO/BE talking and figuring things out.
+Most challenging part of provider expansion project
+Behavioral experiences
+39
+
+--- PAGE 40 ---
+instead of updating existing data tables within CMS that captures all the new info
+from our new forms, we believe creating a new data table on our end would be
+more beneficial so that we only retrieve the request decision and rationale from
+CMS
+Question for you - To do the above, how will mapping our datable and CMS
+occur? Will it be claim number, provider ID, cms reference number or a
+combination of one or more of these values?
+Michael
+Currently, the request is submitted through DocUploader to CMS, but the request
+information is not saved in the online side. For this reason, we have a sensor that
+reads CMS HUB DB and surface up the request information (submitted request
+and approval information). This information flow won't be changing.
+With new request types, current online DB tables will be used mainly to store the
+approval information from CMS. New table will be created to capture the request
+information for different request types (same information will be submitted to CMS
+as well). Based on my understanding, there could be multiple requests with claim#
+& provider ID combination, so we need a link between what we have collected
+online and what CMS has approved.
+Thought about few options. Regardless of the type, my assumption is all requests
+are going to be PDF submission to CMS. This means CMS Reference# will be
+returned and we can link RequestSubmission (online side)
+and ProviderRequest/RequestItem  CMS side). Or we can use
+INCOMING_REFERENCE_NUM, but it requires additional changes in CMS.
+While CMS change hasn't been explored yet, I am not sure if we can address my
+question at this point. Maybe we can meet and discuss.
+Mimi
+can you send me a copy of what CMS sends to the portal (ie XML you get)...just
+want to take a look at what we currently supply.  The reason I ask is that we do
+have a request ID whenever a request is created in CMS.  It doesn't show on any
+screens but it is stored in the database and it is a unique identifier for the
+request....we could contemplate sending you this ID (we probably already send it
+to you in the existing  xml interface...that's why I wanted to take a look)
+Behavioral experiences
+40
+
+--- PAGE 41 ---
+Michael
+CMS Listener calls ICCDataSweeper to submit a request. Currently, endpoint
+returns below XML including CMSRef#.
+XML
+ ?xml version="1.0" encoding="utf-8"? 
+ Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+ Body>
+ SubmitDocumentResponse xmlns:xsi="http://www.w3.org/2001/XMLSchema-
+instance" xmlns="http://worksafebc.com/ICCDataSweeperMessages">
+ ReturnCode>1 /ReturnCode>
+ ReturnDescription>ReturnDescription1 /ReturnDescription>
+ ReferenceNumber>ReferenceNumber1 /ReferenceNumber>
+</SubmitDocumentResponse>
+</Body>
+</Envelope>
+There is no API interface for the decision data. Sensor is retrieving PXT from
+CMSHUB and update directly to the Online DB. Current online DB structure
+is Information Viewpoint - Overview. Yes, request ID is unique and if we can get
+the request ID upon submission, it would work for us.
+Either we can create a new endpoint
+in ICCDataSweeper for ProviderRequestSubmission or online side can pass unique
+identifier which can be stored in the Request table to be surface up later, so we
+can link.
+Mimi
+maybe...I'm just thinking that for all 7 use case, the pattern should be consistent
+going forward  I'm not sure why physio extension use case should be different
+than the others)....but it's more of an architectural strategy between you
+and Chitanya when we get there....
+I should clarify...either the old way or new way...just saying it shoud probably be
+consistent
+Behavioral experiences
+41
+
+--- PAGE 42 ---
+Michael
+Yes. Main reason is we used DocUploader to submit PhysioExtension, which
+doesn't store what was captured in the Online side. The PXT application simply
+retrieve what was submitted and decided, so DB table structure is very similar to
+CMS table structure. However, more types, we can't use this pattern because
+different request type has different data model, that's why different approach is
+required. Moving forward, we should do it with a new way as it is more flexible.
+What we can surface up from CMS would be only decision data, no need to
+surface up what was submitted.
+Mimi
+Thanks for the background.
+Having similar dilemma on the CMS side as well....how to structure requests in the
+database to be more flexible and consistent....will get there once I get an better
+understanding of the problem space and ready to start thinking on design.
+Michael
+On Friday, I discussed the high level approach with Chitanya. Online side passes
+an unique identifier when the request is submitted. The unique number will be
+stored in the request table in CMS, so it can be surfaced up and linked. I just
+wanted to post here, so we can be on the same page.
+Mimi
+let's reconvene during design phase.  If portal is already in design stage, then let's
+have a group meeting (pls invite Chitanya & Rajat from the CMS side).  Reason I
+say this is that these request don't only come from the portal....the physio
+extension come from fax/mail so needs to understand wholistically how all these
+requests will be handle in the future.  Best to discuss in group setting.
+Negotiating with other POs
+   With howard (for tony and madhu as smes for pioneers)
+   With farhad – security vulnerabilities came up that would impact story points
+that were allotted for pioneers devs for PRQ. Either his project would need to
+be de-prioritized or mine
+Behavioral experiences
+42
+
+--- PAGE 43 ---
+   With mimi to reduce scope of discovery on her end – carebears had already
+done the discovery that spanned months and we had defined the scope
+for mimi's team for discovery which was limited to the cms wizard. She
+wanted to undertake discovery of her own going over how the product has
+evolved. A few concerns with this approach
+a  There was no cap on her end about when she would finish discovery ("I
+donʼt know what I donʼt know"). This was risky as we had only $300 worth
+of budget left for the foreseeable future for this product.
+And carebears was sitting to start work. Until discovery was done, it was
+hard to know for sure what cms would be ready for so
+that carebear devs can build that out on the front end. Cms team wasnʼt
+ready to commit to an end date.
+b  By increasing the scope of the discovery on their end, we would digress as
+we would start to get feedback on provider facing/ forms that historically
+didnʼt sit too well with COs but it was imperative from a provider
+perspective
+i  For example COs didnʼt find the need to have forms built out for
+interruptions. They just wanted providers to call instead. But this had
+already been validated by providers and they saw it as important so
+that there was written record for it
+Mimi's argument was – depending on her discovery there could be an instance
+where COs would like to share more information with providers than has been
+prototyped. Thiss could result in changes in the UX/UI of the product
+What we wanted -
+   Our PO be included in their discovery to guardrail it
+   Reduced time and scope of discovery so that we can get to dev soon
+   We set the agenda for their discovery
+How we did it
+We placed bets/ took risks on features we had strong inclination that would be
+built out by cms too (for example view details. How this would look like would
+only be slighlty different)
+Behavioral experiences
+43
+
+--- PAGE 44 ---
+Got cms team in touch with business sponsors re-emphasizing the need for
+this product and that we wont have any money left if we lose it this time. This
+project had to be accomplished in 2023
+Harm's way to negotiate - In this scenario, I have the luxury of being senior
+and can negotiate with Taric first - he understands the timeline and cost
+constraints, but I need to understand if he is letting her do this approach to
+keep her happy.
+As peer to peer, itʼs a bit more challenging because we are asking for support -
+even though it is inefficient support. So, if it were just you and Mimi, youʼd
+have to show her the steps that were taken to validate with case managers
+and providers and show how weʼve already narrowed and prioritized the
+scope.
+What should have happened -
+As we knew there were CMS dependencies, mimi should have been part of the
+initial discovery sessions. If not that, there shouldve been a KT session of the
+initial discovery to her team
+Getting buy-in for usability/ better UX features – non functional features
+In my opinion there is not a single direct answer. Have to understand hierarchies
+and motivations behind this/ thought processes and give-and-take. Be ready to
+offer first and then ask. Understand incentives
+   Depends on whose buy in you need.
+Somebody who needs to put in money/ directors/ sponsors/ cross-team
+leaders -
+Other POs -
+Engineering leaders/ Devs -
+Customers -
+   Where has the feature request come from – if it is someone higher up on the
+ladder or lower
+   Demos
+Behavioral experiences
+44
+
+--- PAGE 45 ---
+   Evidence from other products/ cross domains. Industries/ products with similar
+goals/ outcomes
+   Heatmaps
+   Internal sponsors/ ambassadors for the feature/ product/ idea for example –
+error validation artifact, font size for disclaimers
+Mimi trying to squeeze in carebears budget to complete cms discovery
+Took 1.5 to complete discovery – shouldnʼt have taken that long
+PRQ – funding success
+Narrative We are not ready to add additional types of requests because
+physiotherapy spend is overboard suggesting current workflows must be
+optimized first to enable efficient decision making for claim owners before
+taking on new request types
+the already existing physio extension request is incomplete without a claim
+owner decision rationale that provides an end-to-end functional user
+experience for providers - the lack of which results in an increased number of
+provider phone calls (an issue that would persist if new request types were
+catered to before this is fixed). Reprioritization is needed to scale up CMS.
+optimization of the current request types will set the foundation to take on
+additional request types
+Technical learning for me 
+1. how to test without real apis so that we can get this to system test
+Allow for intercepting
+Merge to master
+System test is not working because an api url is missing and the new page is also
+missing
+2. while retrieving info from a database, dev is getting a 500 error
+Behavioral experiences
+45
+
+--- PAGE 46 ---
+Impact made as PO
+Working with other POs. Mimi
+Result/ impact – updating each other's acceptance criteria, dropping
+questions, more clarity on roadblocks
+Backlog transparency for both pods
+Sprint check ins and updates
+Ideas from devs – tony
+Why not just scarp everything and use the existing physio app (pxt) to ship view
+details to make most use of dev capacity and funds to meet deadline (assuming
+we werent getting funding)
+Decisions that I made 
+Question for you... do we want to deploy available PRQ enhancements earlier than
+the CMS launch?
+Since CMS won't deploy their part to PR until early April... we could...
+A   Wait until April for everything
+B   Deploy all of the enhancements except for Decision Rationale earlier. Then
+deploy the Decision Rationale in April.
+If we went this approach we need to adjust the email to not suggest there is a
+Decision Rationale, or not push the email changes. (not true)
+For Providers - the new View Details page with everything other than the
+Comments box.
+The ultimate question is... Is it worth giving this to Providers two months early? Or
+it is worth it to us to get earlier feedback?
+If not, it's easier development wise to push it all out at the same time in April.
+i would like for us to deploy early for the following reasons -
+Behavioral experiences
+46
+
+--- PAGE 47 ---
+get early feedback
+Giving some buffer time for incidents - if issues or bugs come up/ calls/
+incidents come in, it would give us some lead time to investigate/ fix
+(depending on how big or small it is) before we wrap up this project with the
+decision rationale launch
+a deep link with informative details is already a good value add for starters
+uncertainty with dev capacity (tony may or not be with carebears for 4
+months). i am not sure what this would mean for end to end testing with cms
+Make email field mandatory or not in the anonymous doc uploader
+There would be no decision email if the field is left blank
+The only email that gets sent out is the one that is in that box.
+This is the existing functionality
+PO's concern on this - yeah then is it worth building the decision email out if
+providers were to leave that blank. most even experience the value add of this
+launch
+Got data to see how many requests didnʼt have an email attached to them to make
+this decision
+Behavioral experiences
+47
+
+--- PAGE 48 ---
+Testing prq statuses for launch
+Approach
+Behavioral experiences
+48
+
+--- PAGE 49 ---
+Automated – upload all combinations of statuses and requests on track
+request screen and PO checks against expected outcome
+Or manual – more end to end testing, a request is submitted for every
+combination, then it received, changes are made to database as cms is not
+ready
+Automated was preferred until cms is ready as end to end testing was going to
+happen anyway with
+mimi's team
+Other conflict -
+Who drives testing – QA/devs or POs
+Using fake or real data
+Testing in system was not required as it would be manual. You submit one request
+at a time and then check .
+Instead tony and madhu will just create unit tests for each test scenario and attach
+proof of success
+Behavioral experiences
+49
+
+--- PAGE 50 ---
+Toughest person to work with 
+1. Doug – change management and comms lead for the bceid project
+We were days before our comms roll-out and he was asking fundamental
+questions about the project like which system were they resetting passwords for
+He had been attending all our meetings for user flow for the past 3 months, had
+been recording sessions but waited too long to clarify the project.
+He didnʼt take agency/ ownership of any tasks. Meetings were scheduled not to
+talk about strategy but to clarify his questions about the project.
+I met with PM to figure what exactly he recruited doug for on the project -
+I started to appreciate that not everyone on this project has the same appetite
+for technical projects
+2. andrew
+Competing priorities
+   Closing an 8-pointer story for the sprint (prq)
+Roadblock for this was the test cases for statuses to be displayed on the portal.
+Tony and madhu were waiting for final test cases so that they could write their
+script.
+   Bceid comms roll-out happening same week
+Comms and change management for 600 providers across BC, 8 internal
+departments, across 3 different systems and 2 vendors (bceid/ prov
+govt, worksafe/ forgerock and telus)
+Things i realized about being a PO
+Need to be involved in most things that you usually find trivial
+For example in the below email that would go out to providers when a decision
+is made, the create account link takes them to Creating an online services
+account as a health care or service provider | WorkSafeBC
+Versus taking them to Registration
+Behavioral experiences
+50
+
+--- PAGE 51 ---
+I thought this was trivial to link people to the registration page to create new
+accounts but experience team had other thoughts
+Options I had
+so our options are
+leave the link as is in the email
+change the link so that users land on the registration page AND add a line the
+email to say 'Please note - to track your requests and view decisions,
+remember to link your account with your associated payee number as part of
+your account creation setup. More information here Creating an online
+services account as a health care or service provider | WorkSafeBC'
+Had to be involved in testing statuses for the portal
+Behavioral experiences
+51
+
+--- PAGE 52 ---
+Disagreed with harm on
+Hi Khushboo,
+Came across a production incident relation to Physio extension request whereby
+the provide submitted a request but entered the wrong payee# in their
+submission https://dev.azure.com/wcbbc/IT App-Delivery/_workitems/edit/818726
+Have there or will there or can there be plans to mitigate from the portal in the
+future.  Ie, if the provider portal is now behind authentication, can the portal pre-
+populate the payee number (instead of the payee manually entering) as part of the
+process….this would definitely mitigate/eliminate data entry errors and the
+repercussions…..food for thought as this incident just came in.
+Thanks
+Mimi
+Hi Mimi. Thank you for bringing this up.
+Yes this was considered in our initial scope but because of the scope cut down,
+we couldn't build this feature as it requires the physio app to be behind
+authentication. Authentication would help us
+Carry the payee number they logged in with throughout the submission
+process without the need for them to manually enter that info
+We would be able to retrieve their contract information and only display forms
+for the contract they signed up for (for example if they only have a physio
+contract, they wouldn't be able to submit cvpt related forms for that payee
+number- which apparently is a common error too as providers
+sometimes sometimes submit physio extensions as cvpt extensions and
+there's a lot of manual work required on our end to reroute such submissions)
+These are already noted and in the backlog. In the future, if funding and time
+permit, we would like to work on this. Hope that helps.
+Thanks.
+Khushboo
+Thanks Khushboo,
+Maybe something worth chatting to Harm about to make the smaller change
+sooner (and the bigger scope later)…the reason I mention this is that incident
+Behavioral experiences
+52
+
+--- PAGE 53 ---
+mentioned that this is a FIPP breach (not exactly sure whether this is or not but
+likely since another payee is seeing the details of a different payee)…so thinking it
+may warrant earlier consideration because of this.  But leave it to your team to
+prioritize accordingly.
+Thanks,
+Mimi
+[impact statement] Impact on InfoX
+Won 80K ot build a proof of concept
+Set the vision for project
+Broke down roadmap
+Did discovery
+Engaged smes such as michael jo to better envision the product
+Leveraged personal connections such as general physician to get quicker
+feedback and testing on poc. Better understand painpoints
+Questions to ask proprietary emr vendors
+If we have a web service that can accept metadata and we provide a
+rest api client, can they provide a json meta data
+Our contract is swagger, we can send it to them
+What is the effort/feasibility on their end to submit json
+Can they use the one end point to submit both pdf and meta data at the
+same time
+What are you proud of/ why you should have a test and learn attitude/
+why smes thoughts arent written in stone
+For infox, smes told us that the hardest part of the project would be to
+get emrs onboard as they dont have any incentive. We may have to think about
+incentivizing them through monetary benefits to get them to integrate with us. This
+was an assumption/ hypothesis/ risk we were ready to work with.
+Behavioral experiences
+53
+
+--- PAGE 54 ---
+But surprisingly, the more emrs and billing systems we met with – it became clear
+they wanted to integrate because each one had the same incentive as ours: to
+provide the best experience for doctors and user experience, they were willing to
+do whatever it takes. As they would want to retain their clientele too
+We wanted three outcomes when meeting with emrs -
+   Are they able to update our forms
+   Are they willing to integrate with us
+   Can they maintain the wsbc branding and look/feel of the form
+Understanding why wsbc is small fish
+We small fish because few of the patients that walk through a doctorsʼ office
+doors are actually injured workers.  If they see, say, 35 patients in a day on a GP,
+itʼs possible zero are workers.
+I don't see any significant numbers of physicians partnering with us for the "we
+are WCB" reason.  If anything, they want to avoid it.
+We'll cover any treatment associated to an accepted injury.  I think the way we
+become a bigger fish is increasing our payments... i.e. if you fill out this version of
+the F8, it pays more
+we have incentives in place to encourage quick submission of forms
+Behavioral experiences
+54
+
+--- PAGE 55 ---
+We get  115,000 F8/11s in a year.  There are about 128,000 GP visits in a year
+for worksafebc workers.
+for context. the public system paid for 1,910,000 GP visits
+this is why i think we're small fish in a big pond.    128,000 GP visits vs. 1,910,000
+GP visits
+it doesn't matter where and when they got hurt
+injuries and illnesses just need to have been caused by work. time and place
+matter but aren't conclusive either way
+technically, it's WorkSafeBC that decides whether a person is an injured worker.  If
+your claim isn't allowed, then you're just an injured person.
+we pay for filling out the form even when the claim isn't accepted.
+we keep paying for those forms until a claim is disallowed
+Incident handling
+Behavioral experiences
+55
+
+--- PAGE 56 ---
+Problem investigation . Email sent to case manager in question so that business
+concern that treatment for worker shouldnʼt stop is taken care of
+Behavioral experiences
+56
+
+--- PAGE 57 ---
+Behavioral experiences
+57
+
+--- PAGE 58 ---
+   Called the provider in question to double check if they used the correct claim
+number and asked them to walk through steps they took
+see howards comment on incident
+   Open cms prod support to pull up claim and see if the request made it through
+in cms. All three requests and the fax one didnʼt make it
+   Checked datatables using tableau to see if it made it in the raw data, it first
+gets stored in the raw data and then in cms – not in datatables too
+   Checked if there were any cms prod outages – none
+   Checked how many claims or providers this was affecting – impacting only
+one claim for one provider. Other claims for same provider no issues – she just
+submitted a request for a new claim
+   Given that this incident is deprioritized for devs.
+   But after some investigation, we would need to bring in careberas dev to
+check if this is a pxt issue or cms/ claims issue.
+   If I had contacts in cms wouldve just reached out to them to check
+Another incident INC0196523 | Incident | ServiceNow
+   User uploading pxt request form but it never made it to cms
+User was using doc uploader
+   But they labelled the form incorrectly while submitting
+   This didnʼt trigger the submission process
+   Emailed user back to redo it correctly
+Creative problem solving
+For cms enhancements, leadership was worried that COs will only leave a '.' or '?'
+In the rationale box which would defeat the purpose of having that feature. While
+this is a performance oversight issue, they were wondering if we could more
+proactively avoid that with drop down lists for high level decisions
+Behavioral experiences
+58
+
+--- PAGE 59 ---
+Concern with this from a dev and launch perspective was that dev had been
+completed and we were ready for testing and launch soon. This drop down would
+not only need a new field addition but also data model changes and presenting
+this info back to the portal.
+a quick fix of validation was suggested like min character count but how helpful
+would that be?
+I suggested the following where the text box could have pre-populated text
+suggestions for cos to choose from with min and max one selection. The co could
+choose to leave the suggestion as is or add comments to it to elaborate. This
+would address leadership concerns and we would not need a data model change
+as we were leveraging the same column already built for the test box. Update -
+Behavioral experiences
+59
+
+--- PAGE 60 ---
+couldnʼt use this as cms team wasnʼt sure of the curam (framework that cms sits
+on) capabilities. This would require more time than we have in our hands  3 weeks
+until launch)
+Decision made about the above
+Behavioral experiences
+60
+
+--- PAGE 61 ---
+A couple of things helped us with infoX even though there were concerns about
+EMRs not wanting to integrate with us
+The narrative we take and how we present ourselves. The phrase would you
+like to integrate with us sounds intimidating and also overwhelming because
+we started to realize that vendors were interpreting this as it is going to a lot of
+work for them so even before they consider asking a follow-up question, they
+said no. Versus wsbc saying we have an api we are building out, are you able
+to take that and connect to us.
+Be more assertive than asking questions like we were wondering, instead we
+just said changes to our forms are coming and this is what we are asking of
+all emr vendors to do
+Bceid anticipating major user call influx/ mess-up after cutover of march 27th
+Internal team sent first outreach to providers on feb 21st to 1500 org admins.
+1100
+65 were auto-reply
+~ 47 were responded
+What about the rest? Have they not read it?
+Impact on bceid
+Updated test scenarios based on user responses we were getting after first
+outreach. For example, multiple people using the same email address currently
+for the same clinic. We would check for duplicates in this case before we
+upload excel sheet of users to create accounts for them on forgerock
+Resources group created by sri for infox
+Behavioral experiences
+61
+
+--- PAGE 62 ---
+User stories
+Document router
+Behavioral experiences
+62
+
+--- PAGE 63 ---
+Sample form 8 xml Form8.xml
+Sample form 11 xml Form11.xml
+InfoX b2b security pattern
+B2B mtLS +subscription key is approved security pattern  Future pattern -
+Overview) !!!  From external to APIM - public certificate should be registered to
+APIM... This wiki Certificate Renewal Process - Overview can provide the
+Behavioral experiences
+63
+
+--- PAGE 64 ---
+overview.  API consumer  3rd party) should send the public cert to us. 
+Subscription key is used for metrics and trouble shooting. Strongly recommend to
+send it.  Without it, we don't know who is calling what..
+we have example of this pattern used for other vendors : B2BProxy CTRS IN and
+B2BProxy MELS IN!
+Mutual transaction security or 2 way SSL From external to APIM - public certificate
+should be registered to APIM... This wiki Certificate Renewal Process -
+Overview can provide the overview.  API consumer  3rd party) should send the
+public cert to us.  Subscription key is used for metrics and trouble shooting.
+Strongly recommend to send it.  Without it, we don't know who is calling what..
+Prq UAT testing for cms enhancements with COs – led by mimi 
+Behavioral experiences
+64
+
+--- PAGE 65 ---
+Conflict with comms and marketing 
+would it not be possible to still send the comms out after the launch? because the
+features we are looking to launch are just enhancements and from a user
+experience perspective there isnt substantial that is changing. i'm afraid if we
+delay, there is more we could lose than gain for the following reasons
+i just checked with the dev team and if we were to delay even just by a day, we
+would need all 6 applications within MPS to go through security review again
+which is a lot more effort for the dev team that is already pretty swamped as
+we lost a senior developer to another pod and are just about ramping up the
+new one.
+there is a chance that things could break during launch which would give the
+team enough time between march 5th and april 5 to resolve those issues.
+there's another team (team phoenix) that is waiting for us launching
+on wednesday
+if we wait until april 5th to do a full launch, we would be putting all our eggs in
+one basket that would delay multiple projects on the roadmap
+Does every single small enhancement need to be updated? What is the point of
+comms – to update? Or to get users excited about what is coming up.
+My take - i dont have a strong preference to this as this is just an enhancement to
+a workflow to make sure they receive those decision notifications. it is not a new
+feature. and in fact is probably a bit more work for providers to enter this
+info. i'd be okay to not highlight this. but if there is a strong preference for
+this, i'm okay too. this has been done as sometimes providers dont log in to submit
+requests. if the email field wasnt mandatory, there would be no email to send the
+decision to.
+Behavioral experiences
+65
+
+--- PAGE 66 ---
+Provider experience – adapting faqs based on initial outreach and most types of
+questions
+Bceid – test accounts and test data for bceid replacement
+Scope for dev - How many accounts are there for us to use? 6 accounts in dev
+env with associated bceid guids. One of them is present in cpr. These will be
+valid email addresses. The others will be added to cpr manually upon
+completing registration in forgerock. There is no bceid integration in dev.
+For new accounts. Test case for cpr - We arent testing new accounts as there
+is no integration with ths. Wsbc will create a new account in forgerock and
+share the email address and guid to cpr team. Cpr will enter that info in their
+code and retrieve the guid.
+Need use case and user journey documentation to inform test accounts
+Behavioral experiences
+66
+
+--- PAGE 67 ---
+As po I wanted something more cleaner, like linkedin requests where the character
+counter in inside the box on the bottom right hand corner as 90/100 and keeps
+reducing from there. But this would need david to create a new design component
+as a template doesnʼt exist already. Decided to deprioritize this as was not critical
+to the project, no other projects probably see value in this right now and my
+project didnʼt have a lot of open text fields.
+But if there are other bigger projects that were form heavy that would benefit from
+it, it is important to have that.
+Building design artifacts with david – for multiple reasons
+Easier for product to communicate with devs and BE for user stories
+More effective for devs as visual cues into functionality
+Artifacts for design so when we do scale the product out to other provider
+types, we can reuse most of this
+ux-demo.online.dv.worksafebc.com/UXGUIDES/guide-errorhandling.html
+Behavioral experiences
+67
+
+--- PAGE 68 ---
+Behavioral experiences
+68
+
+--- PAGE 69 ---
+[impact statement] BCeID
+Shipped an enterprise authentication tool using SAML authentication enabling
+fast authorization checks at enormous scale while maintaining a flexible model
+that can be adapted to even the most complex use cases. Built a role-based
+access control with other features such as SSO, MFA, user management and
+self-serve (forgerock implementation)
+Bceid – test accounts and test data for bceid replacement
+Scope for dev - How many accounts are there for us to use? 6 accounts in dev
+env with associated bceid guids. One of them is present in cpr. These will be
+Behavioral experiences
+69
+
+--- PAGE 70 ---
+valid email addresses. The others will be added to cpr manually upon
+completing registration in forgerock. There is no bceid integration in dev.
+For new accounts. Test case for cpr - We arent testing new accounts as there
+is no integration with ths. Wsbc will create a new account in forgerock and
+share the email address and guid to cpr team. Cpr will enter that info in their
+code and retrieve the guid.
+Need use case and user journey documentation to inform test accounts
+Conflict with innovation  
+Context this was an idea submitted by the product team and money for it is
+coming from innovation. They set the scope for it and when we tried to push the
+scope they werent willing to. It cost us only about 2 3 k to make the form update.
+So we had a bunch of money an dev/oscar support to expand scope. So what was
+the actual issue that innovation was trying to wrap this up by end of march. 
+Pxt deployment on march 5. select features 
+Zak approving/deploy 6 pipelines
+Jaime doing database change of creating rationale field
+Khawar will deploy integration pipeline
+Change with this pipeline (what khawar was supposed to deploy – change of
+one field to our api end point)
+Behavioral experiences
+70
+
+--- PAGE 71 ---
+Our deployment is impacting other people
+Behavioral experiences
+71
+
+--- PAGE 72 ---
+Issues
+The email field wasnʼt made mandatory – team pre-maturely closed the ticket.
+Ticket was closed without a path ticket to deployment. Ticket needs to be
+reopened
+In sys test requests show up on track requests, it reflects after 20 mins
+Prioritization and reasoning example for infox
+Should we leverage existing doc uploader or build our own?
+Preference from dev was to build out own. But my concerns were if this will
+impact the timeline?
+Does it stay true to the overall vision of the project that we want it to scale to other
+types of emrs. What is the effort/ cost like for us
+Why cant we use doc uploader – it is used only for file upload. Doesnʼt convert it
+to pdfs which this poc would need,
+Behavioral experiences
+72
+
+--- PAGE 73 ---
+What makes bceid a project that required complex technical execution to get
+features to market?
+Behavioral experiences
+73
+
+--- PAGE 74 ---
+Pmg only tests in production. Pmg is a business customer for cpr team. Pmg
+doesnʼt want to test in stage/uat as they have never done it before. Conflict in
+between teams of the same org. Pmg vs cpr. Usually uat tests are done by qa
+and pmg wants this to continue along with a sprint demo
+I am so pissed off at TELUS and PCIS for not upgrading their software stack.
+We are in very bad situation by supporting old week ciphers for long time and
+DevSecOps has to act as these week ciphers can be compromised and can be
+sniffed by the middeman.
+Telus and PCIS have neglected the support of infrastructure for the Provider
+Portal for a very long time. Technologies like Tivoli FIM and Glassfish are very,
+very old. Java 1.6 was end of life from Oracle in October of 2018.
+We had two urgent problems we needed to resolve 20 days away from launch
+   Provider portal Grassfish stack is old and Security and integration team are
+disabling the strong ciphers which is already communicated to TELUS long
+ago. I am sure this will trigger prod issue when week ciphers are removed.
+Option1  Stop the deployment of strong ciphers which needs DevSecOps
+waiver
+Option2  Paul and TELUS take the opportunity to work with strong ciphers.
+I recommend this as week ciphers are major concern by Deloitte auditor
+and as a company it will put us in very week position.
+   Connectivity to BCeID is still not completed. We need IPSEC to be in place
+ASAP so that Nishant can start testing it.
+We need to involve devsecops urgently
+Behavioral experiences
+74
+
+--- PAGE 75 ---
+Notification of upcoming APIM WAF SSL Policy Update
+Whatʼs happening?
+In response to Securityʼs requirement, WorkSafeBC Integration Services Team will
+be updating the Web Application Firewall  WAF  SSL policies to eliminate support
+for weak ciphers across both Non-Production and Production environments.
+When is it happening?
+Non-Production environments: By end of the day, February 28, 2025
+Production environment: By end of the day, March 31, 2025
+What will be affected?
+As a result of this change, API requests using the following weak ciphers will no
+longer be supported by WorkSafeBC after the above dates:
+Behavioral experiences
+75
+
+--- PAGE 76 ---
+TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+TLS_RSA_WITH_AES_256_GCM_SHA384
+TLS_RSA_WITH_AES_128_GCM_SHA256
+TLS_RSA_WITH_AES_256_CBC_SHA256
+TLS_RSA_WITH_AES_128_CBC_SHA256
+TLS_RSA_WITH_AES_256_CBC_SHA
+TLS_RSA_WITH_AES_128_CBC_SHA
+WorkSafeBC will continue to support:
+TLS protocol: TLS1.3/TLS1.2
+Strong ciphers:
+TLS_AES_128_GCM_SHA256
+TLS_AES_256_GCM_SHA384
+TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+What do I need to do?
+Before February 28, 2025  Non-Production):
+Upgrade your systems(Non-Production) if you are using weak ciphers to ensure
+compatibility with the updated policies.  Impacted non-production hostnames are:
+Behavioral experiences
+76
+
+--- PAGE 77 ---
+https://api.online.<env>.worksafebc.com
+https://apima.online.<env>.worksafebc.com
+By March 15, 2025 
+Test your transactions in Non-Production and confirm they are functioning
+correctly. Unless advised, WorkSafeBC  Integration Services) will proceed with
+production implementation on March 31st.
+By March 30, 2025  Production):
+Upgrade your systems  Production) to remove reliance on the weak ciphers. 
+Impacted production host names are:
+https://api.online.worksafebc.com
+https://apima.online.worksafebc.com
+What do I need to do?
+Please contact the Technology Support Desk at local 3000  604.276.3000) or
+email ISHelp  SM) if you have any questions or concerns.
+We apologize for any inconvenience you may encounter as a result of
+this outage change.
+Thank you,
+Technology Support Desk
+Behavioral experiences
+77
+
+--- PAGE 78 ---
+Behavioral experiences
+78
+
+--- PAGE 79 ---
+Behavioral experiences
+79
+
+--- PAGE 80 ---
+Behavioral experiences
+80
+
+--- PAGE 81 ---
+Behavioral experiences
+81
+
+--- PAGE 82 ---
+Behavioral experiences
+82
+
+--- PAGE 83 ---
+Behavioral experiences
+83
+
+--- PAGE 84 ---
+Behavioral experiences
+84
+
+--- PAGE 85 ---
+Behavioral experiences
+85
+
+--- PAGE 86 ---
+Behavioral experiences
+86
+
+--- PAGE 87 ---
+Delaying launch for telus
+   Webservices call for prov govt to pull email addresses not ready
+   Uptake from first outreach not sure. We would rather giver users more time to
+give us an email address to avoid a lot of manual effort after launch
+   CPR not sticking with schedule
+   New user flow journeys identified. Gy's update on dev env and user shaving to
+log in twice
+Impact -
+Behavioral experiences
+87
+
+--- PAGE 88 ---
+   Carebears. Stories need update and timelines get pushed over to next sprint
+   Team motivation
+Displayed leadership by talking to leadership and having leadership
+acknowledging the work the team has done so far despite the challenges of
+working with vendors. Showing extreme adaptability and quick decision
+making, perseverance
+Security delaying final prq launch by a week  
+Behavioral experiences
+88
+
+--- PAGE 89 ---
+Behavioral experiences
+89
+
+--- PAGE 90 ---
+Behavioral experiences
+90
+
+--- PAGE 91 ---
+Behavioral experiences
+91
+
+--- PAGE 92 ---
+Behavioral experiences
+92
+
+--- PAGE 93 ---
+Behavioral experiences
+93
+
+--- PAGE 94 ---
+Having connections or point of contacts
+Howard always has a point of contact at help desk/ voc channels to be able to get
+quick informal feedback or troubleshoot user issues
+Conflict between QA resource and lead security on BCeID project
+Issue – qa (niraj wasnʼt satisfied with how lead security (guy) was going to
+manage launch day with manual intervention of bceid email addresses. Especially
+Behavioral experiences
+94
+
+--- PAGE 95 ---
+if the email address already exists in forgerock (ie bceid users are also forgerock
+users)
+BCeID retrospective 
+Retrospectives - Boards
+5 people were representing the CPR team and they had no idea about their
+systems. They had the limited job in this project but they took forerver to
+understand apis
+Limited test accounts causing delays. Cms team need to use the one end-to-
+end test account for their purposes which caused paul's team some delay
+Physiotherapy predictive model (nathan horvath – discovery with data scientist)
+   What was the goal of the model
+Prescriptive model. Should tell cos what should they do. When a pxt request
+comes in should I accept it, or reject it or reject and refer elsewhere. It was trying
+to use causal links to different action
+   What was the data that was used / types of forms?
+General characteristic of a claim up to the point of the extension decisions. Like
+billing, past treatment. Coudlnt use the pxt forms which has most of this
+information (since history of the claim)
+   For each prediction it was looking at available data for that particular injured
+worker? (was it looking at any other data? Internal or external meta-data)
+3 models are chained together (casual) as a result your are using all samples.
+There should be learning from clusters indirectly. It is fundamentally doing that but
+data is garbage
+   What were the variables/ input data
+For a micro model. Technicallimitaion to how much we can thro at the model
+   What was the expected and actual output
+First this is spit out RTW likelihood. Followed by - Reduced by xx% how do you
+maximize rtw likelihood. Or1, or2, hand and something else. Was built for claim
+owners.
+Behavioral experiences
+95
+
+--- PAGE 96 ---
+   What were some metrics you looked at for model performance
+In Predicitng estimates and changes in outcomes, we donʼt know what would have
+heppend if that extension was denied. It not truly a predictive model (accuracy
+measure is not possible). What is the model saying overall and get a rough
+distribution of it.
+   How was the model tested
+Just basic testing. Looked at specific people's cases. Better data and access to
+those forms. (key forms they were able to convert to data – 6,7,8 and 11 
+   Did yal use any SME's while designing this model?
+Just adam
+   How was the training set developed?
+   What went wrong
+Trying to establish casuality with data that we collect in our warehouse is difficult.
+We tried to come up with a map of variables. Hidden confounding with decisions.
+It is not clear to the analyst what cos factored into their decision. Even if we were
+able to get this info, there would be bias. Other thing is support netwrok at their
+job. This could impact the evaluation and would determine that a psych vsiit is
+required
+   What is the double data science model (double machine learning – fit the
+model on an outcome)
+a  Correction of outcomes
+b  Treatment recommendations
+   How can the model be improved
+Randomized control trial in medical set up but this is tough to justify
+Come up with some rule that decision makers use to avoid bias (what is driving a
+COs decision process). Inan ideal world we would have a decision tree
+   Are you aware of any data extraction initiatives going on that we can use
+   How long did it take to build
+A couple of months' worth of iteration.
+Behavioral experiences
+96
+
+--- PAGE 97 ---
+   Any documentation on this
+   What makes up risk (drill it doen to outcomes and mutli outcome model is
+possible)
+   The decision rationale wouldnʼt help with the model
+Other questions for nathan – how did you arrive at causal modeling for this project,
+were there other solutions considered
+Chat with harold cilima (dev on medical disclosures)
+   what was your role in the medical disclosures project – developer. Database
+changes
+   What were yal trying to accomplish with the project – physicians want to
+search insdie medical disclosures and they donʼt have the right tools to
+search. What about adobe search (ai search is not safe. Share data with adobe
+with sensitive information. Emails not safe either). We wanted to give
+physicians a tool for search for a temporary period. We use AI to search inside
+a pdf. Do extraction. Put in database, find in database and put into an llm and
+llm output is shared with providers. The ai interprets images like xrays.
+Security for information handling is only for the time that that the provider
+needs.
+a  Semantic and hybrid search
+b  Was gen ai considered
+   What technology is powering that goal
+   How did you arrive at that solution. Were other solutions considered
+   Data extraction – how is it being done
+Python code and open ai
+   What kind of data can be extracted
+   Where does the extracted data get stored
+   What kind of data can be fed into it
+   Can the following file formats be extracted – doc/dox, pdfs, image types (png,
+jpeg, heic, tiff)
+Behavioral experiences
+97
+
+--- PAGE 98 ---
+Easier to interept pdfs versus images  but images is possible
+   Can we try an example of the pxt form if he has access or do you have an
+example of where a pdf form was extracted
+   How long did it take to build this solution
+Openai 
+Data extraction technologies
+Ocr (free but not great quality). Python code, open ai (expensive but great quality)
+Harm set healthcare feedback sessions (program managers for healthcare,
+directors of healthcare operations, healthcare programs, clinical services director,
+chief medical officer)
+   Healthcare pod is only 1 year old. First year was to set the pod up. Resource
+development and push a few successful projects out (prq and bceid)
+   Harm role with this session is to get a list of problems, validate if this is a
+problem and get more info on it (most problems have come from kpmg's
+maturity analysis)
+   Feedback came from kpmg maturity analysis, HC programs, business
+capability mapping
+Behavioral experiences
+98
+
+--- PAGE 99 ---
+Our tech stack is heavily regulated by common engineering
+They get to decide that we are using angular for front end and .NET for backend
+At the product level we do not have the autonomy to suggest technology
+The team wanted to try microsoft's blazor and they built a poc too but common
+engineering said that it is not mature enough or well supported so enterprise level
+integrations werent great.
+Behavioral experiences
+99
+
+--- PAGE 100 ---
+So they preferred everyone just upgrade angular versions instead. But these
+upgrades were manual so it was taking up a lot of dev time and therefore money
+spent on our projects. But now common engineering is looking to leverage AI to
+automate these upgrades.
+It takes our dev team
+6months for learning new tech
+6 months implementing new tech
+Dev team is equipped to write their own user stories given an epic and write their
+own tasks out  
+Behavioral experiences
+100
+
+--- PAGE 101 ---
+Launch day gets delayed due to testing issues
+WOR example
+Issue – no testing plan in place. Dependent on 1 qa to do testing
+Getting funding estimates based on story points
+How much money are we asking for and for how long
+1sp ~ $1000 or $2000. This is based on the performance of our team in the past
+Behavioral experiences
+101
+
+--- PAGE 102 ---
+Conflict with devs
+About incidents, after looking at everything and investigating it still wasnʼt getting
+fixed do devs wanted to providers to get on a call to show what they are seeing
+From a product perspective this wasnʼt feasible. Had to explain the following
+You cant get providers on call just to get them to test again or try again.
+They are already calling l1 and l2, you have to empathize and understand they
+donʼt want to talk to a bunch of devs and talk to so many people
+Have to understand the type of user you are trying to get on a call. These are
+providers, they do not have the time to get on calls. Historically we have to pay
+providers as incentive to jump on a call with us. This should be an absolute last
+resort and preferably not required at all
+You cant have providers share screen given the data they are dealing with.
+But as product you also want to empathize with devs as they have tried everything
+they could and they are restricted as they donʼt have production level access to
+replicate the error.
+Solution – find smes that can replicate or understand the error
+Cost per sp in one iteration was much higher than our average of 1000 per SP This
+was because I as PO didnʼt account for dev time while doing discovery. Didnt set
+up stories that reflect discovery work (getting on calls etc.)
+Behavioral experiences
+102
+
+--- PAGE 103 ---
+Example of pivoting execution and slicing iterative work
+We werent getting providers for feedback on multiclaim data entry screen
+Sliced the work so that we are shipping value without changing their existing
+workflow
+This also bought us time to recruit providers. Got 4 weeks for feedback
+Behavioral experiences
+103
+
+--- PAGE 104 ---
+Usual project stats
+We estimated 71 story points in total for PIS if we were changing the existing
+app
+Which is about 1.5 PIs. Which is approx 4.5 months
+Each slice was estimated at 2 iterations
+PIS research objectives
+   Current MPS users  44%  - are we breaking their current experience? The
+new experience shouldnʼt ruin existing workflow
+   Mail/fax  40%  - we arent really making it easier. But easy enough that would
+be willing to switch over
+   Batch load  16%  - making it easier little bit for high usage. But this is at risk
+from security as it is currently using one drive
+Execution skills
+Decision 1 – build a new app or use existing app or clone the existing app and
+work in parallel
+We didnʼt get provider feedback so it was risky to make changes to the existing
+app as there would be no roll back plan. The backlog was running out of work and
+carebears capacity was freed up for this project. Even though the backend
+Behavioral experiences
+104
+
+--- PAGE 105 ---
+infrastructure was built to support multiple claims, it was built on the v2 (clone
+version) that would require rework to absorb on the current app.
+We would need to wait for provider feedback till any front end work would start.
+Testing for qa would be hard as the team wasnʼt well versed with the app and all
+its edge cases.
+Decided to build on clone version of existing app so that front end work can start
+without waiting for provider feedback. Better roll out plan. Backend already built to
+support this. This wouldnʼt impact overall effort or cost. Better testing to compare
+before after. a/b testing for providers
+Decision 2 – slices and prioritization
+Figured what slices would look like in both cases. Option would delay the build of
+core value. Risk of less resources by then.
+Option 2 prioritized build and testing of core value. In the first PI potentially only
+that would get built so we only needed to figure dependencies until max slice 2
+Velocity is 10 SP per iteration for our team
+Behavioral experiences
+105
+
+--- PAGE 106 ---
+Challenges with a new team of devs
+Hejun constantly said pis tickets are blocked. They'd do the bare minimum and
+say we're blocked. By po, by business.
+Tickets shouldnʼt have been pulled into the sprint if they werent ready
+They started pulling new tickets in while 3 tickets were in blocked state.
+I tried to understand what is blockig them and they said by sme who wanted a
+certain data table to be used as source of truth to populate our cost tables. But
+we didnʼt have those tables stored on our end so that was the reason dev said
+we were blocked.
+I got a sr dev to get on call with us to try and figure other approaches that
+didnʼt rely solely on what sme said
+Madhu identified our approach along with solutions architect
+briefly chatted about our plan with Michael Jo, he is ok with our plan.
+Behavioral experiences
+106
+
+--- PAGE 107 ---
+will start investigating the FeeCodeBuildFunction sensor to see if we can bring
+in more periods for each fee code (from CMS HUB into Table storage). in
+which case, we shall then query the fee code more accurately. it will also
+benefit us for the future story work to filter out fee code.
+once we have the fee codes from multiple periods into our table storage, we
+will check the Azure Search service to reindex the data (may need to modify
+the setup there as well).
+next, make the UI tweak for PIS invoice entry form, to ensure we will force the
+user to provide a Date of Service value, otherwise we will not trigger the Fee
+Code search. The backend PIS.API will also require a change to take an input
+parameter for Date of Service. Use that date to filter and match the Fee Code.
+he also mentioned that in the future we might want to move
+that FeeCode refresh logic into ADF, and get rid of the FCN sensor thing. but
+that is not for today.
+PI planning
+   Pre PI planning meeting – must have dependencies, features, slices and at
+least 2 iterations worth of work figured out before this meeting. This meeting is
+go over the project and chat through dependencies. Answer any project
+related questions
+Example of prioritization and why it didnʼt change after user feedback
+User feedback preferred csv upload but slices prioritized manual entry of
+multiple claims first
+Why PIS was an interesting and challenging project
+Had to work with assumptions as there were no providers we could chat with
+High risk and heavy usage app
+Behavioral experiences
+107
+
+--- PAGE 108 ---
+Tidbits
+Devs want to know what functions or apps will need to be touched.
+They want to see diagrams upfront when a change is introduced
+Dev personalities
+Sr dev (madhu) doesnʼt read ACs. Doesnʼt want long stories or more detail. All
+she needs is an empty shell story to strat work then she will ask questions or
+work with assumptions get quick feedback. Will research herself or be far
+ahead of POs themselves
+Conflict with QA
+On role definition – he keeps comparing to QAs of other teams and doesnʼt quite
+drive testing
+Started to impact product performance and launch timelines
+Needed to ask for more budget to get extra time for a robust testing strategy
+Demands that he builds test cases based on AC and requirements and if it is not
+there it gets missed in testing
+About comparing to other team QAs. - had to explain our team needs him to
+step up. We have 1 sr devs but a majority of junior devs which is not the same
+with other teams. Relying on the sr dev for a robust test coverage wasnʼt
+helpful. We needed his expertise early on.
+Tried out small nudges for example explicitly calling him out when we needed
+his help. For example when a new feature is being introduced to devs and
+while they get busy solutioning we asked him to start thinking about he would
+test it. Get clear etas on when he can suggest his plan. At next refinement he
+presents it to the team and enables devs to write their own test cases and test
+it out
+Clarified why relying on AC and requirements is not a good idea. For example –
+if the AC says user should be able to upload a 10 mg jpg. The AC doesnʼt
+Behavioral experiences
+108
+
+--- PAGE 109 ---
+explicitly inform the test coverage such as the following will need to be tested
+too
+other file types, other file sizes, corrupted file, naming conventions that are
+accepted by the uploader
+User story was getting delayed – performance user story was estimated to get
+completed in 2 sprints. Got delayed to three sprints
+Performance for 85 line items was acceptable
+Performance at 195 line items was slow
+Performance wasnʼt consistent across machines/ systems being used to test
+We tried reducing the requirement from 2000 line items to 200 still the same
+issue
+Realized this was being test on SY that is 4 times lower/ slower capacity wise
+than production. So while it was slow on sy, it was performing relatively
+quicker on prod
+We needed a way to replication prod env as closely as possible . See
+screenshot below
+Behavioral experiences
+109
+
+--- PAGE 110 ---
+previously the SY is running on 1 vCPU server plan
+now it is 4 vCPU plan
+   Points of conflict/ mistakes / failure? Delivered only 50% of the value (multi-
+claim and multi-invoice)/ time where quality/ user experience was prioritized
+over speed. Decisions you made that improved the overall outcome of a
+product
+Performance optimization took 6 weeks/ 3 sprints. Derailing timelines.
+Behavioral experiences
+110
+
+--- PAGE 111 ---
+To drive a good outcome for the tool this was required. Goal of the project
+was to scale the experience to high volume providers/ other provider
+types. While dogfooding team realized performance wasnʼt at par. User
+experience was getting impacted. Speed was extremely slow while saving/
+editing line items and uploading documents.
+Needed to try out different testing strategies such as throttling vs no
+throttling, different environments. Took long because this was the first time
+the team was working on performance optimization, there were
+no worksafe stands on performance metrics such as page load times etc.
+Philosophy – whatever gets shipped must be high quality even if that
+means 50% of the value couldn't delivered
+Conflict with manager over inline editing (time where functional requirement
+was prioritized over user experience and quality)
+Scope creep after demo. Demoed adding new line items and editing line items.
+Feedback was to include inline editing which was estimated to be at 13 SPs. 1SP
+being at $2000, this was about $26,000. At about 2 sprints including testing.
+Without it, users would need to click into every line, edit it, save it, that is 2 clicks
+per edit. So if a user were to edit 10 lines, they basically had to click 20 times.
+While this wasnʼt the best user experience it was more important that users were
+able to send invoices in the first place. If that doesnʼt get shipped, there could be
+payment delays.
+Approaches
+Behavioral experiences
+111
+
+--- PAGE 112 ---
+Tried to get the estimate down to 8 SPs – get inline editing but it doesnʼt look
+and feel intuitive – users wont be able to tell that these fields are editable
+reminded that while we were trying to scale this to high volume users, we still
+had 50% low volume users invoicing at most 5 line items per submission. So it
+wasnʼt unreasonable to assume it wouldnʼt be too cumbersome to continue
+with the same click to edit workflow as we expected adoption to take time. So
+we could prioritize shipping a functional workflow first and then working on
+the user experience. At least this woudlnt prevent users from submitting
+invoices.
+Rationale – this user experience wasnʼt a functional blocker so it could be
+separated as an improvement for after
+Outcome – manager agreed to get the functional requirement out first
+Conflict over requirements for batch (user experience was functional
+requirements. Couldnʼt ship without UX or put it in another slice. Was required
+for the minimum releasable slice. This increased the time to delivery and we
+went overbudget. UX was functional requirements because it affected how the
+product worked. It wasnʼt just how it looked or felt)
+Guiding rationale
+“If we donʼt build this UX detail, would the product still work as intended?”
+If yes  →  itʼs design guidance
+If no  →  itʼs a functional requirement
+Another quick test:
+“Would QA write test cases for this?”
+If yes, itʼs functional.
+For the batch UX determined what the invoice tool must do
+Batch upload sheet view required ux/ui to limit rows uploaded to 200 – if this
+was not done and users uploaded more than 200, the tool would crash
+Batch load should be able to append rows from manual entry if they start the
+manual entry experience and decide to switch to bulk midway. They shouldnʼt
+lose the rows they previously entered. This would be redundant work.
+Behavioral experiences
+112
+
+--- PAGE 113 ---
+   Killed a feature (batch load) - Let business stakeholders down but saved
+$250K in development costs (building the wrong thing)
+   Showed long term conviction over short term pressure
+   Showed strategic systems thinking (mapped how strategy, incentives and
+systems collide)
+For PIS –
+Initial budget asked
+50K for discovery – PO costs
+300K   MMP1
+150K   MMP2
+With 2 months left and about 20 SP left, we didnʼt have capacity to build and ship
+50% of the value. This was all the high volume providers. We needed at least
+$200K more to do so for the 38 SPs we had forecasted.
+Prioritized low/medium volume providers over high volume
+Segmentation exercise
+With few features we could get 50% of the paper users adopted to the digital
+tool
+The same couldnʼt be done for the high volume providers who had very
+specific workflows. Needed system integrations to actually solve
+their painpoints and support workflows. Example hearing aid providers were
+already digitally faxing us so technically they werent on paper. But our
+systems couldnʼt absorb digital fax. Those faxes would still need to go to elan
+ $$) to be processed before they are fed into our system. They would need to
+do redundant manual work when using our tool   bad user experience. What
+we needed was secure b2b integrations to have data flow seamlessly and
+avoid work for providers.
+Behavioral experiences
+113
+
+--- PAGE 114 ---
+Harm's pitch for PIS funsing for batch load - Seeking additional funding to add a
+batch loading feature that has been increasingly requested by certain providers in
+our conversations (with both experience team and HCOps teams). This builds
+upon the multi-claim work that we are already building and planning to release. To
+increase certainty of adoption, we are adding language in contracts that these
+certain providers must use our digital channels for invoicing, and this additional
+feature will help with both adoption and reception.
+25% of ELAN volume is UNPAC =  $590k
+25% of UNPAC volume are high-volume providers and being targeted by the batch
+upload = $220k
+75% of UNPACs are being targeted by the multi-claim feature = $440k
+<insert example of scaled ARR for PIS  
+Rashmi feedback (gabe PM feedback for PO 
+a fellow PM has been put on a performance improvement plan. feedback from
+their manager is that they fail to hold devs accountable, dont get accurate
+estimates that inform timelines and as a result are falling behind delivery
+schedules. other pieces of feedback were they struggle to pushback. provide
+context on each one of these pieces of feedback, what results in these and hot to
+get better at each
+Oof — thatʼs a rough spot to be in, but also very fixable. Whatʼs interesting is that
+all three signals you listed usually stem from the same root causes, not three
+separate failures. Iʼll break each one down with context →  why it happens →  how
+to get better, and Iʼll call out the overlaps so itʼs clear where to focus.
+1. “Fails to hold developers accountable”
+Behavioral experiences
+114
+
+--- PAGE 115 ---
+What this actually means in PM terms
+This rarely means “yells at devs” or “micromanages.” Managers usually mean:
+Commitments are made and missed without consequence
+Slippage is discovered late rather than surfaced early
+Work expands silently (scope creep, hidden complexity)
+The PM accepts “weʼll see” instead of dates, risks, or tradeoffs
+In other words: delivery lacks ownership and predictability.
+What typically causes this
+PM treats devs as “service providers” instead of partners with shared delivery
+goals
+Fear of damaging relationships →  avoids uncomfortable follow-ups
+No explicit agreement on what done means and by when
+Over-reliance on trust instead of visibility (no checkpoints)
+How to get better (very practical)
+Shift from personal accountability to process accountability.
+Concrete tactics:
+Make commitments explicit and public
+“So weʼre aligned: API X will be merged by Thurs EOD, blocked only by Y.”
+Add lightweight checkpoints
+Mid-sprint check: “Are we still on track? If not, what changed?”
+Ask for risks, not promises
+“What could make this slip?” instead of “Can you do this by Friday?”
+Escalate neutrally
+“Given this slipped twice, we need to re-plan or de-scope. Which do you
+recommend?”
+Behavioral experiences
+115
+
+--- PAGE 116 ---
+Accountability feels less confrontational when itʼs about protecting the plan, not
+judging the person.
+2. “Doesnʼt get accurate estimates that inform
+timelines”
+What this really means
+Managers arenʼt expecting perfect estimates. Theyʼre flagging:
+Timelines are treated as guesses rather than ranges
+Estimates donʼt improve over time
+Unknowns arenʼt called out early
+Leadership is surprised by delays
+This is about forecasting maturity, not math.
+Common root causes
+PM accepts “3 4 weeks” without probing assumptions
+Estimates are gathered before scope is concrete
+No distinction between:
+dev effort vs total delivery time
+best-case vs realistic vs worst-case
+PM doesnʼt pressure-test optimism
+How to get better
+Turn estimates into scenarios instead of dates.
+What good PMs do:
+Ask for ranges + confidence
+“Whatʼs the 80% confidence timeline?”
+Separate build time vs readiness time
+Behavioral experiences
+116
+
+--- PAGE 117 ---
+Dev complete ≠  test, integration, rollout
+Force assumptions into the open
+“This assumes no API changes — correct?”
+Track estimate accuracy over time
+“Weʼre consistently  30%. Letʼs plan with that bias.”
+Simple framing that helps:
+“If we had to commit externally, what date would you feel safe defending?”
+3. “Struggles to push back”
+What managers usually see here
+PM agrees to unrealistic timelines
+Accepts scope additions mid-stream
+Doesnʼt challenge leadership or stakeholder asks
+Optimizes for harmony over outcomes
+This is a decision-ownership problem, not a personality flaw.
+Why this happens
+PM role confusion (“Iʼm here to facilitate, not decide”)
+Fear of appearing uncooperative or negative
+Lack of data to support pushback
+Junior PM mindset in a role that needs senior behavior
+How to get better
+Reframe pushback as offering tradeoffs, not saying no.
+High-leverage techniques:
+Use options, not refusal
+Behavioral experiences
+117
+
+--- PAGE 118 ---
+“We can do A by X, or A B by Y — which do you want?”
+Anchor on goals
+“If speed is the priority, we need to drop X.”
+Bring evidence
+Past velocity, missed estimates, dependency risks
+Pre-align with eng
+Pushback lands better when PM + eng present a united front
+Power sentence to practice:
+“Given our current capacity and risks, hereʼs what I recommend.”
+The uncomfortable truth: these are connected
+If you zoom out:
+Symptom Underlying issue
+Canʼt hold devs accountableAvoids surfacing risk early
+Inaccurate estimates Doesnʼt pressure-test assumptions
+Canʼt push back Avoids conflict and ownership
+This isnʼt a “bad PM.” Itʼs a PM who:
+Optimizes for relationships over outcomes
+Operates reactively instead of proactively
+Hasnʼt yet stepped into delivery leadership
+If theyʼre on a PIP: where to focus first
+If I were coaching them under time pressure, Iʼd prioritize:
+   Visibility over accuracy
+Surface risk early, even if messy
+   Explicit commitments
+Behavioral experiences
+118
+
+--- PAGE 119 ---
+Dates, owners, assumptions
+   Tradeoff framing
+Every ask gets options attached
+Those three alone often flip manager perception fast.
+Understanding what your team is strong at and what they are not 
+devs - front end or back end. what kind of work they can take on. how does that
+change under time constraints 
+our team lacked UX expertise and front end design 
+conflict with design - didnt get their sign off for PIS. designers saw product 2
+weeks before launch and were concerned that it didnt meet wsbc standards.
+worried they could get blamed for it after launch. issues with error navigation,
+vertical scroll for the grid, some copy changes and styling/ colour issues for
+buttons. tried to be empathetic, heard them out, apologized about how it turned
+out. had a conversation on the following things 
+issues with kendo - couldnt translate design requirements with the grid we
+were working with 
+everytime david came with an alternative there were technical limitations and
+we never got a 100% of the functionality 
+we lacked a dedicated front end ux expert and skillset on the team 
+this prolonged time to delivery and created a lot of unused work. causing low
+motivation for designers 
+had devs use lovable to create prototypes of new functionality that helped
+deliver functional value first as priority with the budget and time we had left 
+found a middle ground to fix high priority wsbc standard issues and then fix
+best practices issues after launch 
+Behavioral experiences
+119
+
+--- PAGE 120 ---
+lessons learnt from previous products impacting UX 
+retry queue was required for wor. implemented retry queue for PIS as well 
+when providers were submitting on pis v1, it would get submitted to cms
+synchronously so the provider would know immediately if their request was
+submitted successfully or not. but because we were trying to scale the volume
+submitted, we had to move to async updates to cms. but in this case if it fails
+providers would never know that they request hasnt reached cms., even
+though the portal got their info successfully. so we have a queue that would
+retry submission to cms. if it still fails, devs would get an email about failure
+after retry that needs to get submitted manually. this was done to not
+deteriorate provider experience 
+Behavioral experiences
+120
+
+================================================================================
+FILE: what could have been done better.pdf
+PAGES: 2
+================================================================================
+--- PAGE 1 ---
+What could've been done better 
+Wednesday, September 18, 2024 11:35 AM 
+1. Maintain team's morale on the bceid project • Scope changed multiple times  • No clarity into telus' systems and processes  • Poor contract deisgn (who should be paying for what) • Poor SLAs • Wrong people getting in touch very early on the project 
+2. Getting POs, PMs, BEs, SMs together to talk about expectations, role and responsibilities  • What counts as project incidents • What is po'r role wrt to incidents  • How to main 50% project work and 50% sustenance and incident work 
+3. Months went by before we had clarity what the deadline from the gov was. Whether march 2025was the end of new user registration or for current users to not be able to access accountsanymore or both?  Now we need to ask for extension for both. 
+We could have captured emails before hand so that we can transfer their accounts to forgerock. Ow it istoo late. This shouldve been done before our own forgerock transfer.  I had suggested this to the team before and it was shut down  • Create a new page to capture email addresses first and then transfer accounts to forgerock  • We could've  asked bceid users to add an email address or update their account • We werent asking for enough options or alternatives for solutions. We took everything they saidat face value    
+How to get email addresses from bceid users so that we can transfer them to forgerock? Problem – telus nor the prov govt collects email addresses  Bceid uses only username and forgerock uses only email address  How to transfer and match accounts ?  1. Have user update contact email address within bceid  2. Use banners for above  3. Reach out to org admins of clinics (this info is on excel sheets they sue to register) 4. Telys cpr extract  
+
+--- PAGE 2 ---
+
+

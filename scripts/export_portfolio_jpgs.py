@@ -19,8 +19,10 @@ PORTFOLIO_CONTEXT = ROOT / "portfolio-context"
 JPG_ROOT = PORTFOLIO_CONTEXT / "jpg"
 ARTIFACTS = PORTFOLIO_CONTEXT / "artifacts"
 DIAGRAM_EXPORTS = [
+    ("#platform-strategy-insight", ARTIFACTS / "platform-strategy-insight.jpg"),
     ("#provider-segment-diagram", ARTIFACTS / "provider-segment-diagram.jpg"),
     ("#migration-coordination-diagram", ARTIFACTS / "migration-coordination-diagram.jpg"),
+    ("#pareto-growth-strategy", ARTIFACTS / "pareto-growth-strategy.jpg"),
 ]
 IMAGE_SUFFIXES = {".png", ".gif", ".webp", ".bmp", ".tiff"}
 
@@ -52,10 +54,15 @@ def export_diagram_jpgs(base_url: str) -> None:
         page = browser.new_page(viewport=viewport, device_scale_factor=2)
         page.goto(f"{base_url}/diagram-export", wait_until="networkidle")
         page.wait_for_timeout(500)
+        page.add_style_tag(
+            content="header, footer { display: none !important; } main { padding-top: 0 !important; }"
+        )
 
         for selector, output_path in DIAGRAM_EXPORTS:
             element = page.locator(selector)
-            element.wait_for(state="visible", timeout=15000)
+            element.wait_for(state="attached", timeout=15000)
+            element.scroll_into_view_if_needed()
+            page.wait_for_timeout(300)
             png_bytes = element.screenshot(type="png")
             image = Image.open(__import__("io").BytesIO(png_bytes)).convert("RGB")
             image.save(output_path, "JPEG", quality=92, optimize=True)
@@ -92,7 +99,7 @@ def main() -> int:
     base_url = f"http://127.0.0.1:{port}"
 
     server = subprocess.Popen(
-        ["npm", "run", "start", "--", "-p", str(port)],
+        ["npx", "next", "start", "-p", str(port)],
         cwd=ROOT,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,

@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { HomeHashLink } from "@/components/layout/HomeHashLink";
+import { ParetoGrowthStrategy } from "@/components/projects/ParetoGrowthStrategy";
+import { ProviderSegmentDiagram } from "@/components/projects/ProviderSegmentDiagram";
 import { fadeUpInitial, motionDelay } from "@/lib/motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -66,20 +68,33 @@ const CEILING_LIMITS = [
   },
 ] as const;
 
-const PROVIDER_BARS = [
-  { name: "Worker Travel", pct: 24, highlight: true },
-  { name: "Hearing Aid", pct: 17, highlight: true },
-  { name: "Durable Medical Supplies", pct: 6, highlight: true },
-  { name: "Benefits Outside BC", pct: 5, highlight: true },
-  { name: "Disposable Medical", pct: 5, highlight: false },
-  { name: "Physiotherapy", pct: 4, highlight: false },
-  { name: "All others", pct: 39, highlight: false },
+const PLATFORM_PATHS = [
+  {
+    segment: "High-volume providers",
+    channel: "Redesigned provider portal",
+    needs:
+      "Multi-claim and multi-invoice entries, line duplication, real-time validation — a portal built for throughput, not incremental UX polish.",
+  },
+  {
+    segment: "Hearing aid providers",
+    channel: "Blueprint EMR integration",
+    needs:
+      "Providers already run invoices through Blueprint. The unlock was a new Blueprint release supporting bulk uploads — demand mobilized bottom-up through provider organizations.",
+  },
+  {
+    segment: "Physicians & GPs",
+    channel: "Direct EMR integration",
+    needs:
+      "Workflows embedded at point of care. WorkSafeBC had to meet physicians inside their EMR — validated first through the OSCAR API integration.",
+  },
 ] as const;
 
-const PARETO_INSIGHTS = [
-  { stat: "52%", label: "of paper volume", detail: "Concentrated in just 4 provider types — identifiable, targetable, convertible." },
-  { stat: "27", label: "named providers", detail: "Discovery surfaced a specific cohort to target first, with volume quantified per provider." },
-  { stat: "124K", label: "convertible lines", detail: "Estimated lines that could move digital if the product could serve their workflow." },
+const PLATFORM_DELIVERABLES = [
+  "$580K funding secured via business cases",
+  "Provider portal redesigned for high-volume workflows",
+  "Interoperability roadmap defined",
+  "First API integration validated with OSCAR EMR",
+  "Bottom-up demand built with provider orgs (Blueprint)",
 ] as const;
 
 const DELIVERED_FEATURES = [
@@ -100,7 +115,7 @@ const ROADMAP_SLICES = [
   {
     horizon: "Mid-term",
     title: "Vendor Integration — Bottom-Up Demand",
-    body: "Hearing aid providers use Blueprint software to manage and submit invoices. Blueprint had little incentive to prioritize WorkSafeBC compatibility. Rather than negotiate directly, I mobilized internal Healthcare Operations staff and program managers — who hold daily provider relationships — to create grassroots feature requests from providers to Blueprint. Demand created bottom-up unlocks what top-down asks cannot.",
+    body: "Hearing aid providers run invoices through Blueprint practice management software. The unlock wasn't a portal feature — it was Blueprint shipping bulk upload support in a new software release. Blueprint had little incentive to prioritize WorkSafeBC compatibility. Rather than negotiate directly, I mobilized internal Healthcare Operations staff and program managers — who hold daily provider relationships — to create grassroots feature requests from providers to Blueprint. Demand created bottom-up unlocks what top-down asks cannot.",
     callout: "Platform thinking: use distribution partners to create pull, not push.",
   },
   {
@@ -272,7 +287,7 @@ export function ProviderInvoicePage() {
             </motion.div>
 
             <motion.div {...fadeUp(0.1)} className="mt-5 flex flex-wrap gap-2">
-              <span className="chip-accent">$500K budget</span>
+              <span className="chip-accent">$580K funding</span>
               <span className="chip">Product Manager</span>
               <span className="chip">Aug 2025 – Mar 2026</span>
               <span className="chip">PostHog instrumentation</span>
@@ -396,90 +411,79 @@ export function ProviderInvoicePage() {
         </div>
       </section>
 
-      {/* ── The Opportunity — Pareto segmentation ─────────────────────── */}
+      {/* ── Growth strategy — Pareto-informed GTM ───────────────────── */}
       <section className={`mx-auto max-w-frame px-page-x ${SECTION}`}>
         <motion.div {...fadeUp(0)}>
           <SectionLabel>The opportunity</SectionLabel>
-          <SectionHeading>280K blocked line items. $463K in annual processing cost.</SectionHeading>
+          <SectionHeading>Data revealed where growth was actually blocked</SectionHeading>
         </motion.div>
 
-        <div className="mt-8 grid gap-5 lg:grid-cols-[3fr_2fr] lg:gap-8">
+        <motion.div {...fadeUp(0.08)} className="mt-8">
+          <ParetoGrowthStrategy />
+        </motion.div>
+      </section>
 
-          {/* Bar chart of provider segments */}
-          <motion.div {...fadeUp(0.08)} className={`${CARD} ${CARD_PAD}`}>
-            <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-400">
-              Paper / fax volume by provider type
-            </p>
-            <p className="mb-6 text-[12px] text-stone-400">Share of ~280K annual paper line items · $1.57 / line via ELAN</p>
-            <div className="space-y-3">
-              {PROVIDER_BARS.map((item) => (
-                <div key={item.name}>
-                  <div className="mb-1.5 flex items-center justify-between">
-                    <span
-                      className={`text-[12px] font-medium ${
-                        item.highlight ? "text-stone-800" : "text-stone-400"
-                      }`}
-                    >
-                      {item.name}
-                    </span>
-                    <span className={`text-[11px] font-medium ${item.highlight ? "text-stone-500" : "text-stone-300"}`}>
-                      {item.pct}%
-                    </span>
-                  </div>
-                  <div className="h-1.5 overflow-hidden rounded-full bg-stone-100">
-                    <div
-                      className={`h-full rounded-full ${
-                        item.highlight
-                          ? "bg-gradient-to-r from-[#6D5EF5] to-[#4F8CFF]"
-                          : "bg-stone-200"
-                      }`}
-                      style={{ width: `${item.pct}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="mt-5 text-[12px] leading-[1.62] text-stone-400">
-              Top 4 highlighted groups = <span className="font-semibold text-stone-600">52% of all paper volume</span>. These were the providers the product couldn&apos;t serve.
-            </p>
-          </motion.div>
+      {/* ── Platform insight — one product → platform strategy ─────────── */}
+      <section className={`mx-auto max-w-frame px-page-x ${SECTION}`}>
+        <motion.div {...fadeUp(0)}>
+          <SectionLabel>The insight</SectionLabel>
+          <SectionHeading>One product couldn&apos;t serve every provider</SectionHeading>
+        </motion.div>
 
-          {/* Right: cost card + pareto insights */}
-          <div className="flex flex-col gap-4">
+        <motion.p
+          {...fadeUp(0.08)}
+          className="mt-4 max-w-[52rem] text-[15px] leading-[1.72] text-stone-500"
+        >
+          A single portal couldn&apos;t unlock the remaining paper volume. High-volume providers
+          needed a redesigned experience. Hearing aid providers working through Blueprint needed
+          their EMR to support bulk uploads in a new software release. Physicians needed
+          WorkSafeBC embedded directly inside their EMRs at point of care. That insight shifted
+          the roadmap from optimizing one product to building a long-term platform strategy.
+        </motion.p>
+
+        <motion.div {...fadeUp(0.12)} className="mt-8">
+          <ProviderSegmentDiagram highlight="portal" />
+        </motion.div>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-3 sm:gap-5">
+          {PLATFORM_PATHS.map((path, i) => (
             <motion.div
-              {...fadeUp(0.12)}
-              className="overflow-hidden rounded-2xl border border-[rgba(109,94,245,0.14)] bg-gradient-to-br from-[rgba(109,94,245,0.05)] to-[rgba(79,140,255,0.02)]"
+              key={path.segment}
+              {...fadeUp(0.14 + i * 0.06)}
+              className={`flex flex-col ${CARD} ${CARD_PAD}`}
             >
-              <div className={CARD_PAD}>
-                <p className="gradient-hero-text font-display text-[2.4rem] font-medium leading-none tracking-[-0.03em]">
-                  $463K
-                </p>
-                <p className="mt-1.5 text-[12px] font-semibold uppercase tracking-[0.07em] text-stone-500">
-                  Annual ELAN cost
-                </p>
-                <p className="mt-3 text-[13px] leading-[1.62] text-stone-500">
-                  Paid to an external keying service to process paper invoices the product couldn&apos;t capture.
-                </p>
-              </div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-400">
+                {path.segment}
+              </p>
+              <p className="mt-2 font-display text-[1rem] font-medium tracking-[-0.018em] text-stone-900">
+                {path.channel}
+              </p>
+              <p className="mt-2.5 flex-1 text-[13px] leading-[1.65] text-stone-500">{path.needs}</p>
             </motion.div>
-
-            <motion.div {...fadeUp(0.16)} className={`${CARD} ${CARD_PAD} flex-1 space-y-4`}>
-              {PARETO_INSIGHTS.map((item) => (
-                <div key={item.stat}>
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-display text-[1.3rem] font-medium tracking-tight text-stone-900">
-                      {item.stat}
-                    </span>
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-stone-400">
-                      {item.label}
-                    </span>
-                  </div>
-                  <p className="mt-0.5 text-[12px] leading-[1.6] text-stone-400">{item.detail}</p>
-                </div>
-              ))}
-            </motion.div>
-          </div>
+          ))}
         </div>
+
+        <motion.div
+          {...fadeUp(0.28)}
+          className="mt-6 rounded-xl border border-[rgba(109,94,245,0.16)] bg-[rgba(109,94,245,0.04)] px-6 py-5"
+        >
+          <p className="text-[13px] leading-[1.7] text-stone-700 sm:text-[14px]">
+            Built the business cases securing $580K in funding, redesigned the provider portal for
+            high-volume workflows, defined an interoperability roadmap, validated the first API
+            integration with OSCAR EMR, and partnered with provider organizations to build
+            bottom-up demand for future integrations — starting with Blueprint.
+          </p>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {PLATFORM_DELIVERABLES.map((item) => (
+              <li
+                key={item}
+                className="rounded-lg border border-[rgba(109,94,245,0.14)] bg-white/70 px-3 py-1.5 text-[11px] font-medium text-stone-600"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
       </section>
 
       {/* ── Before / After ────────────────────────────────────────────── */}
@@ -903,8 +907,8 @@ export function ProviderInvoicePage() {
             [
               {
                 label: "Budget",
-                value: "$500K",
-                detail: "Aug 2025 – Mar 2026. Business case approved by executive sponsor before a dollar was spent.",
+                value: "$580K",
+                detail: "Aug 2025 – Mar 2026. Business cases approved by executive sponsor before a dollar was spent.",
                 delay: 0.14,
               },
               {
