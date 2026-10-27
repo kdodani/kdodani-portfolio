@@ -6,17 +6,18 @@ import { useCallback, useEffect, useState } from "react";
 import { site } from "@/content/site";
 import { HomeHashLink } from "@/components/layout/HomeHashLink";
 
-const SECTION_IDS = ["about", "experience", "failed-experiments", "builds", "contact"] as const;
+const SECTION_IDS = ["about", "experience", "failed-experiments", "contact"] as const;
 
 type NavItem =
   | { kind: "section"; id: string; label: string }
+  | { kind: "page"; href: string; label: string }
   | { kind: "file"; href: string; label: string };
 
 const nav: NavItem[] = [
   { kind: "section", id: "about", label: "About" },
   { kind: "section", id: "experience", label: "Experience" },
   { kind: "section", id: "failed-experiments", label: "Failed Experiments" },
-  { kind: "section", id: "builds", label: "AI Builds" },
+  { kind: "page", href: "/ai-builds", label: "AI Builds" },
   { kind: "section", id: "contact", label: "Contact" },
   { kind: "file", href: site.resumePdf, label: "Resume" },
 ];
@@ -38,10 +39,24 @@ function sectionNavClass(id: string, activeId: string) {
 function NavItemControl({
   item,
   activeId,
+  pathname,
 }: {
   item: NavItem;
   activeId: string;
+  pathname: string;
 }) {
+  if (item.kind === "page") {
+    const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+    return (
+      <Link
+        href={item.href}
+        aria-current={isActive ? "page" : undefined}
+        className={sectionNavClass("page", isActive ? "page" : "")}
+      >
+        {item.label}
+      </Link>
+    );
+  }
   if (item.kind === "section") {
     return (
       <HomeHashLink sectionId={item.id} className={sectionNavClass(item.id, activeId)}>
@@ -106,7 +121,7 @@ export function SiteHeader() {
           aria-label="Primary"
         >
           {nav.map((item) => (
-            <NavItemControl key={item.label} item={item} activeId={activeId} />
+            <NavItemControl key={item.label} item={item} activeId={activeId} pathname={pathname} />
           ))}
         </nav>
       </div>

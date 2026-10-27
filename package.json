@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export:jpgs": "python scripts/export_portfolio_jpgs.py"
+    "export:jpgs": "python scripts/export_portfolio_jpgs.py",
+    "export:case-studies": "python scripts/export_case_study_pdfs.py"
   },
   "dependencies": {
     "framer-motion": "^11.18.0",

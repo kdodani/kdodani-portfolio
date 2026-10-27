@@ -1,0 +1,19 @@
+@media print {
+  .case-study-document {
+    background: white !important;
+  }
+
+  .case-study-document section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .case-study-document table {
+    break-inside: auto;
+  }
+
+  .case-study-document tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

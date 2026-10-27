@@ -1,0 +1,34 @@
+{
+  "name": "kdodani-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "clean": "node -e \"const fs=require('fs'),p=require('path');['.next',p.join('node_modules','.cache')].forEach(d=>{try{fs.rmSync(d,{recursive:true,force:true});console.log('Removed',d)}catch(e){}})\"",
+    "dev": "next dev",
+    "dev:clean": "npm run clean && next dev",
+    "reset": "npm run clean && npm run build",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export:jpgs": "python scripts/export_portfolio_jpgs.py",
+    "export:case-studies": "python scripts/export_case_study_pdfs.py"
+  },
+  "dependencies": {
+    "framer-motion": "^11.18.0",
+    "lucide-react": "^0.469.0",
+    "next": "^15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.3.0",
+    "postcss": "^8.5.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.0"
+  }
+}
