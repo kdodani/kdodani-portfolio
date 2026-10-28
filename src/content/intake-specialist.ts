@@ -4,6 +4,8 @@
  * end to end (with artifacts inline) -> key insights -> tech stack.
  */
 
+import type { FlowNode } from "./flow";
+
 const IMG = "/images/ai-builds/intake-specialist";
 
 export type Artifact = {
@@ -76,24 +78,6 @@ export const whyNotAgentNote =
   "Not every step needs an agent. The clean, API-shaped work (like the eligibility call) is better as a plain script. The agent is for the parts that need judgment.";
 
 /* ─── End to end: workflow ────────────────────────────────────────────── */
-
-export type FlowKind = "input" | "llm" | "script" | "browser" | "output" | "future";
-
-export type FlowNode = {
-  id: string;
-  label: string;
-  detail: string;
-  kind: FlowKind;
-};
-
-export const flowKindLabel: Record<FlowKind, string> = {
-  input: "Input",
-  llm: "LLM judgment",
-  script: "Deterministic script",
-  browser: "Browser agent",
-  output: "Output",
-  future: "Not built yet",
-};
 
 export const flowNodes: FlowNode[] = [
   {

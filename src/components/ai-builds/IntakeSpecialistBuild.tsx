@@ -5,6 +5,7 @@ import type { BuildEntry } from "@/content/builds";
 import {
   buildSteps,
   deterministicSteps,
+  flowNodes,
   guardrailArtifact,
   inputArtifacts,
   insights,
@@ -16,7 +17,7 @@ import {
   whyNotAgentNote,
 } from "@/content/intake-specialist";
 import { EscalationFlow } from "./EscalationFlow";
-import { IntakeWorkflowDiagram } from "./IntakeWorkflowDiagram";
+import { WorkflowDiagram } from "./WorkflowDiagram";
 import { OutcomeSnapshot } from "./OutcomeSnapshot";
 import {
   BuildEyebrow,
@@ -54,7 +55,7 @@ export function IntakeSpecialistBuild({
     <section id={build.id} className="scroll-mt-4">
       {/* ── Header ─────────────────────────────────────────────────────── */}
       <motion.div {...fadeUp(0)}>
-        <BuildEyebrow number={number} total={total} featured />
+        <BuildEyebrow number={number} total={total} />
         <h2 className="font-display mt-2 text-[clamp(1.6rem,2vw+1rem,2.2rem)] font-medium tracking-[-0.03em] text-stone-900">
           {build.title}
         </h2>
@@ -137,7 +138,7 @@ export function IntakeSpecialistBuild({
           </SectionIntro>
         </motion.div>
         <div className="mt-6">
-          <IntakeWorkflowDiagram />
+          <WorkflowDiagram nodes={flowNodes} />
         </div>
 
         {/* Steps with their artifacts inline */}

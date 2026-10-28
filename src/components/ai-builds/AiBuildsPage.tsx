@@ -4,14 +4,13 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { buildEntries } from "@/content/builds";
 import { BuildShowcase } from "./BuildShowcase";
+import { ClaimDenialsBuild } from "./ClaimDenialsBuild";
 import { IntakeSpecialistBuild } from "./IntakeSpecialistBuild";
 import { SectionLabel, useFadeUp } from "./ui";
 
 export function AiBuildsPage() {
   const fadeUp = useFadeUp();
-  const featured = buildEntries.find((b) => b.id === "intake-specialist");
-  const others = buildEntries.filter((b) => b.id !== "intake-specialist");
-  const ordered = featured ? [featured, ...others] : others;
+  const ordered = buildEntries;
   const total = ordered.length;
 
   return (
@@ -48,7 +47,7 @@ export function AiBuildsPage() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-500">
             {total} builds on this page
           </p>
-          <ul className="mt-3 grid grid-cols-1 gap-4 md:grid-cols-3">
+          <ul className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {ordered.map((b, i) => (
               <li key={b.id} className="flex">
                 <a
@@ -84,11 +83,13 @@ export function AiBuildsPage() {
         <div className="mt-16 border-t border-stone-200/80 pt-14 sm:mt-20 sm:pt-16">
           {ordered.map((b, i) => {
             const number = String(i + 1).padStart(2, "0");
-            return b.id === "intake-specialist" ? (
-              <IntakeSpecialistBuild key={b.id} build={b} number={number} total={total} />
-            ) : (
-              <BuildShowcase key={b.id} build={b} number={number} total={total} />
-            );
+            if (b.id === "intake-specialist") {
+              return <IntakeSpecialistBuild key={b.id} build={b} number={number} total={total} />;
+            }
+            if (b.id === "claim-denials-agent") {
+              return <ClaimDenialsBuild key={b.id} build={b} number={number} total={total} />;
+            }
+            return <BuildShowcase key={b.id} build={b} number={number} total={total} />;
           })}
         </div>
       </div>

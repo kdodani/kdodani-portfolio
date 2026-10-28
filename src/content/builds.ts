@@ -39,6 +39,18 @@ export const buildEntries: BuildEntry[] = [
     linkLabel: "About the course",
   },
   {
+    id: "claim-denials-agent",
+    title: "Claim Denials agent",
+    tagline: "An agent that reads a denial, learns from past claims, routes it with rules the billing lead owns, and drafts an appeal a person sends.",
+    status: "Prototype",
+    context:
+      "Built hands-on on Day 2 of the same course, in Claude Code, on a synthetic EHR for a fictional behavioral health clinic. It picks up Day 1's folder and the same patient.",
+    experimented: [],
+    accomplished: [],
+    learnings: [],
+    tags: ["AI agents", "Claims and denials", "Revenue cycle", "Claude Code", "Human-in-the-loop"],
+  },
+  {
     id: "ai-pm-portfolio",
     title: "AI-powered PM portfolio",
     tagline: "This site: designed, built and iterated with an AI-assisted workflow.",
